@@ -15,6 +15,6 @@
 3. Feed the location of the Folder with the Sample Log Files:
 
     ```python
-    Sample_log_files
+    sample_log_files
     ```
 ---

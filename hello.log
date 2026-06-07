@@ -1,0 +1,2 @@
+49.36.78.145 - - [01/Nov/2024:00:00:03 +0530] "GET /index.html HTTP/1.1" 301 433 "https://www.google.com/search?q=your+site" "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15"
+14.139.123.45 - - [01/Nov/2024:00:00:25 +0530] "GET /api/v1/users/me HTTP/1.1" 200 29356 "https://www.google.com/search?q=your+site" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
