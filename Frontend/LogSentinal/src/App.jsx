@@ -67,7 +67,7 @@ function ActionButtons(){
 function FilterCard(){
   return(
     <div className=" rounded-xl p-4 bg-slate-900 border border-slate-700">
-        <p className="text-sm text-zinc-400 mb-3">Filter range</p>
+        <p className="text-sm text-slate-400 mb-3">Filter range</p>
         <div className="grid grid-cols-1">
           <div className="flex-1">
             <p className="text-xs text-zinc-400 mb-1">From</p>
@@ -100,10 +100,10 @@ function DataButtons(){
 
 function DataTable(){
   return(
-    <div className="bg-slate-900 border border-slate-700 rounded-xl scrollbar-none overflow-scroll max-h-105">
+    <div className="w-full bg-slate-900 border border-slate-700 rounded-xl scrollbar-none overflow-scroll max-h-105">
       <table className="w-full text-sm table-fixed">
 
-        <thead>
+        <thead >
           <tr className="bg-zinc-600/50 border-b border-slate-700">
             <th className="text-left text-xs font-medium text-slate-400 px-3 py-2 w-40">Timestamp</th>
             <th className="text-left text-xs font-medium text-slate-400 px-3 py-2 w-16">Level</th>
@@ -113,14 +113,12 @@ function DataTable(){
         </thead>
 
         <tbody>
-
           <tr className="border-b border-slate-700">
             <td className="px-3 py-2 text-slate-100 text-xs">2024-06-04 12:01:35</td>
             <td className="px-3 py-2 text-xs text-yellow-500">WARN</td>
             <td className="px-3 py-2 text-slate-100 text-xs">192.168.1.10</td>
             <td className="px-3 py-2 text-slate-100 text-xs">Failed login — user: root</td>
           </tr>
-    
         </tbody>
       </table>
     </div>
@@ -147,10 +145,11 @@ function Dashboard(){
           </div>
 
           {/* Right panel */}
-          <div className="flex flex-col gap-3 flex-1" >
+          <div>
 
             {/* Table */}
             <DataTable />
+
           </div>
 
         </div>

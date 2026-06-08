@@ -72,7 +72,7 @@ class nginxParser():
         self.hour_dqs[grp['ip']].append(grp['timestamp'])
 
         current_min_timestamp = datetime.strptime(self.min_dqs[grp['ip']][-1], "%d/%b/%Y:%H:%M:%S")
-        current_hour_timestamp = datetime.strptime(self.dq_hour[-1], "%d/%b/%Y:%H:%M:%S")
+        current_hour_timestamp = datetime.strptime(self.hour_dqs[grp['ip']][-1], "%d/%b/%Y:%H:%M:%S")
 
         # Minute Window 
         while current_min_timestamp >= datetime.strptime(self.min_dqs[grp['ip']][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
@@ -83,10 +83,10 @@ class nginxParser():
             self.sus_ips_req_rate_min.append([grp['ip'], f"from = {self.min_dqs[grp['ip']][0]}", f"to = {self.min_dqs[grp['ip']][-1]}"])
 
         # Hour Window 
-        while current_hour_timestamp >= datetime.strptime(self.dq_hour[0], "%d/%b/%Y:%H:%M:%S") + timedelta(hours=1):
-            self.dq_hour.popleft()
+        while current_hour_timestamp >= datetime.strptime(self.hour_dqs[grp['ip']][0], "%d/%b/%Y:%H:%M:%S") + timedelta(hours=1):
+            self.hour_dqs[grp['ip']].popleft()
 
-        if len(self.dq_hour) >= hour_threshold:
+        if len(self.hour_dqs[grp['ip']]) >= hour_threshold:
             self.sus_ips_req_rate_hour.append([grp['ip'], f"from = {self.hour_dqs[grp['ip']][0]}", f"to = {self.hour_dqs[grp['ip']][-1]}"])
 
         with open(summaryFile, "a") as summ:

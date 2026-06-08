@@ -43,7 +43,7 @@ class authParser():
         if line[0] == '#':
             return
 
-        matches = [re.match(gen_pattern + msg) for msg in possible_messages]
+        matches = [re.match(gen_pattern + msg, line) for msg in possible_messages]
 
         match = next((x for x in matches if isinstance(x, re.Match)), None)
         if not match:
@@ -88,6 +88,6 @@ class authParser():
             summ.write(f"Suspicious IPs with No. of failed login attempts >= {threshold} per min :\n")
             for x in self.sus_failed_logins_per_min:
                 summ.write(f"{x}\n")
-            summ.write()
+            summ.write("\n")
             
 

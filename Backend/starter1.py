@@ -1,140 +1,164 @@
 import os
 import time
 import queue
+import asyncio
+import aiofiles
+import time
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
+
 from parser.Auth import authParser
 from parser.Nginx import nginxParser
 from parser.Apache import apacheParser
 
 class Handler(FileSystemEventHandler):
-    def __init__(self,active_gen, file_queue):
+    def __init__(self, active_gen, newFileQueue, parserObj):
         self.active_gen = active_gen
-        self.file_queue = file_queue
-
-    def on_modified(self, event):
-        if event.is_directory:
-            return
-        
-        modify_inFile(event.src_path, self.active_gen)
-
+        self.newFileQueue = newFileQueue
+        self.parserObj = parserObj
     
     def on_created(self, event):
         if event.is_directory:
             return
         
-        self.file_queue.put(event.src_path)
+        self.newFileQueue.put((self.parserObj, event.src_path))
         
         
-def generator(filePath):
-    with open(filePath) as f:
+async def generator(filePath):
+    async with aiofiles.open(filePath) as f:
         while True:
-            line = f.readline().strip()
+            line = await f.readline()
+            line = line.strip()
             yield line
+            await asyncio.sleep(0)
 
 
+async def readPrevContents(active_gen, filePath):
+    gen_obj, parserObj = active_gen[filePath]
 
-def readPrevContents(active_gen, fileName):
-    gen_obj, parserObj = active_gen[fileName]
-
+    loop = asyncio.get_running_loop()
     while True:
-        line = next(gen_obj, "EOF")
-        if line == "EOF":
+        line = await anext(gen_obj)
+        if not line:
             break
         
-        parserObj.analyze(line)
+        data = await loop.run_in_executor(None, parserObj.analyze, line)
 
-
-
-def modify_inFile(filePath, active_gen):
-    fileName = os.path.basename(filePath)
-
-    if os.path.splitext(filePath)[1] != ".log":
-        return
-
-    if fileName not in active_gen.keys():
-        return
     
-    gen_obj, parserObj = active_gen[fileName]
+
+def newFile(filePath, active_gen, parserObj):
+    new_genObj = generator(filePath)
+
+    active_gen[filePath] = (new_genObj, parserObj)
+
+    asyncio.create_task(readPrevContents(active_gen, filePath))
+
+    if parserObj == apacheParser:
+        print("Sending Package")
+        # await sio.emit("Apache" , data)
+    elif parserObj == nginxParser:
+        print("Sending Package")
+        # await sio.emit("Nginx" , data)
+    else:
+        print("Sending Package")
+        # await sio.emit("Auth", data)
+
+async def flush(gen_obj, parserObj):
+    loop = asyncio.get_running_loop()
 
     while True:
-        line = next(gen_obj, "EOF")
-        if line == "EOF":
+        line = await anext(gen_obj)
+
+        if not line:
             break
+        
+        data = await loop.run_in_executor(None, parserObj.analyze, line)
 
-        print(f"Change Detected in the file = {fileName}")
-        print(f"{line}\n")
-        parserObj().analyze(line)
+    if parserObj == apacheParser:
+        print("Sending Package")
+        # await sio.emit("Apache" , data)
+    elif parserObj == nginxParser:
+        print("Sending Package")
+        # await sio.emit("Nginx" , data)
+    else:
+        print("Sending Package")
+        # await sio.emit("Auth", data)
 
 
-
-def newFile(filePath, active_gen):
-    fileName = os.path.basename(filePath)
-
-    if os.path.splitext(fileName)[1] != ".log":
-        return
-    elif not os.access(filePath, os.R_OK):
-        print("You dont' have permissions to read this file. Ignoring the file.")
-        return
-
-    fileType = int(input(f"New log File Detected: {fileName}, Please Enter its type = [1] Auth, [2] Apache, [3] Nginx : "))
-    match fileType:
-        case 1:
-            new_genObj = generator(filePath)
-            parserObj = authParser()
-            active_gen[fileName] = (new_genObj, parserObj)
-        case 2:
-            new_genObj = generator(filePath)
-            parserObj = apacheParser()
-            active_gen[fileName] = (new_genObj, parserObj)
-        case 3:
-            new_genObj = generator(filePath)
-            parserObj = nginxParser()
     
-    active_gen[fileName] = (new_genObj, parserObj)
 
-    readPrevContents(active_gen, fileName)
+async def main():
+    print("Hello, User")
 
+    apache_path = input("Path for the Apache Log File [Just Hit Enter if you don't want to] : ")
+    nginx_path = input("Path for the Nginx Log File [Just Hit Enter if you don't want to] : ")
+    auth_path = input("Path for the Auth Log File [Just Hit Enter if you don't want to] : ")
 
-
-def main():
-    inputPath = input("Enter the path of the folder to be monitored : ")
-
-    if os.path.isfile(inputPath):
-        print(f"{os.path.basename(inputPath)} is a File. Please Enter the path to a folder")
+    if not apache_path and not nginx_path and not auth_path:
+        print("Didn't recieve any path.")
         print("Bye Bye")
         return
-    elif not os.access(inputPath, os.R_OK):
-        print("You don't have the valid permission to read this Folder.")
-        print("Bye Bye")
-        return
-
+    
     active_generators = {}
-
-    for fileName in os.listdir(inputPath):
-        if os.path.splitext(fileName)[1] != ".log":
-            continue
-            
-        filePath = os.path.join(inputPath, fileName)
-
-        newFile(filePath, active_generators)
-
     observer = Observer()
-    file_queue = queue.Queue()
-    handler = Handler(active_generators, file_queue)
+    newFileQueue = queue.Queue()
 
-    observer.schedule(handler, path=inputPath, recursive=False)
+    if apache_path:
+        for fileName in os.listdir(apache_path):
+            if os.path.splitext(fileName)[1] != '.log':
+                continue
+            
+            filePath = os.path.join(apache_path, fileName)
+
+            newFile(filePath, active_generators, apacheParser())
+
+        apache_handler = Handler(active_generators, newFileQueue, apacheParser)
+        observer.schedule(apache_handler, path=apache_path, recursive=False)
+
+    if nginx_path:
+        for fileName in os.listdir(nginx_path):
+            if os.path.split(fileName)[1] != '.log':
+                continue
+            
+            filePath = os.path.join(nginx_path, fileName)
+
+            newFile(filePath, active_generators, nginxParser())
+
+        nginx_handler = Handler(active_generators, newFileQueue, nginxParser)
+        observer.schedule(nginx_handler, path=nginx_path, recursive=False)
+
+    if auth_path:
+        for fileName in os.listdir(auth_path):
+            if os.path.split(fileName)[1] != '.log':
+                continue
+            
+            filePath = os.path.join(auth_path, fileName)
+
+            newFile(filePath, active_generators, authParser())
+
+        auth_handler = Handler(active_generators, newFileQueue, authParser)
+        observer.schedule(auth_handler, path=auth_path, recursive=False)
 
     observer.start()
 
     try:
+        last_flush = time.time()
         while True:
             try:
-                filePath = file_queue.get(timeout=1)
-                newFile(filePath, active_generators)
+                parserObj, filePath = newFileQueue.get(timeout=1)
+                newFile(filePath, active_generators, parserObj)
             except queue.Empty:
-                continue
+                pass
+
+            if time.time() - last_flush >= 600:
+                print("Updating the stats:")
+                last_flush = time.time()
+                flush_tasks = [flush(gen_obj, parserObj) for _,(gen_obj, parserObj) in active_generators.items()]
+                await asyncio.gather(*flush_tasks)
     except KeyboardInterrupt:
         observer.stop()
+        observer.join()
+        return
 
-    observer.join()
+if __name__ == "__main__":
+    asyncio.run(main())
