@@ -26,6 +26,10 @@ function Home({
 }
 
 function Header({
+  pause,
+  setPause,
+  setView,
+  view,
   setCurrentRoom,
   setHome,
   rooms
@@ -44,7 +48,7 @@ function Header({
         </select>
       </div>
 
-      <ActionButtons />
+      <ActionButtons setView={setView} view={view} pause={pause} setPause={setPause}/>
 
       <div>
         <button className="text-sm font-bold border border-slate-700 rounded-lg py-2 px-4 text-slate-300 hover:bg-red-500/60 hover:scale-110 duration-150 mr-4"
@@ -131,28 +135,27 @@ function DataTable({
 
 
 function ActionButtons({
+  pause,
+  setPause,
+  view,
+  setView,
   from, 
   to,
 }){
   return(
     <div className="flex gap-2 justify-center items-center">
-      <div>
-        <button className="text-sm font-bold border border-slate-700 rounded-lg p-2 text-slate-300 hover:bg-blue-500/60 hover:scale-110 duration-150" onClick = {() => {summaryGen(from, to)}}>
-          Get Summary
-        </button>
-      </div>
+      <button className="cursor-pointer text-sm font-bold border border-slate-700 rounded-lg p-2 text-slate-300 hover:bg-blue-500/60 hover:scale-110 duration-150" onClick = {() => {summaryGen(from, to)}}>
+        Get Summary
+      </button>
 
-      {/* <div>
-        <input type="radio" name="view" id="Pause" className="hidden peer "></input>
-        <label htmlFor="Pause" className="text-sm font-bold border border-slate-700 rounded-lg p-2 text-slate-300 hover:bg-yellow-300/60 
-        peer-checked:bg-yellow-300/60">Pause</label>
-      </div>
-      <div>
-        <input type="radio" name="view" id="Resume" className="hidden peer"></input>
-        <label htmlFor="Resume" className="text-sm font-bold border border-slate-700 rounded-lg p-2 text-slate-300 hover:bg-green-400/60
-        peer-checked:bg-green-400/60">Resume</label>
-      </div> */}
+      <input type="radio" name="view" id="History" className="hidden peer"></input>
+      <label htmlFor="History" className={` cursor-pointer text-sm font-bold border border-slate-700 rounded-lg p-2 text-slate-300 hover:bg-purple-800
+      ${ view==="history"? "peer-checked:bg-purple-800" : "bg-transparent" }`} onClick = {() => setView("history")}>History</label>
 
+      <input type="radio" name="view" id="Real Time" className="hidden peer" defaultChecked></input>
+      <label htmlFor="Real Time" className={`cursor-pointer text-sm font-bold border border-slate-700 rounded-lg p-2 text-slate-300 hover:bg-green-600/50 ${ view==="real"? "bg-green-600/50" : "bg-transparent" } `} onClick = {() => setView("real")} >Real Time</label>
+
+      <button className={` cursor-pointer text-sm font-bold border border-slate-700 rounded-lg p-2 text-slate-300 hover:bg-amber-400/50 ${ pause ? "bg-amber-400/80" : "bg-transparent"}`} onClick={() => setPause((prev) => !prev)}>Pause</button>
     </div>
   )
 }
@@ -201,11 +204,12 @@ function Dashboard({
   const [rooms, setRooms] = useState([])
   const [currentRoom, setCurrentRoom] = useState()
   const [ref, setRef] = useState(false)
+  const [view, setView] = useState("real")
+  const [pause, setPause] = useState(false)
 
   useEffect(() => {
     socket.on("Apache Logs Update", (data) => {
       console.log("Received Apache Log Data...");
-      console.log(data)
       setApacheLogs(data);
     })
     return () => socket.off("Apache Logs Update")
@@ -244,7 +248,7 @@ function Dashboard({
     <div className="fixed inset-0 -z-10 bg-slate-950" style={{backgroundImage: 'radial-gradient(circle, #ffffff22 1px, transparent 1px)', backgroundSize: '24px 24px'}}>
       <div className="flex flex-col h-screen">
         {/* Header */}
-        <Header apacheLogs={apacheLogs} nginxLogs={nginxLogs} authLogs={authLogs} setCurrentRoom={setCurrentRoom} rooms={rooms} setHome={setHome}/>
+        <Header apacheLogs={apacheLogs} nginxLogs={nginxLogs} authLogs={authLogs} setCurrentRoom={setCurrentRoom} rooms={rooms} setHome={setHome} setView={setView} view={view} pause={pause} setPause={setPause}/>
 
         <div className="flex gap-4 px-6 pb-6 flex-1 min-h-0">
           {/* Left panel */}
@@ -289,7 +293,3 @@ function App(){
 
 export default App
 
-
-function summaryGen(from , to){
-  
-}

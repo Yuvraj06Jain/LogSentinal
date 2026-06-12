@@ -188,7 +188,7 @@ class apacheParser():
                     f'Suspicious IPs based on No. of errors greater than {error_threshold} per min' : self.sus_ips_error_per_min,
                     f"Suspicious IPs with raio of 404 errors greater than {ratio}" : self.sus_ips_404,
                     f"Bandwidth Analysis" : self.sus_bandwidth, 
-                    'Most Accessed URLs' : self.urls, 
+                    'URLs Accessed Counter' : self.urls, 
                     'injection' : self.sus_ips_based_injection
                }
 
