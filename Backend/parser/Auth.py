@@ -62,11 +62,6 @@ class authParser():
         if grp['status'] == 'Failed':
             self.fails_ip[grp['ip']] += 1
 
-        with open(summaryFile, "a") as summ:
-            summ.write("No. of failed login attempts by each ip till now: \n")
-            for k,v in self.fails_ip.items():
-                summ.write(f"{k} : {v}\n")
-            summ.write("\n")
 
     def failed_logins_ip(self, grp):
 
@@ -80,14 +75,17 @@ class authParser():
         while self.failed_logins_dq[grp['ip']] and currentTimestamp >= datetime.strptime(self.failed_logins_dq[grp['ip']][0], "%H:%M:%S") + timedelta(minutes=1):
             self.failed_logins_dq[grp['ip']].popleft()
 
-        if len(self.failed_logins_dq) >= 5:
-            self.sus_failed_logins_per_min[grp['ip']].append([grp['ip'], f"from = {self.failed_logins_dq[grp['ip']][0]}", f"to = {self.failed_logins_dq[grp['ip']][-1]}"])
+        if len(self.failed_logins_dq[grp['ip']]) >= threshold:
+            self.sus_failed_logins_per_min.append({ "IP" : grp['ip'], "From" : f"{self.failed_logins_dq[grp['ip']][0]}", "To" : self.failed_logins_dq[grp['ip']][-1], "No. of Failure attempts in a min" : len(self.failed_logins_dq[grp['ip']]) })
+    
+    def data_collection(self):
+        data = {
+                    'No. of Failed login attempts per IP' : self.fails_ip, 
+                    f'Suspicious IPs based on failed login attempts greater than {threshold} per min' : self.sus_failed_logins_per_min
+               }
 
-
-        with open(summaryFile, "a") as summ:
-            summ.write(f"Suspicious IPs with No. of failed login attempts >= {threshold} per min :\n")
-            for x in self.sus_failed_logins_per_min:
-                summ.write(f"{x}\n")
-            summ.write("\n")
-            
-
+        return data
+    
+    def data_clear(self):
+        self.sus_failed_logins_per_min = []
+        # self.fails_ip = defaultdict(int)

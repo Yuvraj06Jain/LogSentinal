@@ -9,11 +9,12 @@ from collections import Counter, defaultdict, deque
 from datetime import datetime, timedelta
 
 #GLOBAL THRESHOLDS:
-bandwidth_threshold = 1000  # Maximum Download size
+bandwidth_threshold = 10000  # Maximum Download size
 upload_threshold = 5        # Threshold for the no. of uploads per min by an IP
 download_threshold = 5      # Threshold for the no. of uploads per min by an IP
-min_threshold = 5           # Threshold for the no. of 4xx errors per min by an IP
-hour_threshold = 20         # Threshold for the no. of 4xx errors per hour by an IP
+min_threshold = 5           # Threshold for the no. of requests per min by an IP
+hour_threshold = 20         # Threshold for the no. of requests per hour by an IP
+error_threshold = 6         # Threshold for the no. of 4xx errors per min by an IP
 ratio = 0.4                 # No. of 404 errors/ No. of successes by an IP
 
 #REGEX PATTERN
@@ -34,6 +35,8 @@ class nginxParser():
         self.min_dqs = defaultdict(lambda: deque([]))
         self.hour_dqs = defaultdict(lambda: deque([]))
 
+        self.sus_bandwidth = []
+
         self.sus_ips_download = []
         self.sus_ips_upload = []
         self.download_ips = defaultdict(lambda: deque([]))
@@ -43,6 +46,10 @@ class nginxParser():
         self.sus_ips_error_per_min = []
 
         self.urls = defaultdict(lambda: defaultdict(int))
+
+        self.ip_total_req = defaultdict(int)
+        self.ip_404_req = defaultdict(int)
+        self.sus_ip_404 = []
 
         self.sus_ips_based_injection = []
 
@@ -75,32 +82,21 @@ class nginxParser():
         current_hour_timestamp = datetime.strptime(self.hour_dqs[grp['ip']][-1], "%d/%b/%Y:%H:%M:%S")
 
         # Minute Window 
-        while current_min_timestamp >= datetime.strptime(self.min_dqs[grp['ip']][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
+        while self.min_dqs[grp['ip']] and current_min_timestamp >= datetime.strptime(self.min_dqs[grp['ip']][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
             self.min_dqs[grp['ip']].popleft()
 
 
         if len(self.min_dqs[grp['ip']]) >= min_threshold:
-            self.sus_ips_req_rate_min.append([grp['ip'], f"from = {self.min_dqs[grp['ip']][0]}", f"to = {self.min_dqs[grp['ip']][-1]}"])
+            self.sus_ips_req_rate_min.append({"ip" : grp['ip'], "from" : f"{self.min_dqs[grp['ip']][0]}", "to" : f"{self.min_dqs[grp['ip']][-1]}"})
 
         # Hour Window 
-        while current_hour_timestamp >= datetime.strptime(self.hour_dqs[grp['ip']][0], "%d/%b/%Y:%H:%M:%S") + timedelta(hours=1):
+        while self.hour_dqs[grp['ip']] and current_hour_timestamp >= datetime.strptime(self.hour_dqs[grp['ip']][0], "%d/%b/%Y:%H:%M:%S") + timedelta(hours=1):
             self.hour_dqs[grp['ip']].popleft()
 
         if len(self.hour_dqs[grp['ip']]) >= hour_threshold:
-            self.sus_ips_req_rate_hour.append([grp['ip'], f"from = {self.hour_dqs[grp['ip']][0]}", f"to = {self.hour_dqs[grp['ip']][-1]}"])
+            self.sus_ips_req_rate_hour.append({"ip" : grp['ip'], "from" : f"{self.hour_dqs[grp['ip']][0]}", "to" : f"{self.hour_dqs[grp['ip']][-1]}"})
 
-        with open(summaryFile, "a") as summ:
-            summ.write(f"IPs with no. of requests >= {min_threshold} per min\n")
-            for x in self.sus_ips_req_rate_min:
-                summ.write(f"{x}\n")
 
-            summ.write("\n")
-
-            summ.write(f"IPs with no. of requests >= {hour_threshold} per hour\n")
-            for x in self.sus_ips_req_rate_hour:
-                summ.write(f"x\n")
-            
-            summ.write("\n")
     
     def bandwidth_analysis(self, grp):
         ip = grp['ip']
@@ -112,12 +108,16 @@ class nginxParser():
 
             current_timestamp = datetime.strptime(self.download_ips[ip][-1], "%d/%b/%Y:%H:%M:%S")
 
-            # Minute Window 
-            while current_timestamp >= datetime.strptime(self.download_ips[ip][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
+            #Download Minute Window 
+            while self.download_ips[ip] and current_timestamp >= datetime.strptime(self.download_ips[ip][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
                 self.download_ips[ip].popleft()
 
             if len(self.download_ips[ip]) >= download_threshold:
-                self.sus_ips_download.append([grp['ip'], f"from = {self.download_ips[0]}", f"to = {self.download_ips[-1]}", f"No. of Downloads in a min = {len(self.download_ips[ip])}"])
+                self.sus_ips_download.append({"IP" : grp['ip'], "from" : f"{self.download_ips[ip][0]}", "to" : f"{self.download_ips[ip][-1]}", "No. of Downloads in a min" : f"{len(self.download_ips[ip])}"})
+
+            if grp['bandwidth'] and int(grp['bandwidth']) >= bandwidth_threshold:
+                self.sus_bandwidth.append({"IP" : ip , "Action Type" : "Download" , "Download Size" : grp['bandwidth']})
+
         
         elif method in ['POST', 'PUT', 'PATCH']:
 
@@ -125,25 +125,17 @@ class nginxParser():
 
             current_timestamp = datetime.strptime(self.upload_ips[ip][-1], "%d/%b/%Y:%H:%M:%S")
 
-            # Minute Window 
-            while current_timestamp >= datetime.strptime(self.upload_ips[ip][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
+            #Upload Minute Window 
+            while self.upload_ips[ip] and current_timestamp >= datetime.strptime(self.upload_ips[ip][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
                 self.upload_ips[ip].popleft()
 
             if len(self.upload_ips[ip]) >= upload_threshold:
-                self.sus_ips_upload.append([grp['ip'], f"from = {self.upload_ips[0]}", f"to = {self.upload_ips[-1]}", f"No. of Uploads in a min = {len(self.upload_ips[ip])}"])
-        
-        with open(summaryFile,"a") as summ:
-            summ.write(f"Suspicious IPs based on their No. of Downloads in a min = {download_threshold}:\n")
+                self.sus_ips_upload.append({"IP" : grp['ip'], "from" : f"{self.upload_ips[ip][0]}", "to" : f"{self.upload_ips[ip][-1]}", "No. of Downloads in a min" : f"{len(self.upload_ips[ip])}"})
 
-            for x in self.sus_ips_download:
-                summ.write(f"{x}\n")
+            if grp['bandwidth'] and int(grp['bandwidth']) >= bandwidth_threshold:
+                self.sus_bandwidth.append({"IP" : ip , "Action Type" : "Upload" , "Download Size" : grp['bandwidth']})
 
-            summ.write(f"\nSuspicious IPs based on their No. of Uploads in a min = {upload_threshold}:\n")
 
-            for x in self.sus_ips_upload:
-                summ.write(f"{x}\n")
-            
-            summ.write("\n")
             
     def error_analysis(self, grp):
 
@@ -155,30 +147,26 @@ class nginxParser():
         current_timestamp = datetime.strptime(self.error_dqs[grp['ip']][-1], "%d/%b/%Y:%H:%M:%S")
 
         # Minute Window 
-        while current_timestamp >= datetime.strptime(self.error_dqs[grp['ip']][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
+        while self.error_dqs[grp['ip']] and current_timestamp >= datetime.strptime(self.error_dqs[grp['ip']][0], "%d/%b/%Y:%H:%M:%S") + timedelta(minutes=1):
             self.error_dqs[grp['ip']].popleft()
 
         if len(self.error_dqs[grp['ip']]) >= min_threshold:
-            self.sus_ips_error_per_min.append([grp['ip'], f"from = {self.error_dqs[grp['ip']][0]}", f"to = {self.error_dqs[grp['ip']][-1]}"])
-
-        with open(summaryFile, "a") as summ:
-            summ.write(f"IPs with bad requests >= {min_threshold} per min\n")
-            for x in self.sus_ips_error_per_min:
-                summ.write(f"{x}\n")
-            summ.write("\n") 
+            self.sus_ips_error_per_min.append({"IP" : grp['ip'], "from" : f"{self.error_dqs[grp['ip']][0]}", "to" : f"{self.error_dqs[grp['ip']][-1]}"})
     
+
+
+    def error_404_ratio(self, grp):
+        self.ip_total_req[grp['ip']] += 1
+        if grp['status_code'] == '404': self.ip_404_req[grp['ip']] += 1
+
+        if self.ip_404_req[grp['ip']]/self.ip_total_req[grp['ip']] >= ratio:
+            self.sus_ip_404.append({'IP' : grp['ip'], 'Total Req' : self.ip_total_req[grp['ip']], '404 Requests' : self.ip_404_req[grp['ip'], "Ratio" : self.ip_404_req[grp['ip']]/self.ip_total_req[grp['ip']]]})   
+ 
+
+
     def urls_counter(self, grp):
         self.urls[grp['url']][grp['method']] += 1
 
-        with open(summaryFile, "a+") as summ:
-            summ.write("URLs Counter\n")
-            for url in self.urls.keys():
-                summ.write(f"url = {url } | ")
-                for k,v in self.urls[url].items():
-                    summ.write(f"| {k} = {v} |")
-                summ.write("\n")
-            
-            summ.write("\n")
 
     def injection_check(self, grp):
         ip = grp['ip']
@@ -192,23 +180,38 @@ class nginxParser():
 
         if any(keyword in SQL_checks for keyword in match['sus'].upper().split()) or any(re.search(r"""(.+)=\1""", keyword, re.IGNORECASE) for keyword in match['sus'].split()):
             sus_msg = "ALERT : SQL Injection Possible"
-            self.sus_ips_based_injection.append([ip, url, sus_msg])
+            self.sus_ips_based_injection.append({"IP" : ip , "URL" : url})
 
-        with open(summaryFile, "a+") as summ:
-            summ.write("IPs that might be trying SQL injection: \n")
-
-            for x in self.sus_ips_based_injection:
-                summ.write(f"{x[0]} : {x[1]} || {x[2]}\n")
-
-            summ.write("\n")
 
     def rt_analysis(self, grp):
         if grp['status_code'] == '499':
-            self.incomplete_responses.append([ grp['ip'], grp['timestamp'], grp['status_code'], grp['rt'] ])
-
-        with open(summaryFile, "a") as summ:
-            summ.write("Incomplete Responses: \n")
-            for x in self.incomplete_responses:
-                summ.write(f"{x}\n")
-            summ.write("\n")
+            self.incomplete_responses.append({"IP" : grp['ip'],"Timestamp" : grp['timestamp'],"Status Code" : grp['status_code'],"Response Time" : grp['rt'] })
     
+    def data_collection(self):
+        data = {
+                    f'Suspicious IPs with req rate greater than {min_threshold} per min' : self.sus_ips_req_rate_min,
+                    f'Suspicious IPs with req rate greater than {hour_threshold} per hour' : self.sus_ips_req_rate_hour,
+                    f'Suspicious IPs based on No. of downloads greater than {download_threshold} per min': self.sus_ips_download,
+                    f'Suspicious IPs based on Np. of Uploads greater than {upload_threshold} per min' : self.sus_ips_upload,
+                    f'Suspicious IPs based on No. of errors greater than {error_threshold} per min' : self.sus_ips_error_per_min,
+                    f"Suspicious IPs with raio of 404 errors greater than {ratio}" : self.sus_ip_404,
+                    f"Bandwidth Analysis" : self.sus_bandwidth,
+                    'Most Accessed URLs' : self.urls, 
+                    'injection' : self.sus_ips_based_injection, 
+                    'Incomplete Responses' : self.incomplete_responses
+               }
+
+        return data
+    
+    def data_clear(self):
+        self.sus_ips_based_injection = []
+        self.sus_ips_download = []
+        self.sus_ips_error_per_min = []
+        self.sus_ips_req_rate_min = []
+        self.sus_ips_req_rate_hour = []
+        self.sus_ips_upload = []
+        self.sus_bandwidth = []
+        self.sus_ips_404 = []
+        self.incomplete_responses = []
+        
+        # self.urls = defaultdict(lambda: defaultdict(int))
