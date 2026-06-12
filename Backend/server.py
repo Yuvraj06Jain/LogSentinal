@@ -37,6 +37,7 @@ refresh = False
 active_tasks = []
 active_generators = {}
 connection_status = False
+firstFlush = True
 
 class Handler(FileSystemEventHandler):
     def __init__(self, newFileQueue, parserObj):
@@ -182,7 +183,8 @@ async def start_monitoring(shutdown_event):
 
 def monitoring_loop(observer, newFileQueue, loop, shutdown_event):
     global refresh
-    firstFlush = True
+    global firstFlush
+    
     try:
         last_flush = time.time()
         while True:
@@ -254,6 +256,8 @@ async def connect(sid, *args):
 
     global connection_status
     connection_status = True
+    global firstFlush
+    firstFlush = True
 
 @sio.event
 async def disconnect(sid):

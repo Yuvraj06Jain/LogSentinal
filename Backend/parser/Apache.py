@@ -113,7 +113,7 @@ class apacheParser():
                 self.sus_ips_download.append({"IP" : grp['ip'], "from" : f"{self.download_ips[ip][0]}", "to" : f"{self.download_ips[ip][-1]}", "No. of Downloads in a min" : f"{len(self.download_ips[ip])}"})
 
             if grp['bandwidth'] and int(grp['bandwidth']) >= bandwidth_threshold:
-                self.sus_bandwidth.append({"IP" : ip , "Action Type" : "Download" , "Download Size" : grp['bandwidth']})
+                self.sus_bandwidth.append({"IP" : ip , "Action Type" : "Download" , "Size" : grp['bandwidth']})
 
         
         elif method in ['POST', 'PUT', 'PATCH']:
@@ -130,7 +130,7 @@ class apacheParser():
                 self.sus_ips_upload.append({"IP" : grp['ip'], "from" : f"{self.upload_ips[ip][0]}", "to" : f"{self.upload_ips[ip][-1]}", "No. of Downloads in a min" : f"{len(self.upload_ips[ip])}"})
 
             if grp['bandwidth'] and int(grp['bandwidth']) >= bandwidth_threshold:
-                self.sus_bandwidth.append({"IP" : ip , "Action Type" : "Upload" , "Download Size" : grp['bandwidth']})
+                self.sus_bandwidth.append({"IP" : ip , "Action Type" : "Upload" , "Size" : grp['bandwidth']})
         
 
     def error_analysis(self, grp):
@@ -156,7 +156,7 @@ class apacheParser():
         if grp['status_code'] == '404': self.ip_404_req[grp['ip']] += 1
 
         if self.ip_404_req[grp['ip']]/self.ip_total_req[grp['ip']] >= ratio:
-            self.sus_ips_404.append({'IP' : grp['ip'], 'Total Req' : self.ip_total_req[grp['ip']], '404 Requests' : self.ip_404_req[grp['ip'], "Ratio" : self.ip_404_req[grp['ip']]/self.ip_total_req[grp['ip']]]})
+            self.sus_ips_404.append({'IP' : grp['ip'], 'Total Req' : self.ip_total_req[grp['ip']], '404 Requests' : self.ip_404_req[grp['ip']], "Ratio" : self.ip_404_req[grp['ip']]/self.ip_total_req[grp['ip']]})
 
 
 
@@ -187,8 +187,8 @@ class apacheParser():
                     f'Suspicious IPs based on Np. of Uploads greater than {upload_threshold} per min' : self.sus_ips_upload,
                     f'Suspicious IPs based on No. of errors greater than {error_threshold} per min' : self.sus_ips_error_per_min,
                     f"Suspicious IPs with raio of 404 errors greater than {ratio}" : self.sus_ips_404,
-                    f"Bandwidth Analysis" : self.sus_bandwidth, 
-                    'URLs Accessed Counter' : self.urls, 
+                    f"Bandwidth Analysis" : sorted(self.sus_bandwidth,key=lambda x: int(x['Size']), reverse=True),
+                    'URLs Accessed Counter' : self.urls,
                     'injection' : self.sus_ips_based_injection
                }
 
