@@ -1,54 +1,93 @@
 import os
+import sqlite3
 
-paths = {}
+class starter():
+    def __init__(self):
+        self.paths = {}
+        self.unreadOldFiles: dict[str, list] = {}
+        self.logType: dict[str, str] = {}
+        self.newestFiles: dict[str, tuple] = {}
 
-def starter():
-    print("Hello, User")
+    def begin(self):
+        print("Hello, User")
 
-    apache_path = input("Path for the Apache Log File [Just Hit Enter if you don't want to] : ")
-    if apache_path and not os.path.exists(apache_path):
-        print("Given Path is not valid.")
-        print("Exiting the program...")
-        return "EXIT"
-    elif apache_path and not os.path.isdir(apache_path):
-        print("Not a Directory.")
-        print("Exiting the Program...")
-        return "EXIT"
+        for log in ["Apache", "Nginx", "Auth"]:
+            path = None
+            
+            while True:
+                path = input(f"Please Enter the path for the {log} log file [Hit Enter if you don't want to] : ")
+                if path=="":
+                    path=None
+                    break
 
-    nginx_path = input("Path for the Nginx Log File [Just Hit Enter if you don't want to] : ")
-    if nginx_path and not os.path.exists(nginx_path):
-        print("Given Path is not valid.")
-        print("Exiting the program...")
-        return "EXIT"
-    elif nginx_path and not os.path.isdir(nginx_path):
-        print("Not a Directory.")
-        print("Exiting the Program...")
-        return "EXIT"
+                if not os.path.exists(path):
+                    print("Path Invalid. Please Try Again...")
+                    continue
+                elif not os.path.isdir(path):
+                    print("Given Path is not a Directory. Please Try Again...")
+                    continue
 
-    auth_path = input("Path for the Auth Log File [Just Hit Enter if you don't want to] : ")
-    if auth_path and not os.path.exists(auth_path):
-        print("Given Path is not valid.")
-        print("Exiting the program...")
-        return "EXIT"
-    elif auth_path and not os.path.isdir(auth_path):
-        print("Not a Directory.")
-        print("Exiting the Program...")
-        return "EXIT"
+                break
 
-    paths.update({"Apache": apache_path, "Nginx": nginx_path, "Auth": auth_path})
+            self.paths[log] = path
 
-    if not apache_path and not nginx_path and not auth_path:
-        print("Didn't recieve any path.")
-        print("Exiting the Program...")
-        return "EXIT"
-    
-    ls(paths)
+        self.logType = {v : k for k,v in self.paths.items() if v is not None}
+        self.unreadOldFiles = {k : [] for k,v in self.paths.items() if v is not None}
 
-def ls(paths:dict):
-    print()
-    for dirs in paths.values():
-        dirs = os.path.abspath(dirs)
-        print(f"Files in the {os.path.basename(dirs)}: ")
-        for fileName in os.listdir(dirs):
-            print(fileName, end="   ")
-        print("\n")
+        if not self.logType:
+            print("Didn't recieve any path.")
+            print("Exiting the Program...")
+            return "EXIT"
+        
+        self.checkFiles()
+
+    def checkFiles(self):
+        for fileType, folderPath in self.paths.items():
+            if not folderPath:
+                continue
+
+            newestFile = max([os.path.join(folderPath, f) for f in os.listdir(folderPath)] , key=os.path.getmtime)
+
+            try:
+                if not folderPath:
+                    continue
+                
+                conn = sqlite3.connect(f"./Databases/{fileType}.db")
+                conn.row_factory = sqlite3.Row
+
+                curr = conn.cursor()
+                
+                curr.execute("SELECT * FROM fileCounter")
+                files = {row["FileName"] : row["LinesProcessed"] for row in curr.fetchall()}
+
+                self.newestFiles[fileType] = (newestFile, files[os.path.basename(newestFile)] + 1)
+                
+                for fileName in os.listdir(folderPath):
+                    filePath = os.path.join(os.path.abspath(folderPath), fileName)
+                    linesInFile = 0
+
+                    with open(filePath) as f:
+                        for line in f:
+                            linesInFile+=1
+
+                    if fileName not in files.keys():
+                        self.unreadOldFiles[fileType].append((filePath, 1))
+                    elif linesInFile != files[fileName]:
+                        self.unreadOldFiles[fileType].append((filePath,files[fileName] + 1))
+
+            except:
+                
+                for fileName in os.listdir(folderPath):
+                    filePath = os.path.join(os.path.abspath(folderPath), fileName)
+                    linesInFile = 0
+                    with open(filePath) as f:
+                        for line in f:
+                            linesInFile+=1
+
+                    self.unreadOldFiles[fileType].append((filePath, 1))
+
+                self.newestFiles[fileType] = (newestFile, 1)
+
+
+    def detectFileType(self, filePath: str) -> str:
+        return self.logType[os.path.dirname(filePath)]

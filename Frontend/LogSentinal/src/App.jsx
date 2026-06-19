@@ -8,14 +8,14 @@ let socket = io("http://localhost:8000")
 
 function App(){
   const [home, setHome] = useState(true)
-
+  
   return (
     <>
       {
-        home && <Home setHome={setHome}/>
+        false && <Home setHome={setHome}/>
       }
       {
-        !home && <Dashboard setHome = {setHome} socket={socket}/>
+        true && <Dashboard setHome = {setHome} socket={socket}/>
       }
     </>
   )
