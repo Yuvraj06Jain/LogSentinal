@@ -150,12 +150,12 @@ async def flush():
         except Exception as e:
             print(f"Encountered an Error during Data Collection for the folder {os.path.basename(folder)}...\n{e}")
 
-        try:
-            await dbos.writing_data(st.detectFileType(filePath), events, requests, (os.path.basename(filePath), shippedLines[filePath]))
-            print(f"Database Write for {os.path.basename(folder)} folder Successful.\n")
-            parserObj.data_clear()
-        except:
-            print(f"Database Write for {os.path.basename(folder)} folder Failed. Will Try Again...\n")
+        # try:
+        #     await dbos.writing_data(st.detectFileType(filePath), events, requests, (os.path.basename(filePath), shippedLines[filePath]))
+        #     print(f"Database Write for {os.path.basename(folder)} folder Successful.\n")
+        #     parserObj.data_clear()
+        # except:
+        #     print(f"Database Write for {os.path.basename(folder)} folder Failed. Will Try Again...\n")
 
 
         print(data)
@@ -182,7 +182,7 @@ async def monitoring(shutdown_event):
     for fileType, (file, startIndex) in files.items():
         print(f"Most Recent file in {os.path.dirname(file)} is {os.path.basename(file)}. Starting its monitoring....")
 
-        shippedLines[file] = startIndex - 1
+        shippedLines[file] = 0
         
         new_genObj = generator(file)
         parserObj = detectParserObj(fileType)
