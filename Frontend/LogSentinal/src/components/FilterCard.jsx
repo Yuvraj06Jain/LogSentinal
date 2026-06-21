@@ -108,8 +108,9 @@ function FilterCard({
       { (view==="realTime") &&
         <div className="flex justify-center items-center mr-2">
           
-          <button className="text-sm font-bold  rounded-lg py-2 px-3 text-slate-300 hover:bg-orange-500 hover:scale-105 duration-150 cursor-pointer border border-slate-700" onClick = {() => {
-            socket.emit("Refresh", (Response) => {if (Response.Status === "Failed") setMessage(Response.Message)})
+          <button className="text-sm font-bold rounded-lg py-2 px-3 text-orange-500/70 hover:bg-orange-500/20 hover:scale-105 duration-150 cursor-pointer border border-orange-500/70 " 
+          onClick = {() => {
+            socket.emit("Refresh", (Response) => {setMessage(Response)})
           }}>
             Refresh
           </button>
@@ -121,11 +122,12 @@ function FilterCard({
         (view === "historical") &&
         <div className="flex justify-center items-center mr-2">
           
-          <button className="text-sm font-bold  rounded-lg py-2 px-2 text-slate-300 hover:bg-orange-500 hover:scale-105 duration-150 cursor-pointer" onClick = {() => {
+          <button className="text-sm font-bold rounded-lg py-2 px-3 text-orange-500/70 hover:bg-orange-500/20 hover:scale-105 duration-150 cursor-pointer border border-orange-500/70   " 
+          onClick = {() => {
             if ((from === undefined) || (to === undefined))
-              setMessage("Please select a Timeframe of which you want the data to be fetched.")
+              setMessage({"Status" : "Info" , "Message" : "Please select a Timeframe of which you want the data to be fetched."})
             
-            socket.emit("historical", currentRoom, from, to ,(Response) => {if (Response.Status === "Failed") setMessage(Response.Message)})
+            socket.emit("historical", currentRoom, from, to ,(Response) => {setMessage(Response)})
           }}>
             Fetch
           </button>

@@ -4,6 +4,7 @@ import DataButtons from "./DataButtons"
 import DataTable from "./DataTable"
 import FilterCard from "./FilterCard"
 import Header from "./Header"
+import Summary from "./summary"
 
 function Dashboard({
     socket,
@@ -15,6 +16,8 @@ function Dashboard({
   def = def.toISOString();
 
   const today = new Date().toISOString()
+
+  const [summary, setSummary] = useState(false)
 
   const [from, setFrom] = useState(def)
   const [to, setTo] = useState(today)
@@ -53,7 +56,7 @@ function Dashboard({
 
   useEffect(() => {
     socket.on("Apache Logs Update", (data) => {
-      console.log("Received Apache Logs Data...", data);
+      console.log("Received Apache Logs Data...");
       setApacheLogs((prev) => ({
         ...prev,
         ...Object.fromEntries(
@@ -151,18 +154,19 @@ function Dashboard({
 
 
   useEffect(() => {
-    if(currentRoom && !show[currentRoom][view]) console.log(currentRoom, show[currentRoom][view])
-
     setShow((prev) => {
+      if (currentRoom && prev[currentRoom]["realTime"] !== undefined) {
+        return prev;
+      }
       return {
-        ...prev, [currentRoom] : {
+        ...prev,
+        [currentRoom]: {
           ...prev[currentRoom],
-          "realTime" : Object.keys(RealLogs)[0]
+          "realTime": Object.keys(RealLogs)[0]
         }
       };
     });
-    console.log(show)
-  },[RealLogs])
+  }, [RealLogs, currentRoom])
 
 
   useEffect(() => {
@@ -172,12 +176,12 @@ function Dashboard({
   },[pause[currentRoom]])
 
   return(
-    <div className="fixed inset-0 -z-10 bg-black" style={{backgroundImage: 'radial-gradient(circle, #ffffff22 1px, transparent 1px)', backgroundSize: '24px 24px'}}>
+    <div className="fixed inset-0 -z-10 bg-slate-950" style={{backgroundImage: 'radial-gradient(circle, #ffffff22 1px, transparent 1px)', backgroundSize: '24px 24px'}}>
 
       <div className="flex flex-col h-screen">
 
         {/* Header */}
-        <Header currentRoom={currentRoom} setCurrentRoom={setCurrentRoom} rooms={rooms} setHome={setHome} setView={setView} view={view[currentRoom]} pause={pause[currentRoom]} setPause={setPause} socket={socket} from={from} to={to}/>
+        <Header currentRoom={currentRoom} setCurrentRoom={setCurrentRoom} rooms={rooms} setHome={setHome} setView={setView} view={view[currentRoom]} pause={pause[currentRoom]} setPause={setPause} socket={socket} from={from} to={to} setSummary={setSummary}/>
 
         <div className="flex gap-4 px-6 pb-6 flex-1 min-h-0">
 
@@ -202,13 +206,24 @@ function Dashboard({
 
         </div>
 
-      </div>
+        {/* Message
+        <div className="absolute border border-red-700/50 border-dashed h-20 w-60 bottom-2 right-3 rounded-xl flex items-center bg-red-700/15">
 
-      {/* Message */}
-      <div className="w-40 h-20 bottom-1 right-1 border">
-        
-      </div>
+          <div className="w-5 h-full border-r border-red-700/70 border-dashed flex justify-center items-center">
+            <p className="font-semibold text-red-600">{">"} </p>
+          </div>
 
+          <div className="">
+
+          </div>
+
+        </div> */}
+
+      </div>
+      
+      {
+        summary && <Summary rooms={rooms} apacheLogs={apacheLogs} nginxLogs={nginxLogs} authLogs={authLogs} setSummary={setSummary} socket={socket} setMessage={setMessage}></Summary>
+      }
     </div>
   )
 }

@@ -35,6 +35,7 @@ function DataButtons({
                   }
                 };
               });
+              console.log(show[currentRoom])
               }} />
 
               <label htmlFor={field} className="block text-xs border border-slate-600 text-slate-300 rounded-lg py-1.5 text-center cursor-pointer hover:bg-cyan-500/10 

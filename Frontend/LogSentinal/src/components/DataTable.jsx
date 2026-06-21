@@ -15,7 +15,6 @@ function DataTable({
   } 
 
   const data = logs[show[currentRoom][view]]
-  console.log(data)
 
   if ( view === "historical" && typeof logs !== 'object'){
     return(
@@ -32,7 +31,6 @@ function DataTable({
       </div>
     )
   }
-  console.log(data)
   // console.log(currentRoom, show[currentRoom], show[currentRoom][view], logs[show[currentRoom][view]])
   return(
     <div className="w-full bg-slate-900 border border-slate-700 rounded-xl scrollbar-none overflow-scroll max-h-115">
