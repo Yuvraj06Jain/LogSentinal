@@ -9,8 +9,8 @@ function DataButtons({
 }){
   if (!currentRoom || !view){
     return (
-      <div className="rounded-xl p-4 bg-slate-900 border border-slate-700">
-        <p className="text-xs text-slate-400 mb-3 font-bold">Analyze</p>
+      <div className="rounded-xl p-4 bg-[#101720] border border-[#1c2630]">
+        <p className="text-xs text-[#d7e4dd]/60 mb-3 font-bold">Analyze</p>
       </div>
     )
   }
@@ -18,9 +18,9 @@ function DataButtons({
 
   return(
 
-    <div className="rounded-xl p-4 bg-slate-900 border border-slate-700">
+    <div className="rounded-xl p-4 bg-[#101720] border border-[#1c2630]">
 
-      <p className="text-xs text-slate-400 mb-3 font-bold">Analyze</p>
+      <p className="text-xs text-[#d7e4dd]/60 mb-3 font-bold">Analyze</p>
 
       <ul className="grid grid-cols-1 gap-3">
         {
@@ -35,11 +35,10 @@ function DataButtons({
                   }
                 };
               });
-              console.log(show[currentRoom])
               }} />
 
-              <label htmlFor={field} className="block text-xs border border-slate-600 text-slate-300 rounded-lg py-1.5 text-center cursor-pointer hover:bg-cyan-500/10 
-              peer-checked:bg-cyan-500/10 peer-checked:border-cyan-500/40 peer-checked:text-cyan-400">{field}</label>
+              <label htmlFor={field} className="block text-xs border border-[#1c2630] text-[#d7e4dd]/80 rounded-lg py-1.5 text-center cursor-pointer hover:bg-[#3cff9e]/10 
+              peer-checked:bg-[#3cff9e]/10 peer-checked:border-[#3cff9e]/40 peer-checked:text-[#3cff9e]">{field}</label>
 
             </li>
           ))

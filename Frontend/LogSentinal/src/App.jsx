@@ -8,7 +8,7 @@ let socket = io("http://localhost:8000")
 
 function App(){
   const [home, setHome] = useState(true)
-  
+
   return (
     <>
       {

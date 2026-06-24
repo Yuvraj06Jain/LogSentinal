@@ -59,12 +59,14 @@ class authParser():
         grp.setdefault('user', 'unknown')
 
         dt_ts = datetime.strptime(grp['month'] + ' ' + grp['date'] + ' ' + grp['timestamp'] , "%b %d %H:%M:%S")
+        dt_ts = dt_ts.replace(year=datetime.now().year)    # Since we don't have the year in the log lines....
+
         isoFormat = dt_ts.isoformat()
 
 
         self.login_analysis(grp)
         self.failed_logins_ip(grp,isoFormat, dt_ts)
-        self.db_aggregate_data.append({"Type" : "Auth","dbTimestamp": isoFormat,"IP" : grp['ip'],"User" : grp['user'],"Port" : grp['port'] ,"Status" : grp['status']})
+        self.db_aggregate_data.append({"Type" : "Auth","dbTimestamp": isoFormat,"IP" : grp['ip'],"User" : grp['user'],"Port" : grp['port'] ,"Status_code" : grp['status']})
 
 
     

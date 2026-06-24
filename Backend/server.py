@@ -5,6 +5,7 @@ import queue
 import aiofiles
 import asyncio
 import threading
+from datetime import datetime
 
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
@@ -33,6 +34,7 @@ authObj = authParser()
 
 # ===============================================================================================================================================================================
 # STARTER OBJECT:
+
 st = starter() # Obj for the starter Class.
 
 # Asyncio.Events for all the file Types for controlling the tasks related to these Log types
@@ -42,13 +44,16 @@ for e in realTime.values():
 
 #FUNCTION TO DETECT THE PARSER OBJ FOR A LOG TYPE
 def detectParserObj(logType:str):
-    return {"Apache" : apacheObj, "Nginx" : nginxObj, "Auth" : authObj}.get(logType)
+    return {"Apache" : apacheParser, "Nginx" : nginxParser, "Auth" : authParser}[logType]()
 
 # KEEPING A TRACK OF ACTIVE TASKS
 active_tasks = {}       # (FILE PATH, TASK, GEN OBJ, PARSER OBJ)
 
 # KEEPING A TRACK OF THE COUNTERS FOR THE FILES BEING MONITORED.
 shippedLines = {}       # { FILEPATH : COUNTER }
+
+# Summary Report Folder:
+reportFolder = os.path.join(os.path.dirname(__file__), "..", "SummaryReports")
 
 # ===============================================================================================================================================================================
 #REAL TIME MONITOR CODE:
@@ -140,47 +145,41 @@ async def newFile(filePath, parserObj):
 async def flush():
     print("Starting the Flush....")
 
+    FinalData = {}
+
     for folder, (filePath, _, _, parserObj) in active_tasks.items():
         
         if not realTime[st.detectFileType(filePath)].is_set():
-            return
+            continue
         
         try:
             data, events, requests = parserObj.data_collection()
+            await dbos.writing_data(st.detectFileType(filePath), events, requests, (os.path.basename(filePath), shippedLines[filePath]))
+            print(f"Database Write for {os.path.basename(folder)} folder Successful.\n")
+            parserObj.data_clear()
         except Exception as e:
-            print(f"Encountered an Error during Data Collection for the folder {os.path.basename(folder)}...\n{e}")
+            print(f"Encountered an Error for the folder {os.path.basename(folder)}...\n{e}\n")
 
-        # try:
-        #     await dbos.writing_data(st.detectFileType(filePath), events, requests, (os.path.basename(filePath), shippedLines[filePath]))
-        #     print(f"Database Write for {os.path.basename(folder)} folder Successful.\n")
-        #     parserObj.data_clear()
-        # except:
-        #     print(f"Database Write for {os.path.basename(folder)} folder Failed. Will Try Again...\n")
-
-
-        print(data)
         fileType = st.detectFileType(filePath)
-        await sio.emit(f"{fileType} Logs Update", data)
-        print(f"{fileType} Logs Updated successfully...\n")
+        FinalData[fileType] = data if data else {}
+
+    await sio.emit(f"Real Time Logs Update", FinalData)
+    print(f"Real Time logs Updated successfully...\n")
 
     print("Flush completed....")
 
 
 
 async def monitoring(shutdown_event):
-    # apacheFile = st.newestFiles.get("Apache")       # returns (NEWEST FILE PATH, STARTING POINT)
-    # nginxFile = st.newestFiles.get("Nginx")
-    # authFile = st.newestFiles.get("Auth")
-
     observer = Observer()
     newFileQueue = queue.Queue()
 
-    files: dict[str, tuple] = {fileType: st.newestFiles[fileType] for fileType in ['Apache', 'Nginx', 'Auth'] if st.newestFiles[fileType]}
+    files: dict[str, tuple] = {fileType: st.newestFiles[fileType] for fileType in ['Apache', 'Nginx', 'Auth'] if st.newestFiles.get(fileType)}
 
     print()
 
     for fileType, (file, startIndex) in files.items():
-        print(f"Most Recent file in {os.path.dirname(file)} is {os.path.basename(file)}. Starting its monitoring....")
+        print(f"Most Recent file in {os.path.dirname(file)} is {os.path.basename(file)}. Starting its monitoring from line {startIndex}...")
 
         shippedLines[file] = 0
         
@@ -219,10 +218,10 @@ def monitoring_loop(observer, newFileQueue, loop, shutdown_event):
             if shutdown_event.is_set():
                 break
             
-            timeInterval = 5 if firstFlush else 30
+            timeInterval = 5 if firstFlush else 60
             if (time.time() - last_flush >= timeInterval or refresh) and connection_status:
                 last_flush = time.time()
-
+                
                 future = asyncio.run_coroutine_threadsafe(flush(), loop)
                 future.add_done_callback(lambda f: f.exception() and print(f"Flush Failed. Error : {f.exception()!r}"))
 
@@ -241,26 +240,29 @@ oldFileTasks: dict[str,list] = {}
 
 async def reviewingOldFiles(logType):
     tasks = [asyncio.create_task(processOldFile(logType,filePath, startIndex )) for filePath,startIndex in st.unreadOldFiles[logType]]
-
-
     oldFileTasks[logType] = tasks
-    await asyncio.gather(*tasks)
+
+    try:
+        await asyncio.gather(*tasks, return_exceptions=True)
+    finally:
+        oldFileTasks[logType] = []
     
 
 async def processOldFile(logType, filePath, startIndex):
-    parserObj = detectParserObj.get(logType)
+    parserObj = detectParserObj(logType)
     genObj = generator(filePath)
 
     #Process the Old File
-    await polling_analyzing_oldFiles(genObj, parserObj, startIndex)
+    line_count = await polling_analyzing_oldFiles(genObj, parserObj, startIndex)
     #Write to DB
-    _, events, requests, shippedLines = parserObj.data_collection()
-    await dbos.writing_data(logType, events, requests, (filePath, shippedLines))
+    _, events, requests = parserObj.data_collection()
+    await dbos.writing_data(logType, events, requests, (filePath, line_count))
 
     st.unreadOldFiles[logType].remove((filePath, startIndex))
 
 
 async def polling_analyzing_oldFiles(genObj, parserObj, startIndex):
+        count = 0
         while True:
             line = await anext(genObj)
             if startIndex!=1:
@@ -271,6 +273,8 @@ async def polling_analyzing_oldFiles(genObj, parserObj, startIndex):
                 break
 
             parserObj.analyze(line)
+            count+=1
+        return count
 
 #======================================================================================================================================================================================
 # SERVER
@@ -324,34 +328,23 @@ async def disconnect(sid):
     connection_status = False
 
 @sio.event
-async def historical(sid, logType:str, from_ts, to_ts):
-    if logType not in realTime.keys():
-        return {"Status" : "Failed" , "Message" : "Invalid Log Type"}
+async def historical(sid, logType, from_ts, to_ts):
 
-    if oldFileTasks[logType]:
-        return {"Status" : "Failed", "Message" : "Reviewing Old Files. Please Wait..."}
+    if logType not in realTime.keys():
+        return {"Status" : "Failed" , "Message" : "Invalid Log Type", "Data" : {}}
+
+    if oldFileTasks.get(logType):
+        print(oldFileTasks.get(logType))
+        return {"Status" : "Failed", "Message" : "Reviewing Old Files. Please Wait...", "Data" : {}}
     
     if db_tasks.get(logType):
-        return {"Status" : "Failed", "Message" : "Previous Fetch has not been completed. Please Wait..."}
+        return {"Status" : "Failed", "Message" : "Previous Fetch has not been completed. Please Wait...", "Data" : {}}
     
     msg = await dbos.getData(logType, from_ts, to_ts)
 
-    await sio.emit(f"Updating Historical data of {logType} logs", msg, to=sid)
+    await sio.emit(f"Updating Historical data of {logType} logs", msg['Data'], to=sid)
+    return {"Status" : msg["Status"], "Message" : msg["Message"]}
     
-
-@sio.event
-async def pause_resume(logType:str):
-    if logType not in realTime.keys():
-        return {"Status" : "Failed", "Message" : "Invalid Log Type"}
-    
-    if realTime[logType].is_set():
-        realTime[logType].clear()
-        return {"Status" : "Success", "Message" : "Paused"}
-    else:
-        realTime[logType].is_set()
-        return {"Status" : "Success", "Message" : "Resumed"}
-
-
 
 @sio.event
 async def Refresh(sid):
@@ -359,52 +352,32 @@ async def Refresh(sid):
     
     global refresh
     refresh = True
-    return {"Status" : "OK"}
+    return {"Status" : "OK", "Message" : "Refreshed..."}
 
 
 @sio.event
-def EXIT():
+def generateSummary(sid, from_ts:str, to_ts:str, selected:dict):
+    print("Sumamry Message Recieved")
+    markdown_str = dbos.summary(from_ts, to_ts, selected)
+
+    fileName = f"Summary dated on {datetime.now().strftime("%Y-%m-%d %H-%M-%S")}.md"
+    filePath = os.path.join(reportFolder, fileName)
+
+    try:
+        with open(filePath, "w") as f:
+            f.write(markdown_str)
+        return {"Status" : "Success", "Message" : "Summary Report created and stored successfully in the folder SummaryReport. Please Check..."}
+    except Exception as e:
+        print(f"Summary Failure : {e}")
+        return {"Status" : "Failed", "Message" : "Failed to create the summary report. Please Try Again..."}
+
+
+
+
+@sio.event
+def EXIT(sid):
     os.kill(os.getpid(), signal.SIGTERM)
 
 
 if __name__ == "__main__":
     uvicorn.run(app, port=8000)
-
-
-
-# if apacheFile:
-    #     print(f"Most Recent file in {os.path.dirname(apacheFile[0])} is {os.path.basename(apacheFile[0])}. Starting its monitoring....")
-        
-    #     new_genObj = generator(apacheFile[0])
-    #     task = asyncio.create_task(polling_analyzing_realTime(new_genObj, apacheObj, apacheFile[1], realTime["Apache"]))
-
-    #     dir_name = os.path.dirname(apacheFile[0])
-    #     active_tasks[dir_name] = (apacheFile[0], task, new_genObj, apacheObj)
-
-    
-    #     apache_handler = Handler(newFileQueue, apacheObj)
-    #     observer.schedule(apache_handler, path=os.path.dirname(apacheFile[0]), recursive=False)
-
-    # if nginxFile:
-    #     print(f"Most Recent file in {os.path.dirname(nginxFile[0])} is {os.path.basename(nginxFile[0])}. Starting its monitoring....")
-
-    #     new_genObj = generator(nginxFile[0])
-    #     task = asyncio.create_task(polling_analyzing_realTime(new_genObj, nginxObj, nginxFile[1], realTime["Nginx"]))
-
-    #     dir_name = os.path.dirname(nginxFile[0])
-    #     active_tasks[dir_name] = (nginxFile[0], task, new_genObj, nginxObj)
-
-    #     nginx_handler = Handler(newFileQueue, nginxObj)
-    #     observer.schedule(nginx_handler, path=os.path.dirname(nginxFile[0]), recursive=False)
-
-    # if authFile:
-    #     print(f"Most Recent file in {os.path.dirname(authFile[0])} is {os.path.basename(authFile[0])}. Starting its monitoring....")
-
-    #     new_genObj = generator(authFile[0])
-    #     task = asyncio.create_task(polling_analyzing_realTime(new_genObj, authObj, authFile[1], realTime["Auth"]))
-
-    #     dir_name = os.path.dirname(authFile[0])
-    #     active_tasks[dir_name] = (authFile[0], task, new_genObj, authObj)
-
-    #     auth_handler = Handler(newFileQueue, authObj)
-    #     observer.schedule(auth_handler, path=os.path.dirname(authFile[0]), recursive=False)

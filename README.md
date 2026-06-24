@@ -3,18 +3,24 @@
 
 
 ---
-## PHASE 1
-### To run the System:
+## To run the System:
 
 1. Clone the repository in your system.
-2. Run the command
+2. Open a new terminal in the cloned folder.
+3. Run the following commands in order:
 
     ```python
-    python detector.py
-    ```
-3. Feed the location of the Folder with the Sample Log Files:
+    pip install -r requirements.txt
 
-    ```python
-    sample_log_files
+    cd Frontend/LogSentinal
+    npm run dev
     ```
+4. Open a New Terminal from the base directory and run the following commands
+    ```python
+    cd Backend
+    python server.py
+    ``` 
 ---
+## Notes:
+1. Summary Reports will be created in the folder SummaryReports.
+2. Databases will be present in the Databases folder present in Backend Directory.

@@ -4,7 +4,8 @@ import DataButtons from "./DataButtons"
 import DataTable from "./DataTable"
 import FilterCard from "./FilterCard"
 import Header from "./Header"
-import Summary from "./summary"
+import Summary from "./Summary"
+import MessageBox from "./MessageBox"
 
 function Dashboard({
     socket,
@@ -12,7 +13,7 @@ function Dashboard({
 }){
 
   let def = new Date();
-  def.setDate(def.getDate() - 30);
+  def.setDate(def.getDate() - 7);
   def = def.toISOString();
 
   const today = new Date().toISOString()
@@ -52,48 +53,33 @@ function Dashboard({
 
   const [message, setMessage] = useState("")
   
-  const aggregateData = new Set(['URLs Accessed Counter', 'Suspicious IPs with No. of 404 errors > 40%', 'No. of Failed login attempts per IP'])
+  const aggregateData = new Set(['URLs Accessed Counter', 'Suspicious IPs with No. of 404 errors >= 40%', 'No. of Failed login attempts per IP'])
+  const detectFunc = {"Apache" : setApacheLogs, "Nginx" : setNginxLogs, "Auth" : setAuthLogs}
 
   useEffect(() => {
-    socket.on("Apache Logs Update", (data) => {
-      console.log("Received Apache Logs Data...");
-      setApacheLogs((prev) => ({
-        ...prev,
-        ...Object.fromEntries(
-          Object.entries(data).map(([key, val]) => [
-            key,
-            aggregateData.has(key) ? val : [...(prev[key] || []), ...val]
-          ])
-        )
-      }))
-    })
-    
-    socket.on("Nginx Logs Update", (data) => {
-      console.log("Received Nginx Logs Data...");
-      setNginxLogs((prev) => ({
-        ...prev,
-        ...Object.fromEntries(
-          Object.entries(data).map(([key,val]) => [
-            key,
-            aggregateData.has(key)? val : [...(prev[key] || []), ...val]
-          ])
-        )
-      }))
+    socket.on("Real Time Logs Update", (allData) => {
+        Object.entries(allData).forEach(([fileType, fileData]) => {
+        console.log("Received New Logs Data for", fileType)
+        if (Object.keys(fileData).length > 0){
+          const func = detectFunc[fileType]
+          func(prev => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(fileData).map(([key,val]) => [
+                key,
+                aggregateData.has(key)? val : [...(prev[key] || []), ...val]
+              ])
+            )
+          }))
+        }
+        else{
+          setMessage({"Status" : "Info", "Message" : `No new data received for ${fileType} logs`})
+        }
+      })
     })
 
-    socket.on("Auth Logs Update", (data) => {
-      console.log("Received Auth Logs Data...");
-      setAuthLogs((prev) => ({
-        ...prev,
-        ...Object.fromEntries(
-          Object.entries(data).map(([key,val]) => [
-            key,
-            aggregateData.has(key)? val : [...(prev[key] || []), ...val]
-          ])
-        )
-      }))
-    })
-  },[])
+    return () => socket.off("Real Time Logs Update")
+  }, [])
 
   useEffect(() => {
     setRealLogs(currentRoom === "Apache"? apacheLogs : 
@@ -102,31 +88,32 @@ function Dashboard({
   },[currentRoom, apacheLogs, nginxLogs, authLogs])
   
   
-
   useEffect(() => {
     socket.on("Updating Historical data of Apache logs", (data) => {
       console.log("Received Historical Apache Logs Data...");
-      if(data.Status === "Success")
-        setApacheHisLogs(data.Message)
-      else
-        setMessage(data.Message)
-    })
-    
-    socket.on("Updating Historical data of Nginx logs", (data) => {
-      console.log("Received Historical Nginx Logs Data...");
-      if(data.Status === "Success")
-        setNginxHisLogs(data.Message)
-      else
-        setMessage(data.Message)
+      console.log(data)
+      setApacheHisLogs(data)
     })
 
+    return () => socket.off("Updating Historical data of Apache logs")
+  }, [])
+    
+  useEffect(() => {
+    socket.on("Updating Historical data of Nginx logs", (data) => {
+      console.log("Received Historical Nginx Logs Data...");
+      setNginxHisLogs(data)
+    })
+
+    return () => socket.off("Updating Historical data of Nginx logs")
+  },[])
+
+  useEffect(() => {
     socket.on("Updating Historical data of Auth logs", (data) => {
       console.log("Received Historical Auth Logs Data...");
-      if(data.Status === "Success")
-        setAuthHisLogs(data.Message)
-      else
-        setMessage(data.Message)
+      setAuthHisLogs(data)
     })
+
+    return () => socket.off("Updating Historical data of Auth logs")
   },[])
 
   useEffect(() => {
@@ -152,12 +139,10 @@ function Dashboard({
     if (rooms.length && !currentRoom) setCurrentRoom(rooms[0])
   },[rooms])
 
-
   useEffect(() => {
+    if (currentRoom && show[currentRoom]["realTime"] !== undefined)
+        return;
     setShow((prev) => {
-      if (currentRoom && prev[currentRoom]["realTime"] !== undefined) {
-        return prev;
-      }
       return {
         ...prev,
         [currentRoom]: {
@@ -166,17 +151,16 @@ function Dashboard({
         }
       };
     });
-  }, [RealLogs, currentRoom])
+  }, [RealLogs])
 
-
-  useEffect(() => {
-    socket.emit("pause_resume", (Response) => {
-      setMessage(Response.Message)
-    });
-  },[pause[currentRoom]])
 
   return(
-    <div className="fixed inset-0 -z-10 bg-slate-950" style={{backgroundImage: 'radial-gradient(circle, #ffffff22 1px, transparent 1px)', backgroundSize: '24px 24px'}}>
+    <div className="fixed inset-0 -z-10 bg-[#080c14] font-['Space_Grotesk']" style={{backgroundImage: 'radial-gradient(circle, #d7e4dd22 1px, transparent 1px)', backgroundSize: '24px 24px'}} >
+      {
+        view[currentRoom] === "realTime" && (
+        <div className="fixed left-0 right-0 top-0 h-40 pointer-events-none z-0" style={{ background: "linear-gradient(180deg, transparent, #3cff9e1a, transparent)", animation: "sweep 7s linear infinite" }}></div>
+        )
+      }
 
       <div className="flex flex-col h-screen">
 
@@ -197,27 +181,16 @@ function Dashboard({
           <div className="gap-3 flex flex-col">
 
             {/* Filter Box */}
-            <FilterCard from={from} to={to} setFrom={setFrom} setTo={setTo} view={view[currentRoom]} socket={socket}/>
+            <FilterCard from={from} to={to} setFrom={setFrom} setTo={setTo} view={view[currentRoom]} socket={socket} currentRoom={currentRoom} setMessage={setMessage}/>
 
             {/* Table */}
-            <DataTable logs={view[currentRoom]==="realTime"? RealLogs : hisLogs} show={show} from={from} to={to} currentRoom={currentRoom} view={view[currentRoom]}/>
+            <DataTable logs={view[currentRoom]==="realTime"? RealLogs : hisLogs} show={show} setShow={setShow} from={from} to={to} currentRoom={currentRoom} view={view[currentRoom]}/>
 
           </div>
 
         </div>
 
-        {/* Message
-        <div className="absolute border border-red-700/50 border-dashed h-20 w-60 bottom-2 right-3 rounded-xl flex items-center bg-red-700/15">
-
-          <div className="w-5 h-full border-r border-red-700/70 border-dashed flex justify-center items-center">
-            <p className="font-semibold text-red-600">{">"} </p>
-          </div>
-
-          <div className="">
-
-          </div>
-
-        </div> */}
+        <MessageBox message={message} />
 
       </div>
       

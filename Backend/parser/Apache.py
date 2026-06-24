@@ -79,7 +79,8 @@ class apacheParser():
 
         self.urls_counter(grp)
 
-        self.db_aggregate_data.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "URL" : grp['url'], "Method" : grp['method'], "Status_code" : grp['status_code'], "Bandwidth" : grp['bandwidth']})
+        self.db_aggregate_data.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "URL" : grp['url'], "Method" : grp['method'], "Status_code" : grp['status_code'], 
+                                       "Bandwidth" : (grp['bandwidth'] if grp['bandwidth'] != '-' else '-1')})
 
 
     def req_rate_analysis(self, grp, isoFormat, dt_ts):
@@ -209,7 +210,7 @@ class apacheParser():
                     f'Suspicious IPs based on No. of uploads > {upload_threshold} per min' : self.sus_ips_upload,
                     f'Suspicious IPs based on No. of errors > {error_threshold} per min' : self.sus_ips_error_per_min,
                     'Injection Attempts' : self.sus_ips_based_injection,
-                    f"Suspicious IPs with No. of 404 errors > {ratio * 100}%" : sorted(self.sus_ips_404, key = lambda x: (x['Ratio'], x['404 Reqs']) , reverse=True),
+                    f"Suspicious IPs with No. of 404 errors >= {ratio * 100}%" : sorted(self.sus_ips_404, key = lambda x: (x['Ratio'], x['404 Reqs']) , reverse=True),
                     'URLs Accessed Counter' : urls_counter_list,
                     "Bandwidth Analysis" : sorted(self.sus_bandwidth,key=lambda x: int(x['Size']), reverse=True)
                }

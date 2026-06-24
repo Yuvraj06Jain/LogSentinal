@@ -1,6 +1,8 @@
 import os
 import json
 import sqlite3
+from datetime import datetime
+import pandas as pd
 
 async def writing_data(fileType: str, events: list, requests: list, fileCounter: tuple):
     db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Databases", f"{fileType}.db")
@@ -9,6 +11,7 @@ async def writing_data(fileType: str, events: list, requests: list, fileCounter:
     cur = conn.cursor()
     try:
         # Events Table for non aggregate data
+
         create_table = """CREATE TABLE IF NOT EXISTS Events (
                         Timestamp TEXT,
                         category TEXT,
@@ -22,13 +25,13 @@ async def writing_data(fileType: str, events: list, requests: list, fileCounter:
 
 
         # Requests table for aggregate data
-        if requests:
-            python_to_sql = {str: "TEXT", int: "INTEGER", float: "REAL"}  
-            columns = ", ".join(f"{col} {python_to_sql.get(type(val), "TEXT")}" for col, val in requests[0].items())
-            create_table = f"CREATE TABLE IF NOT EXISTS Requests ({columns})"
-            cur.execute(create_table)
-            cur.execute(f"CREATE INDEX IF NOT EXISTS idx_Requests_ts ON Requests (dbTimestamp)")
+        python_to_sql = {str: "TEXT", int: "INTEGER", float: "REAL"}  
+        columns = ", ".join(f"{col} {python_to_sql.get(type(val), 'TEXT')}" for col, val in requests[0].items())
+        create_table = f"CREATE TABLE IF NOT EXISTS Requests ({columns})"
+        cur.execute(create_table)
+        cur.execute(f"CREATE INDEX IF NOT EXISTS idx_Requests_ts ON Requests (dbTimestamp)")
 
+        if requests:
             cols = ", ".join(f"{col}" for col in requests[0].keys())
             placeholders = ", ".join("?"*len(requests[0]))
             vals = [tuple(x.values()) for x in requests]
@@ -39,6 +42,7 @@ async def writing_data(fileType: str, events: list, requests: list, fileCounter:
 
         create_table = f"""CREATE TABLE IF NOT EXISTS fileCounter (
                         FileName TEXT PRIMARY KEY, 
+           
                         LinesProcessed INTEGER)"""
         cur.execute(create_table)
 
@@ -59,7 +63,7 @@ async def getData(fileType, from_ts, to_ts):
     db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Databases", f"{fileType}.db")
 
     if not os.path.exists(db_path):
-        return {"Status" : "Success", "Message" : "Historical Data Doesn't exists"}
+        return {"Status" : "Success", "Message" : "Historical Data Doesn't exists", "Data" : {}}
     
     try:
         data = {}
@@ -82,42 +86,150 @@ async def getData(fileType, from_ts, to_ts):
         
         if fileType != "Auth":                           # Auth has a different structure of Requests as compared to Nginx and Apache
 
-            curr.execute("""SELECT URL, Method, COUNT(*) as Count
-                        FROM Requests
-                        WHERE Timestamp >= ? AND Timestamp <= ?
-                        GROUP BY URL, Method
-                        ORDER BY Count DESC
-                        """,(from_ts, to_ts))
-            data['URLs Accessed Counter'] = [dict(row) for row in curr.fetchall()]
+            try:
+                curr.execute("""SELECT URL, Method, COUNT(*) as Count
+                            FROM Requests
+                            WHERE dbTimestamp >= ? AND dbTimestamp <= ?
+                            GROUP BY URL, Method
+                            ORDER BY Count DESC
+                            """,(from_ts, to_ts))
+                data['URLs Accessed Counter'] = [dict(row) for row in curr.fetchall()]
+            except sqlite3.OperationalError:
+                data['URLs Accessed Counter'] = []
 
-            curr.execute("""SELECT IP, COUNT(*) AS "Total Reqs", 
-                        COUNT(CASE WHEN Status_code = "404" THEN 1 END) AS "404 Reqs",
-                        COUNT(CASE WHEN Status_code = "404" THEN 1 END) * 1.0/COUNT(*) AS Ratio
-                        FROM Requests
-                        WHERE Timestamp >= ? AND Timestamp <= ?
-                        GROUP BY IP
-                        HAVING Ratio >= 0.4
-                        ORDER BY Ratio DESC, "404 Reqs" DESC""", (from_ts, to_ts))
-            data['Suspicious IPs with No. of 404 errors >= 40%'] = [dict(row) for row in curr.fetchall()]
+            try:
+                curr.execute("""SELECT IP, COUNT(*) AS "Total Reqs", 
+                            COUNT(CASE WHEN Status_code = "404" THEN 1 END) AS "404 Reqs",
+                            COUNT(CASE WHEN Status_code = "404" THEN 1 END) * 1.0/COUNT(*) AS Ratio
+                            FROM Requests
+                            WHERE dbTimestamp >= ? AND dbTimestamp <= ?
+                            GROUP BY IP
+                            HAVING Ratio >= 0.4
+                            ORDER BY Ratio DESC, "404 Reqs" DESC""", (from_ts, to_ts))
+                data['Suspicious IPs with No. of 404 errors >= 40%'] = [dict(row) for row in curr.fetchall()]
+            except sqlite3.OperationalError:
+                data['Suspicious IPs with No. of 404 errors >= 40%'] = []
 
 
-            curr.execute("""SELECT IP, (CASE WHEN Method IN ('GET' , 'HEAD') THEN 'Download' ELSE 'Upload') AS "Action Type", Bandwidth
-                        FROM Requests
-                        WHERE Timestamp >= ? AND Timestamp <= ?
-                        ORDER BY Bandwidth DESC""",(from_ts, to_ts))
-            data['Bandwidth Analysis'] = [dict(row) for row in curr.fetchall()]
+            try:
+                curr.execute("""SELECT IP, CASE WHEN Method IN ('GET' , 'HEAD') THEN 'Download' ELSE 'Upload' END AS "Action Type", Bandwidth
+                            FROM Requests
+                            WHERE dbTimestamp >= ? AND dbTimestamp <= ?
+                            ORDER BY CAST(Bandwidth AS INTEGER) DESC""",(from_ts, to_ts))
+                data['Bandwidth Analysis'] = [dict(row) for row in curr.fetchall()]
+            except sqlite3.OperationalError:
+                data['Bandwidth Analysis'] = []
 
         else:
-
-            curr.execute("""SELECT IP, COUNT(*) AS Count
-                            FROM Requests
-                            WHERE Status = 'Failed' AND Timestamp >= ? AND Timestamp <= ?
-                            ORDER BY Count DESC""",(from_ts, to_ts))
-            data['No. of Failed login attempts per IP'] = [dict(row) for row in curr.fetchall()]
+            
+            try:
+                curr.execute("""SELECT IP, COUNT(*) AS Count
+                                FROM Requests
+                                WHERE Status_code = 'Failed' AND dbTimestamp >= ? AND dbTimestamp <= ?
+                                ORDER BY Count DESC""",(from_ts, to_ts))
+                data['No. of Failed login attempts per IP'] = [dict(row) for row in curr.fetchall()]
+            except sqlite3.OperationalError:
+                data['No. of Failed login attempts per IP'] = []
 
         conn.close()
         
-        return {"Status" : "Success", "Message" : data}
+        return {"Status" : "Success", "Message" : f"Fetching historical data for {fileType} logs successful...", "Data" : data}
     
     except:
-        return {"Status" : "Failed", "Message" : "Error Recieved. Please Try Again..."}
+        return {"Status" : "Failed", "Message" : "Error Recieved. Please Try Again...", "Data" : {}}
+    
+
+
+def summary(from_ts: str, to_ts: str, selected: dict):
+    aggregateData = ['URLs Accessed Counter', 'Suspicious IPs with No. of 404 errors >= 40%', 'No. of Failed login attempts per IP', 'Bandwidth Analysis']
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    markdown_str = f"""### Summary dated on {now}\n\n---\n\n"""
+    for file in selected.keys():
+        if not selected[file]:
+            continue
+
+        string = f"""### {file}\n\n---\n\n"""
+
+        db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Databases", f"{file}.db")
+
+        if not os.path.exists(db_path):
+            string += """There exists no Database for the given log type.\n\n---\n\n---\n\n"""
+            markdown_str += string 
+            continue
+
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        curr = conn.cursor()
+
+        for field in selected[file]:
+
+            if field not in aggregateData:
+                sql_query = """SELECT detail
+                            FROM Events
+                            WHERE Timestamp >= ? AND Timestamp <= ? AND category = ?
+                            ORDER BY Timestamp 
+                            LIMIT 10
+                            """
+                
+                try:
+                    curr.execute(sql_query, (from_ts, to_ts, field))
+                    
+                    field_data = [json.loads(data_str['detail']) for data_str in curr.fetchall()]
+                    df_md = pd.DataFrame(field_data).to_markdown()
+
+                    string += f"""**{field}**\n\n""" + df_md + """\n\n---\n\n"""
+
+                except Exception as e:
+                    string += f"""**{field}**\n\n""" + "\nFailed to load the data.\n" + """\n\n---\n\n"""
+                    print(f"{field} : {e}")
+
+            else:
+
+                if (field == "URLs Accessed Counter"):
+                    sql_query = """SELECT URL, Method, COUNT(*) as Count
+                                FROM Requests
+                                WHERE dbTimestamp >= ? AND dbTimestamp <= ?
+                                GROUP BY URL, Method
+                                ORDER BY Count DESC
+                                LIMIT 10"""
+                    
+                elif (field == "Suspicious IPs with No. of 404 errors >= 40%"):
+                    sql_query = """SELECT IP, COUNT(*) AS "Total Reqs", 
+                                COUNT(CASE WHEN Status_code = "404" THEN 1 END) AS "404 Reqs",
+                                COUNT(CASE WHEN Status_code = "404" THEN 1 END) * 1.0/COUNT(*) AS Ratio
+                                FROM Requests
+                                WHERE dbTimestamp >= ? AND dbTimestamp <= ?
+                                GROUP BY IP
+                                HAVING Ratio >= 0.4
+                                ORDER BY Ratio DESC, "404 Reqs" DESC
+                                LIMIT 10"""
+                
+                elif (field == "Bandwidth Analysis"):
+                    sql_query = """SELECT IP, CASE WHEN Method IN ('GET' , 'HEAD') THEN 'Download' ELSE 'Upload'END AS "Action Type", Bandwidth
+                                FROM Requests
+                                WHERE dbTimestamp >= ? AND dbTimestamp <= ?
+                                ORDER BY CAST(BANDWIDTH AS INTEGER) DESC
+                                LIMIT 10"""
+                
+                elif (field == "No. of Failed login attempts per IP"):
+                    sql_query = """SELECT IP, COUNT(*) AS Count
+                                FROM Requests
+                                WHERE Status_code = 'Failed' AND dbTimestamp >= ? AND dbTimestamp <= ?
+                                ORDER BY Count DESC
+                                LIMIT 10"""
+                    
+                try:
+                    curr.execute(sql_query, (from_ts, to_ts))
+                    field_data = [dict(row) for row in curr.fetchall()]
+                    df_md = pd.DataFrame(field_data).to_markdown()
+
+                    string += f"""**{field}**\n\n""" + df_md + """\n\n---\n\n"""
+                except Exception as e:
+                    string += f"""**{field}**\n\n""" + "\nFailed to load the data\n" + """\n\n---\n\n"""
+                    print(f"{field} : {e}")
+
+        markdown_str += string + """\n\n---\n\n---\n\n"""
+        conn.close()
+
+    return markdown_str

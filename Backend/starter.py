@@ -70,9 +70,9 @@ class starter():
                         for line in f:
                             linesInFile+=1
 
-                    if fileName not in files.keys():
+                    if fileName not in files.keys() and filePath != os.path.abspath(newestFile):
                         self.unreadOldFiles[fileType].append((filePath, 1))
-                    elif linesInFile != files[fileName]:
+                    elif linesInFile != files[fileName] and filePath != newestFile:
                         self.unreadOldFiles[fileType].append((filePath,files[fileName] + 1))
 
             except:
@@ -84,9 +84,12 @@ class starter():
                         for line in f:
                             linesInFile+=1
 
-                    self.unreadOldFiles[fileType].append((filePath, 1))
+                    if filePath != os.path.abspath(newestFile):
+                        self.unreadOldFiles[fileType].append((filePath, 1))
 
                 self.newestFiles[fileType] = (newestFile, 1)
+
+        print(f"HELLLO {self.unreadOldFiles}")
 
 
     def detectFileType(self, filePath: str) -> str:

