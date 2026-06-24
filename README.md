@@ -24,3 +24,4 @@
 ## Notes:
 1. Summary Reports will be created in the folder SummaryReports.
 2. Databases will be present in the Databases folder present in Backend Directory.
+3. 3. Currently the threshold values are less for Development only. Also the flushing of new data happens every 1 min...
