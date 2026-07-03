@@ -16,7 +16,11 @@ import re
 import json
 from collections import Counter, defaultdict, deque
 from datetime import datetime, timedelta
+import ipaddress
 
+from mmdb_operations import country_lookup
+from blacklist_check import obj as blck
+from bot_check import obj as botchk
 
 #GLOBAL THRESHOLDS:
 threshold = 6               # Threshold for the no. of failed logins in a min
@@ -29,6 +33,26 @@ auth_msg_key_fail1 = r"""Connection closed by authenticating user (?P<user>[^ ]*
 auth_msg_key_fail2 = r"""Received disconnect from (?P<ip>[^ ]*) port (?P<port>[^ ]*):11: Bye Bye \[preauth\]"""
 possible_messages = [auth_msg_key_success, auth_msg_key_fail1, auth_msg_key_fail2, auth_msg_passwd]
 
+# Function to resolve the type of IP
+def ip_type(ip):
+    try:
+        ip_adr = ipaddress.ip_address(ip)
+        
+        if ip_adr.is_private:
+            return "Private"
+        elif ip_adr.is_reserved:
+            return "Reserved"
+        elif ip_adr.is_loopback:
+            return "Loopback"
+        elif ip_adr.is_multicast:
+            return "Multicast"
+        elif ip_adr.is_link_local:
+            return "Link Local"
+        else:
+            return botchk.botIp_check(ip)
+    except:
+        return "Malformed IP"
+
 
 class authParser():
     def __init__(self):
@@ -40,10 +64,13 @@ class authParser():
         self.sus_failed_logins_per_min = []
         self.failed_logins_dq = defaultdict(lambda: deque([]))
 
+        self.blocked_ips = defaultdict(int)
+        self.country_data = defaultdict(int)
+
         self.db_aggregate_data = []  # Storing {timestamp, ip, url, method, status code, bandwidth} for calculating the Fails_ip during historical data
 
-    def analyze(self, line):
-        if not line or line[0] == '#' or line == "\n":
+    def analyze(self, line:str):
+        if not line or line.startswith("#") or line == "\n":
             self.mismatched_log.append(line)
             return
 
@@ -63,17 +90,22 @@ class authParser():
 
         isoFormat = dt_ts.isoformat()
 
+        country = country_lookup(grp['ip'])
+        self.country_data[country] += 1
+
+        blocked = blck.blacklist_lookup(grp['ip'])
+        if blocked==1:
+            self.blocked_ips[grp['ip']] += 1
+
+        self.db_aggregate_data.append({"dbTimestamp": isoFormat,"IP" : grp['ip'],"Type": ip_type(grp['ip']), "User" : grp['user'],"Port" : grp['port'] ,"Status_code" : grp['status'], "Country": country, "Blocked" : blocked})
 
         self.login_analysis(grp)
         self.failed_logins_ip(grp,isoFormat, dt_ts)
-        self.db_aggregate_data.append({"Type" : "Auth","dbTimestamp": isoFormat,"IP" : grp['ip'],"User" : grp['user'],"Port" : grp['port'] ,"Status_code" : grp['status']})
-
 
     
     def login_analysis(self, grp):
         if grp['status'] == 'Failed':
             self.fails_ip[grp['ip']] += 1
-
 
 
     def failed_logins_ip(self, grp, isoFormat, dt_ts):
@@ -89,16 +121,21 @@ class authParser():
             self.failed_logins_dq[grp['ip']].popleft()
 
         if len(self.failed_logins_dq[grp['ip']]) >= threshold:
-            self.sus_failed_logins_per_min.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "from" : self.failed_logins_dq[grp['ip']][0].isoformat(), "to" : self.failed_logins_dq[grp['ip']][-1].isoformat(), "No. of Failure attempts in a min" : len(self.failed_logins_dq[grp['ip']]) })
-
+            self.sus_failed_logins_per_min.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "Type": ip_type(grp['ip']), "from" : self.failed_logins_dq[grp['ip']][0].isoformat(), "to" : self.failed_logins_dq[grp['ip']][-1].isoformat(), "No. of Failure attempts in a min" : len(self.failed_logins_dq[grp['ip']]) })
 
 
     def data_collection(self):
         failed_ips_list = sorted([ {"IP" : ip, "Count" : count}
             for ip,count in self.fails_ip.items()], key=lambda x: x['Count'], reverse=True)
+        
+        blocked_ips_counter = sorted([{"IP" : ip, "Counter" : count} for ip, count in self.blocked_ips.items()], key=lambda x: x['Counter'], reverse=True)
+
+        country_counter = sorted([{"Country" : country, "Counter" : count} for country, count in self.country_data.items()], key=lambda x: x['Counter'], reverse=True)
 
         data = {
                     f'Suspicious IPs based on failed login attempts > {threshold} per min' : self.sus_failed_logins_per_min,
+                    'No. of times a blocked IP is accessing the server' : blocked_ips_counter,
+                    'No. of requests from different Countries' : country_counter,
                     'No. of Failed login attempts per IP' : failed_ips_list
                }
         

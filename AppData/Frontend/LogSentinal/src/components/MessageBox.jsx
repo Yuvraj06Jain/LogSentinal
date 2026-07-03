@@ -83,13 +83,14 @@ function MessageBox({ message }) {
             </button>
 
             {/* message content */}
-            <div className="flex-1 flex flex-col justify-center px-3 py-2 gap-1 overflow-hidden">
+            <div className="h-auto flex-1 flex flex-col justify-center px-3 py-2 gap-1 overflow-y-scroll scrollbar-none">
                 <div className="flex items-center justify-between">
                     {status && (
                         <span className={`text-[11px] font-bold tracking-wide uppercase ${c.text}`}>
                             {status}
                         </span>
                     )}
+
                     {/* queue depth indicator — lets the user know more are coming */}
                     {queue.length > 0 && (
                         <span className="text-[10px] text-[#d7e4dd]/40">

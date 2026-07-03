@@ -27,6 +27,10 @@ from parser.Apache import apacheParser
 from starter import starter
 import database_operations as dbos
 
+import mmdb_operations as mmdbos
+from blacklist_check import obj as blck
+from bot_check import obj as botchk
+
 #=====================================================================================================================================================================================
 # PARSER OBJECTS
 
@@ -44,18 +48,50 @@ def detectParserObj(logType:str):
     return {"Apache" : apacheParser, "Nginx" : nginxParser, "Auth" : authParser}[logType]()
 
 # KEEPING A TRACK OF ACTIVE TASKS
-active_tasks = {}       # (FILE PATH, TASK, GEN OBJ, PARSER OBJ)
+active_tasks = {}       # (FILE PATH, TASK, STOP EVENT, PARSER OBJ)
 
 # KEEPING A TRACK OF THE COUNTERS FOR THE FILES BEING MONITORED.
 shippedLines = {}       # { FILEPATH : COUNTER }
 
 # Summary Report Folder:
 reportFolder = os.path.join(os.path.dirname(__file__), "..", "..", "SummaryReports")
-#Database Folder:
+# Database Folder:
 dbFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), "Databases"))
 
-#PORT at which the server is running:
+# PORT at which the server is running:
 PORT = int(os.environ.get("PORT", 8000))
+
+# GeoData Update Timer:
+async def geoDataTimer():
+    print("[LogSentinal] Downloading the Geolocation Database...\n")
+    mmdbos.download_unzip()
+    
+    while True:
+        await asyncio.sleep(60 * 60 * 24)                 # TO RUN AFTER EVERY 24 HOURS
+        print("[LogSentinal] Downloading the Geolocation Database...\n")
+        loop = asyncio.get_running_loop()
+        await loop.run_in_executor(None, mmdbos.download_unzip)
+
+# Blacklist Cache Timer:
+async def blacklistCacheTimer():
+    print("[LogSentinal] Creating the cache for Blacklisted IPs...\n")
+    blck.create_cache()
+    while True:
+        await asyncio.sleep(60 * 60 * 7)                  # TO RUN AFTER EVERY 7 HOURS
+        print("[LogSentinal] Creating the cache for Blacklisted IPs...\n")
+        loop = asyncio.get_running_loop()
+        await loop.run_in_executor(None, blck.create_cache)
+
+# BotList IPs Cache Timer: 
+async def botListCacheTimer():
+    print("[LogSentinal] Creating the cache for Botlist IPs...\n")
+    botchk.create_cache()
+    while True:
+        await asyncio.sleep(60 * 60 * 3)                  # TO RUN AFTER EVERY 3 HOURS
+        print("[LogSentinal] Creating the cache for BotList IPs...\n")
+        loop = asyncio.get_running_loop()
+        await loop.run_in_executor(None, botchk.create_cache)
+
 
 # ===============================================================================================================================================================================
 #REAL TIME MONITOR CODE:
@@ -84,7 +120,9 @@ async def generator(filePath):
             yield line
 
 
-async def polling_analyzing_realTime(filePath, gen_obj, parserObj, startIndex):
+
+async def polling_analyzing_realTime(filePath, gen_obj, parserObj, startIndex, stop_event):
+    
     while True:
         line = await anext(gen_obj)
 
@@ -93,7 +131,10 @@ async def polling_analyzing_realTime(filePath, gen_obj, parserObj, startIndex):
             shippedLines[filePath] += 1
             continue
 
-        if line == "":              # EOF reached
+        if line == "":           # EOF reached
+            if stop_event.is_set():
+                break
+
             await asyncio.sleep(0.5)
             continue
 
@@ -102,43 +143,28 @@ async def polling_analyzing_realTime(filePath, gen_obj, parserObj, startIndex):
         
 
 
-async def drain_to_eof(oldGenObj, parserObj, oldFilePath):
-    while True:
-        line = await anext(oldGenObj)
-
-        if not line:
-            break
-
-        parserObj.analyze(line)
-        shippedLines[oldFilePath] += 1
-
-
 async def newFile(filePath, parserObj):
     print(f"New File Detected in Folder {os.path.dirname(filePath)}: {os.path.basename(filePath)}. Starting its Monitoring...")
     dir_name = os.path.dirname(filePath)
 
-    # Fetching the generator of the older file in the folder:
-    oldFilePath , oldFileTask, oldGenObj, oldParserObj = active_tasks[dir_name]
+    # Fetching the task of the older file in the folder:
+    oldFilePath , oldFileTask, stop_event, parserObj = active_tasks[dir_name]
 
-    if oldFileTask:
+    stop_event.set()
+    await oldFileTask
 
-        oldFileTask.cancel()
-        try:
-            await oldFileTask
-        except asyncio.CancelledError:
-            pass
-
-        await drain_to_eof(oldGenObj, oldParserObj, oldFilePath)
-    
     print(f"Deleted the old File ({os.path.basename(oldFilePath)}) task")
+
     # Starting the monitoring for the new File
     shippedLines[filePath] = 0
 
     new_genObj = generator(filePath)
-    task = asyncio.create_task(polling_analyzing_realTime(filePath, new_genObj, parserObj, 1))
+    stop_event = asyncio.Event()
+
+    task = asyncio.create_task(polling_analyzing_realTime(filePath, new_genObj, parserObj, 1, stop_event))
 
     dir_name = os.path.dirname(filePath)
-    active_tasks[dir_name] = (filePath, task, new_genObj, parserObj)
+    active_tasks[dir_name] = (filePath, task, stop_event , parserObj)
 
 
 
@@ -148,7 +174,7 @@ async def flush():
     FinalData = {}
 
     for folder, (filePath, _, _, parserObj) in active_tasks.items():
-        
+        data = {}
         try:
             data, events, requests = parserObj.data_collection()
             await dbos.writing_data(st.detectFileType(filePath), events, requests, (os.path.basename(filePath), shippedLines[filePath]))
@@ -168,6 +194,11 @@ async def flush():
 
 
 async def monitoring(shutdown_event):
+    print("\n================================================================\n")
+    print(f"[LogSentinal] Open your browser at 'http://localhost:{PORT}'\n")
+    print("[LogSentinal] Waiting for a connection...\n")
+
+
     observer = Observer()
     newFileQueue = queue.Queue()
 
@@ -176,16 +207,18 @@ async def monitoring(shutdown_event):
     print()
 
     for fileType, (file, startIndex) in files.items():
-        print(f"Starting Monitoring for {os.path.basename(file)} from the line {startIndex}")
+        print(f"Starting Monitoring for file :  {os.path.basename(file)} from Line No. : {startIndex}")
 
         shippedLines[file] = 0
         
         new_genObj = generator(file)
         parserObj = detectParserObj(fileType)
-        task = asyncio.create_task(polling_analyzing_realTime(file, new_genObj, parserObj, startIndex))
+        stop_event = asyncio.Event()
+
+        task = asyncio.create_task(polling_analyzing_realTime(file, new_genObj, parserObj, startIndex, stop_event))
 
         dir_name = os.path.dirname(file)
-        active_tasks[dir_name] = (file, task, new_genObj, parserObj)
+        active_tasks[dir_name] = (file, task, stop_event, parserObj)
 
         handler = Handler(newFileQueue, parserObj)
         observer.schedule(handler, path=dir_name, recursive=False)
@@ -236,7 +269,10 @@ db_tasks: dict[str, asyncio.Task] = {}
 oldFileTasks: dict[str,list] = {}
 
 async def reviewingOldFiles(logType):
-    tasks = [asyncio.create_task(processOldFile(logType,filePath, startIndex )) for filePath,startIndex in st.unreadOldFiles[logType]]
+    if not logType in st.unreadOldFiles.keys():
+        return
+    
+    tasks = [asyncio.create_task(processOldFile(logType,filePath, startIndex )) for filePath,startIndex in st.unreadOldFiles[logType] ]
     oldFileTasks[logType] = tasks
 
     try:
@@ -253,7 +289,7 @@ async def processOldFile(logType, filePath, startIndex):
     line_count = await polling_analyzing_oldFiles(genObj, parserObj, startIndex)
     #Write to DB
     _, events, requests = parserObj.data_collection()
-    await dbos.writing_data(logType, events, requests, (filePath, line_count))
+    await dbos.writing_data(logType, events, requests, (os.path.basename(filePath), line_count))
 
     st.unreadOldFiles[logType].remove((filePath, startIndex))
 
@@ -292,16 +328,26 @@ async def lifespan(app: FastAPI):
 
     dbos.deleteData()
     
-    print(f"[LogSentinal] Open your browser at 'http://localhost:{PORT}'")
 
     shutdown_event = threading.Event()
-    task = asyncio.create_task(monitoring(shutdown_event))
+
+    print("\n================================================================\n")
+
+    # Starting the Timers for updating the databases and then starting monitoring...
+    geoData_task = asyncio.create_task(geoDataTimer())
+    blacklistCache_task = asyncio.create_task(blacklistCacheTimer())
+    botList_task = asyncio.create_task(botListCacheTimer())
+    monitoring_task = asyncio.create_task(monitoring(shutdown_event))
 
     try:
         yield
     finally:
         shutdown_event.set()
-        task.cancel()
+
+        for task in (geoData_task, blacklistCache_task, botList_task, monitoring_task):
+            task.cancel()
+
+        await asyncio.gather(geoData_task, blacklistCache_task, botList_task, monitoring_task, return_exceptions=True)
 
 
 sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins=["*"])
@@ -312,16 +358,16 @@ app = socketio.ASGIApp(sio, fastapi_app)
 # Socketio Events
 @sio.event
 async def connect(sid, *args):
-    print("Client Connected...\n")
+    print("[LogSentinal] Client Connected...\n")
     active_rooms = []
     
     for val in st.logType.values():
         active_rooms.append(val)
 
-    print("Sending Rooms Data...\n")
+    print("[LogSentinal]  Sending Rooms Data...\n")
     await sio.emit("Sending Rooms Data...", active_rooms,to=sid)
 
-    print("Starting Monitoring")
+    print("[LogSentinal] Starting Monitoring")
 
     global connection_status
     connection_status = True
@@ -337,25 +383,30 @@ async def disconnect(sid):
 @sio.event
 async def historical(sid, logType, from_ts, to_ts):
 
+    print(f"[LogSentinal] Fetching Historical Data From : {from_ts} to To : {to_ts}\n")
+
     if logType not in ['Apache', 'Nginx', 'Auth']:
+        print("[LogSentinal] Historical Data Fetching Failed...\n")
         return {"Status" : "Failed" , "Message" : "Invalid Log Type", "Data" : {}}
 
     if oldFileTasks.get(logType):
-        print(oldFileTasks.get(logType))
+        print("[LogSentinal] Historical Data Fetching Failed...\n")
         return {"Status" : "Failed", "Message" : "Reviewing Old Files. Please Wait...", "Data" : {}}
     
     if db_tasks.get(logType):
+        print("[LogSentinal] Historical Data Fetching Failed...\n")
         return {"Status" : "Failed", "Message" : "Previous Fetch has not been completed. Please Wait...", "Data" : {}}
     
     msg = await dbos.getData(logType, from_ts, to_ts)
 
+    print("[LogSentinal] Historical Data Fetched Successfully...\n")
     await sio.emit(f"Updating Historical data of {logType} logs", msg['Data'], to=sid)
     return {"Status" : msg["Status"], "Message" : msg["Message"]}
     
 
 @sio.event
 async def Refresh(sid):
-    print("Refresh Signal Recieved, Flusing the data...\n")
+    print("[LogSentinal] Refresh Signal Recieved, Flusing the data...\n")
     
     global refresh
     refresh = True
@@ -363,19 +414,19 @@ async def Refresh(sid):
 
 
 @sio.event
-def generateSummary(sid, from_ts:str, to_ts:str, selected:dict):
-    print("Sumamry Message Recieved")
+async def generateSummary(sid, from_ts:str, to_ts:str, selected:dict):
+    print("[LogSentinal] Sumamry Message Recieved")
     markdown_str = dbos.summary(from_ts, to_ts, selected)
 
     fileName = f"Summary dated on {datetime.now().strftime("%Y-%m-%d %H-%M-%S")}.md"
     filePath = os.path.join(reportFolder, fileName)
 
     try:
-        with open(filePath, "w") as f:
-            f.write(markdown_str)
+        async with aiofiles.open(filePath, "w") as f:
+            await f.write(markdown_str)
         return {"Status" : "Success", "Message" : "Summary Report created and stored successfully in the folder SummaryReport. Please Check..."}
     except Exception as e:
-        print(f"Summary Failure : {e}")
+        print(f"[LogSentinal] Summary Failure : {e}")
         return {"Status" : "Failed", "Message" : "Failed to create the summary report. Please Try Again..."}
 
 @sio.event

@@ -7,6 +7,11 @@ import re
 import json
 from collections import Counter, defaultdict, deque
 from datetime import datetime, timedelta
+import ipaddress
+
+from mmdb_operations import country_lookup
+from blacklist_check import obj as blck
+from bot_check import obj as botchk
 
 #GLOBAL THRESHOLDS:
 bandwidth_threshold = 10000  # Maximum Download size
@@ -24,6 +29,27 @@ pattern = r"""(?P<ip>[^ ]*) (?P<intend>[^ ]*) (?P<user_name>[^ ]*) \[(?P<timesta
 
 #SQL CHECKS TO BE DONE FOR CHECKING INJECTION:
 SQL_checks = ['SELECT', 'INSERT', 'UPDATE', 'DELETE', 'DROP', 'CREATE', 'ALTER', 'TRUNCATE', 'UNION', 'JOIN', 'WHERE', 'FROM', 'INTO', 'TABLE', 'AND', 'OR', '--', '#', ';']
+
+# Function to resolve the type of IP
+def ip_type(ip):
+    try:
+        ip_adr = ipaddress.ip_address(ip)
+        
+        if ip_adr.is_private:
+            return "Private"
+        elif ip_adr.is_reserved:
+            return "Reserved"
+        elif ip_adr.is_loopback:
+            return "Loopback"
+        elif ip_adr.is_multicast:
+            return "Multicast"
+        elif ip_adr.is_link_local:
+            return "Link Local"
+        else:
+            return botchk.botIp_check(ip)
+    except:
+        return "Malformed IP"
+
 
 class apacheParser():
     def __init__(self):
@@ -53,12 +79,15 @@ class apacheParser():
 
         self.sus_ips_based_injection = []
 
+        self.country_data = defaultdict(int)
+        self.blocked_ips = defaultdict(int)
+
         self.db_aggregate_data = []     # Storing {timestamp, ip, url, method, status code, bandwidth} for calculating the URLs Counter, Bandwidth Analysis and IP_404_ratio during historical data
         
 
-    def analyze(self,line):
+    def analyze(self,line:str):
 
-        if line[0] == '#' or line == "\n":
+        if line.startswith("#") or line == "\n":
             self.mismatched_log.append(line)
             return
         
@@ -71,6 +100,16 @@ class apacheParser():
         dt_ts = datetime.strptime(grp['timestamp'],"%d/%b/%Y:%H:%M:%S")
         isoFormat = dt_ts.isoformat()
 
+        country = country_lookup(grp['ip'])
+        self.country_data[country] += 1
+        
+        blocked = blck.blacklist_lookup(grp['ip'])
+        if blocked==1:
+            self.blocked_ips[grp['ip']] += 1
+            
+        self.db_aggregate_data.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "Type": ip_type(grp['ip']), "URL" : grp['url'], "Method" : grp['method'], 
+                                       "Status_code" : grp['status_code'], "Bandwidth" : (grp['bandwidth'] if grp['bandwidth'] != '-' else '-1'), "Country" : country, "Blocked" : blocked})
+
         self.req_rate_analysis(grp,isoFormat,dt_ts)
         self.bandwidth_analysis(grp,isoFormat,dt_ts)
         self.error_analysis(grp,isoFormat,dt_ts)
@@ -78,9 +117,6 @@ class apacheParser():
         self.error_404_ratio(grp)
 
         self.urls_counter(grp)
-
-        self.db_aggregate_data.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "URL" : grp['url'], "Method" : grp['method'], "Status_code" : grp['status_code'], 
-                                       "Bandwidth" : (grp['bandwidth'] if grp['bandwidth'] != '-' else '-1')})
 
 
     def req_rate_analysis(self, grp, isoFormat, dt_ts):
@@ -96,14 +132,14 @@ class apacheParser():
 
 
         if len(self.min_dqs[grp['ip']]) >= min_threshold:
-            self.sus_ips_req_rate_min.append({"dbTimestamp": isoFormat,"ip" : grp['ip'], "from" : self.min_dqs[grp['ip']][0].isoformat(), "to" : self.min_dqs[grp['ip']][-1].isoformat(), "Req Rate" : len(self.min_dqs[grp['ip']])})
+            self.sus_ips_req_rate_min.append({"dbTimestamp": isoFormat,"ip" : grp['ip'], "Type": ip_type(grp['ip']), "from" : self.min_dqs[grp['ip']][0].isoformat(), "to" : self.min_dqs[grp['ip']][-1].isoformat(), "Req Rate" : len(self.min_dqs[grp['ip']])})
 
         # Hour Window 
         while self.hour_dqs[grp['ip']] and current_hour_timestamp >= self.hour_dqs[grp['ip']][0] + timedelta(hours=1):
             self.hour_dqs[grp['ip']].popleft()
 
         if len(self.hour_dqs[grp['ip']]) >= hour_threshold:
-            self.sus_ips_req_rate_hour.append({"dbTimestamp": isoFormat,"ip" : grp['ip'], "from" : self.hour_dqs[grp['ip']][0].isoformat(), "to" : self.hour_dqs[grp['ip']][-1].isoformat(), "Req Rate" : len(self.hour_dqs[grp['ip']])})
+            self.sus_ips_req_rate_hour.append({"dbTimestamp": isoFormat,"ip" : grp['ip'], "Type": ip_type(grp['ip']), "from" : self.hour_dqs[grp['ip']][0].isoformat(), "to" : self.hour_dqs[grp['ip']][-1].isoformat(), "Req Rate" : len(self.hour_dqs[grp['ip']])})
 
 
     
@@ -122,11 +158,11 @@ class apacheParser():
                 self.download_ips[ip].popleft()
 
             if len(self.download_ips[ip]) >= download_threshold:
-                self.sus_ips_download.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "from" : self.download_ips[ip][0].isoformat(), "to" : self.download_ips[ip][-1].isoformat(), "No. of Downloads in a min" : len(self.download_ips[ip])})
+                self.sus_ips_download.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "Type": ip_type(grp['ip']), "from" : self.download_ips[ip][0].isoformat(), "to" : self.download_ips[ip][-1].isoformat(), "No. of Downloads in a min" : len(self.download_ips[ip])})
                 
 
             if grp['bandwidth'] and grp['bandwidth'] != '-' and int(grp['bandwidth']) >= bandwidth_threshold:
-                self.sus_bandwidth.append({"dbTimestamp": isoFormat,"IP" : ip , "Action Type" : "Download" , "Size" : grp['bandwidth']})
+                self.sus_bandwidth.append({"dbTimestamp": isoFormat,"IP" : ip, "Type": ip_type(grp['ip']), "Action Type" : "Download" , "Size" : grp['bandwidth']})
                 
 
         
@@ -141,11 +177,11 @@ class apacheParser():
                 self.upload_ips[ip].popleft()
 
             if len(self.upload_ips[ip]) >= upload_threshold:
-                self.sus_ips_upload.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "from" : self.upload_ips[ip][0].isoformat(), "to" : self.upload_ips[ip][-1].isoformat(), "No. of uploads in a min" : len(self.upload_ips[ip])})
+                self.sus_ips_upload.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "Type": ip_type(grp['ip']), "from" : self.upload_ips[ip][0].isoformat(), "to" : self.upload_ips[ip][-1].isoformat(), "No. of uploads in a min" : len(self.upload_ips[ip])})
                 
 
             if grp['bandwidth'] and grp['bandwidth'] != '-' and int(grp['bandwidth']) >= bandwidth_threshold:
-                self.sus_bandwidth.append({"dbTimestamp": isoFormat,"IP" : ip , "Action Type" : "Upload" , "Size" : grp['bandwidth']})
+                self.sus_bandwidth.append({"dbTimestamp": isoFormat,"IP" : ip, "Type": ip_type(grp['ip']), "Action Type" : "Upload" , "Size" : grp['bandwidth']})
         
 
     def error_analysis(self, grp, isoFormat, dt_ts):
@@ -162,7 +198,7 @@ class apacheParser():
             self.error_dqs[grp['ip']].popleft()
 
         if len(self.error_dqs[grp['ip']]) >= error_threshold:
-            self.sus_ips_error_per_min.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "from" : self.error_dqs[grp['ip']][0].isoformat(), "to" : self.error_dqs[grp['ip']][-1].isoformat(),"No. of uploads in a min" : len(self.error_dqs[grp['ip']])})
+            self.sus_ips_error_per_min.append({"dbTimestamp": isoFormat,"IP" : grp['ip'], "Type": ip_type(grp['ip']), "from" : self.error_dqs[grp['ip']][0].isoformat(), "to" : self.error_dqs[grp['ip']][-1].isoformat(),"No. of uploads in a min" : len(self.error_dqs[grp['ip']])})
 
 
 
@@ -185,13 +221,18 @@ class apacheParser():
             return
 
         if any(check in keyword for check in SQL_checks for keyword in match['sus'].upper().split()) or any(re.search(r"""(.+)=\1""", keyword, re.IGNORECASE) for keyword in match['sus'].split()):
-            self.sus_ips_based_injection.append({"dbTimestamp": isoFormat,"IP" : ip , "URL" : url})
+            self.sus_ips_based_injection.append({"dbTimestamp": isoFormat,"IP" : ip, "Type": ip_type(grp['ip']), "URL" : url})
 
 
     def data_collection(self):
         urls_counter_list = sorted([ {"URLs" : url , "Method" : method , "No. of times accessed" : count}
             for url,counts in self.urls.items() for method,count in counts.items()
         ], key = lambda x: x['No. of times accessed'], reverse=True)
+
+        blocked_ips_counter = sorted([{"IP" : ip, "Counter" : count} for ip, count in self.blocked_ips.items()], key=lambda x: x['Counter'], reverse=True)
+
+        country_counter = sorted([{"Country" : country, "Counter" : count} for country, count in self.country_data.items()], key=lambda x: x['Counter'], reverse=True)
+
 
         for ip in self.ip_404_req.keys():
             errors = self.ip_404_req[ip]
@@ -212,6 +253,8 @@ class apacheParser():
                     'Injection Attempts' : self.sus_ips_based_injection,
                     f"Suspicious IPs with No. of 404 errors >= {ratio * 100}%" : sorted(self.sus_ips_404, key = lambda x: (x['Ratio'], x['404 Reqs']) , reverse=True),
                     'URLs Accessed Counter' : urls_counter_list,
+                    'No. of times a blocked IP makes a requests' : blocked_ips_counter,
+                    'No. of requests from different Countries' : country_counter,
                     "Bandwidth Analysis" : sorted(self.sus_bandwidth,key=lambda x: int(x['Size']), reverse=True)
                }
         
