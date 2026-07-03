@@ -13,7 +13,7 @@ function Summary({
     socket
 }){
     let min = new Date(); 
-    min.setDate(min.getDate() - 30); 
+    min.setDate(min.getDate() - 32); 
     min = min.toISOString().slice(0,16);
 
     let x = new Date()
@@ -159,6 +159,7 @@ function Summary({
                         return;
                     }
 
+                    console.log(from, to)
                     socket.emit("generateSummary", from, to, selected, (Response) => {
                         setMessage(Response);
                     })

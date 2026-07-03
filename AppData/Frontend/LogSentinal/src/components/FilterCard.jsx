@@ -19,7 +19,7 @@ function FilterCard({
   },[view])
 
   let min = new Date(); 
-  min.setDate(min.getDate() - 30); 
+  min.setDate(min.getDate() - 32); 
   min = min.toISOString().slice(0,16);
 
   function handleChange(val){
@@ -37,7 +37,7 @@ function FilterCard({
     }
     else if (val === "Last Month"){
       setTo(today.toISOString())
-      today.setDate(today.getDate() - 30)
+      today.setDate(today.getDate() - 32)
       setFrom(today.toISOString())
     }
     else if (val === "Custom Range"){

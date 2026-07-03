@@ -49,7 +49,7 @@ function Dashboard({
 
   const [message, setMessage] = useState("")
   
-  const aggregateData = new Set(['URLs Accessed Counter', 'Suspicious IPs with No. of 404 errors >= 40%', 'No. of Failed login attempts per IP'])
+  const aggregateData = new Set(['URLs Accessed Counter', 'Suspicious IPs with No. of 404 errors >= 40%', 'No. of Failed login attempts per IP', "'No. of times a blocked IP makes a requests', 'No. of requests from different Countries"])
   const detectFunc = {"Apache" : setApacheLogs, "Nginx" : setNginxLogs, "Auth" : setAuthLogs}
 
   useEffect(() => {

@@ -973,7 +973,6 @@ this is not a log line at all
 117.55.34.78 - - [20/Jun/2026:00:13:08 +0530] "GET /static/js/app.js HTTP/1.1" 301 786 "https://github.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 106.51.23.89 - - [20/Jun/2026:02:12:54 +0530] "GET /static/js/app.js HTTP/1.1" 200 34401 "https://github.com" "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/121.0"
 157.32.18.201 - dev-user [20/Jun/2026:03:11:29 +0530] "GET /static/js/vendor.js HTTP/1.1" 301 932 "https://t.co/abc123" "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15"
-999.999.999.999 - - [20/Jun/2026:06:00:00 +0530] "GET /test HTTP/1.1" 200 1234 "-" "-"
 198.54.117.200 - - [20/Jun/2026:08:00:01 +0530] "GET /api/v1/exec?cmd=ls%20-la HTTP/1.1" 404 3408 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 198.54.117.200 - - [20/Jun/2026:08:00:18 +0530] "GET /../../../etc/passwd HTTP/1.1" 400 4107 "-" "Nikto/2.1.6"
 198.54.117.200 - - [20/Jun/2026:08:00:32 +0530] "GET /.env HTTP/1.1" 404 234 "-" "sqlmap/1.7.9#stable (https://sqlmap.org)"

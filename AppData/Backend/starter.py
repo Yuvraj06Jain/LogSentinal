@@ -12,23 +12,23 @@ class starter():
         self.newestFiles: dict[str, tuple] = {}
 
     def begin(self):
-        print("Hello, User")
+        print("[LogSentinal] Hello, User\n")
 
         for log in ["Apache", "Nginx", "Auth"]:
             path = None
             
             while True:
-                path = input(f"Please Enter the path for the {log} log file [Hit Enter if you don't want to] : ")
+                path = input(f"[LogSentinal] Please Enter the path for the {log} log file [Hit Enter if you don't want to] : ")
                 if path=="":
                     path=None
                     break
                 
                 path = os.path.abspath(path)
                 if not os.path.exists(path):
-                    print("Path Invalid. Please Try Again...")
+                    print("[LogSentinal] Path Invalid. Please Try Again...")
                     continue
                 elif not os.path.isdir(path):
-                    print("Given Path is not a Directory. Please Try Again...")
+                    print("[LogSentinal] Given Path is not a Directory. Please Try Again...")
                     continue
 
                 break
@@ -39,8 +39,8 @@ class starter():
         self.unreadOldFiles = {k : [] for k,v in self.paths.items() if v is not None}
 
         if not self.logType:
-            print("Didn't recieve any path.")
-            print("Exiting the Program...")
+            print("[LogSentinal] Didn't recieve any path.")
+            print("[LogSentinal] Exiting the Application...")
             return "EXIT"
         
         self.checkFiles()
