@@ -305,13 +305,14 @@ def deleteData():
     thirtydayspast = (now - timedelta(days=30)).isoformat()
 
     for fileType in ["Apache", "Nginx", "Auth"]:
+        db_path = os.path.join(dbFolder, f"{fileType}.db")
+        if not os.path.exists(db_path):
+            continue
+
+        conn = sqlite3.connect(db_path)
+        curr = conn.cursor()
+
         try:
-            db_path = os.path.join(dbFolder, f"{fileType}.db")
-            if not os.path.exists(db_path):
-                continue
-                
-            conn = sqlite3.connect(db_path)
-            curr = conn.cursor()
 
             query = """SELECT name FROM sqlite_master
                     WHERE type='table'

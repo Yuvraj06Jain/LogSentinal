@@ -18,7 +18,7 @@ if __name__ == "__main__":
     env = os.environ.copy()
     env["PORT"] = str(port)
 
-    print(f"[LogSentinal] Recevied a free port: {port}")
+    print(f"[LogSentinal] Received a free port: {port}")
     
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "AppData", "Backend"))
 
@@ -26,6 +26,13 @@ if __name__ == "__main__":
 
     try:
         server.wait()
-    except:
+    except (KeyboardInterrupt, Exception):
         print("\n================================================================\n")
         print("Thanks for using the app...\n")
+    finally:
+        if server.poll() is None:
+            server.terminate()
+            try:
+                server.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                server.kill()

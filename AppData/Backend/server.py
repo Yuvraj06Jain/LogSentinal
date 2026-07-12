@@ -320,7 +320,7 @@ async def lifespan(app: FastAPI):
 
     try:
         x = st.begin()
-    except:
+    except (KeyboardInterrupt, Exception):
         x = "EXIT"
 
     if x == "EXIT":
