@@ -15,11 +15,11 @@ from bot_check import obj as botchk
 
 #GLOBAL THRESHOLDS:
 bandwidth_threshold = 10000  # Maximum Download size
-upload_threshold = 5        # Threshold for the no. of uploads per min by an IP
-download_threshold = 5      # Threshold for the no. of uploads per min by an IP
-min_threshold = 5           # Threshold for the no. of requests per min by an IP
-hour_threshold = 20         # Threshold for the no. of requests per hour by an IP
-error_threshold = 6         # Threshold for the no. of 4xx errors per min by an IP
+upload_threshold = 100        # Threshold for the no. of uploads per min by an IP
+download_threshold = 100      # Threshold for the no. of uploads per min by an IP
+min_threshold = 100           # Threshold for the no. of requests per min by an IP
+hour_threshold = 1000         # Threshold for the no. of requests per hour by an IP
+error_threshold = 100         # Threshold for the no. of 4xx errors per min by an IP
 ratio = 0.4                 # No. of 404 errors/ No. of successes by an IP
 
 #REGEX PATTERN

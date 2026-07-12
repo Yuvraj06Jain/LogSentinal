@@ -23,7 +23,7 @@ from blacklist_check import obj as blck
 from bot_check import obj as botchk
 
 #GLOBAL THRESHOLDS:
-threshold = 6               # Threshold for the no. of failed logins in a min
+threshold = 100               # Threshold for the no. of failed logins in a min
 
 #REGEX PATTERNS:
 gen_pattern = r"""(?P<month>[^ ]*) (?P<date>[^ ]*) (?P<timestamp>[^ ]*) (?P<machine>[^ ]*) (?P<service>[^ \[]*)\[(?P<pid>[^ \]]*)\]: """

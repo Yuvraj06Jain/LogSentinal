@@ -20,12 +20,12 @@
         <hr class="text-[#3cff9e]/30 px-"></hr>
 
         <ul class="text-sm text-[#d7e4dd]/70 font-['Space_Grotesk'] px-5">
-            <li class="py-1">1. Ensure that you have Python>3.12 installed on your system.</li>
-            <li class="py-1">2. Clone the github repository <a class="underline underline-offset-2 font-medium" href="https://github.com/Yuvraj06Jain/LogSentinal.git">LogSentinal</a></li>
-            <li class="py-1">3. Open a new terminal and navigate to the installed folder</li>
-            <li class="py-1">4. Run the following command on the terminal: python run.py</li>
-            <li class="py-1">5. After running the above command, the req dependencies would be installed and after that it would ask for the paths of the folders.</li>
-            <li class="py-1">6. Make sure the path you enter does not have quotes.</li>
+            <li class="py-1">1. Make sure Python 3.12+ is installed.</li>
+            <li class="py-1">2. Clone the repository <a class="underline underline-offset-2 font-medium" href="https://github.com/Yuvraj06Jain/LogSentinal.git">LogSentinal</a></li>
+            <li class="py-1">3. Open a new terminal and cd to the cloned folder</li>
+            <li class="py-1">4. Run python run.py</li>
+            <li class="py-1">5. This installs the required dependencies automatically, then prompts you for the log folder paths.</li>
+            <li class="py-1">6. Enter the paths without quotes.</li>
         </ul>
 
         <p class="text-[#3cff9e] text-2xl font-extrabold py-2 mt-10 font-['Audiowide'] px-5 text-center">Open the dashboard at the given port</p>
@@ -35,7 +35,7 @@
         <hr class="text-[#3cff9e]/30 px-"></hr>
 
         <ul class="text-sm text-[#d7e4dd]/80 font-['Space_Grotesk'] px-5 pt-4 list-disc">
-            <li class="py-1">The system can only detect and analyze Apache Log Files, Nginx Log Files and Linux Auth logs.
+            <li class="py-1">The system detects and analyzes Apache Log Files, Nginx Log Files and Linux Auth logs.
             </li>
             <li class="py-1">
                 The application analyzes the files and gives the data about the following things:
@@ -52,7 +52,7 @@
                             <li>IPs sorted based on the bandwidth used.</li>
                         </ul>
                     </li>
-                    <li class="py-5">Nginx:
+                    <li class="pt-5">Nginx:
                         <ul class="text-sm text-[#d7e4dd]/80 font-['Space_Grotesk'] px-8 pt-1 list-decimal pl-10">
                             <li>Suspicious IPs with req rate > 100 per min</li>
                             <li>Suspicious IPs with req rate > 1000 per min</li>
@@ -68,16 +68,21 @@
                     <li class="py-5">Auth:
                         <ul class="text-sm text-[#d7e4dd]/80 font-['Space_Grotesk'] px-8 pt-1 list-decimal pl-10">
                             <li>Suspicious IPs based on failed login attempts > 20 per min</li>
-                            <li>No. of Failed Login attemtps by an IP.</li>
+                            <li>No. of Failed Login attempts by an IP.</li>
                         </ul>
                     </li>
                 </ul>
             </li>
 
             <li class="py-1">The Dashboard will be running on the user's local host.</li>
-            <li class="py-1">Real time monitoring starts only for the latest files and the new files that might be created during the monitoring.</li>
+            <li class="py-1">Real time monitoring starts for the latest files and the new files that might be created during the monitoring.</li>
             <li class="py-1">If the folder has old files which have not been analyzed before then all they would be analyzed in the background during the monitoring.</li>
             <li class="py-1">Analyzed data is stored in the database for 30 days and can be accessed via the Historical tab of the dashboard</li>
+            <li class="py-1">Every detected IP is enriched with country-level geolocation via a local MaxMind GeoLite2 database — no external API calls, no per-request latency.</li>
+            <li class="py-1">IPs are cross-checked against AbuseIPDB's blacklist, cached and refreshed on a background timer</li>
+            <li class="py-1">Known-good crawlers (Googlebot, Bingbot, etc.) are whitelisted against a maintained CIDR list, so they don't pollute your suspicious-IP results.</li>
+            <li class="py-1">The app runs as a persistent async daemon, not a one-shot script — file monitoring, geolocation refresh, and blacklist refresh all run as independent background tasks.</li>
+            <li class="py-1">Log rotation and compressed (.gz) log files are handled automatically; monitoring doesn't break or skip data when a log file rotates mid-session.</li>
             <li class="py-1">Summary report can be generated for the analyzed data. All the reports are stored in the SummaryReport folder.</li>
         </ul>
 
